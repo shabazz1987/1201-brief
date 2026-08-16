@@ -1,0 +1,22 @@
+{
+  "today": "2026-08-16",
+  "today_label": "Sunday, August 16, 2026 · 1201",
+  "briefs": [
+    {
+      "date": "2026-08-16",
+      "label": "Aug 16",
+      "href": "2026-08-16.html",
+      "current": true
+    },
+    {
+      "date": "2026-08-15",
+      "label": "Aug 15",
+      "href": "2026-08-15.html"
+    },
+    {
+      "date": "2026-08-10",
+      "label": "Aug 10",
+      "href": "2026-08-10.html"
+    }
+  ]
+}
