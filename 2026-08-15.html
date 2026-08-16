@@ -1,134 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1201 Daily Brief</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="1201">
+<title>Briefing — Friday, August 15, 2026</title>
 <style>
   :root {
-    --bg: #ffffff; --ink: #1a1a1a; --dim: #6b6b6b; --faint: #9a9a9a;
-    --line: #e5e5e5; --accent: #c44a1a; --panel: #fafafa;
+    --bg: #ffffff;
+    --fg: #16161a;
+    --muted: #6b6b76;
+    --rule: #e4e4e9;
+    --card: #fafafa;
+    --accent: #c4321f;
   }
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #131313; --ink: #e8e8e8; --dim: #969696; --faint: #6a6a6a;
-      --line: #2a2a2a; --accent: #e8743f; --panel: #1b1b1b;
+    :root {
+      --bg: #101013;
+      --fg: #e8e8ec;
+      --muted: #8f8f9c;
+      --rule: #26262d;
+      --card: #17171c;
+      --accent: #ff6a4d;
     }
   }
-  :root[data-theme="dark"] {
-    --bg: #131313; --ink: #e8e8e8; --dim: #969696; --faint: #6a6a6a;
-    --line: #2a2a2a; --accent: #e8743f; --panel: #1b1b1b;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
   body {
-    background: var(--bg); color: var(--ink);
-    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 48px 24px 96px;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
-    max-width: 760px; margin: 0 auto; padding: 48px 24px 64px;
   }
-  header { margin-bottom: 36px; }
-  h1 { font-size: 24px; font-weight: 650; letter-spacing: -0.02em; }
-  .date { color: var(--dim); font-size: 14px; margin-top: 4px; }
-  section { margin-bottom: 34px; }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  header { margin-bottom: 8px; }
+  h1 { font-size: 25px; line-height: 1.25; margin: 0 0 4px; letter-spacing: -0.02em; font-weight: 620; }
+  .datebar { color: var(--muted); font-size: 14px; margin-bottom: 40px; }
+  section { margin: 0 0 44px; }
   .label {
-    font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--faint); border-bottom: 1px solid var(--line);
-    padding-bottom: 6px; margin-bottom: 14px;
-    display: flex; justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 20px;
   }
-  .label .meta { font-weight: 500; letter-spacing: 0.04em; }
-  .brief p { font-size: 16px; line-height: 1.6; }
-  .decisions { margin-top: 14px; }
-  .decisions li { margin: 8px 0 8px 20px; }
-  a { color: inherit; }
-  a.row { text-decoration: none; display: flex; gap: 12px; padding: 11px 6px; border-bottom: 1px dotted var(--line); align-items: baseline; border-radius: 6px; }
-  a.row:hover { background: var(--panel); }
-  a.row:hover .go { color: var(--accent); }
-  .row { display: flex; gap: 12px; padding: 11px 6px; border-bottom: 1px dotted var(--line); align-items: baseline; }
-  .row:last-child, a.row:last-child { border-bottom: none; }
-  .when { flex: 0 0 88px; color: var(--dim); font-size: 13px; font-variant-numeric: tabular-nums; }
-  .what { flex: 1; min-width: 0; }
-  .who { font-weight: 600; }
-  .gist { color: var(--dim); font-size: 13.5px; margin-top: 1px; }
-  .go { color: var(--faint); font-size: 12.5px; align-self: center; white-space: nowrap; }
-  .tag {
-    display: inline-block; font-size: 10.5px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.05em; padding: 1px 7px; border-radius: 3px;
-    border: 1px solid var(--line); color: var(--dim); margin-left: 8px; vertical-align: middle;
+  .label .count { float: right; letter-spacing: 0.04em; font-weight: 500; opacity: .8; }
+  .brief p { margin: 0 0 14px; font-size: 17px; line-height: 1.6; }
+  .brief p:last-child { margin-bottom: 0; }
+  .decisions { margin: 22px 0 0; padding: 16px 20px; background: var(--card); border-radius: 8px; }
+  .decisions .dl { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+  .decisions ol { margin: 0; padding-left: 20px; }
+  .decisions li { margin-bottom: 7px; }
+  .decisions li:last-child { margin-bottom: 0; }
+  .item { margin-bottom: 22px; padding-left: 14px; border-left: 2px solid var(--rule); }
+  .item:last-child { margin-bottom: 0; }
+  .item.urgent { border-left-color: var(--accent); }
+  .item .top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+  .who { font-weight: 620; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .gist { margin-top: 2px; }
+  .sub { color: var(--muted); font-size: 14px; margin-top: 3px; }
+  .flag {
+    display: inline-block;
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    padding: 0 5px;
+    line-height: 1.5;
+    white-space: nowrap;
   }
-  .tag.urgent { border-color: var(--accent); color: var(--accent); }
-  .note { color: var(--faint); font-size: 12.5px; margin-top: 10px; }
+  .timeline .slot { display: flex; gap: 16px; margin-bottom: 14px; }
+  .slot .t { flex: 0 0 88px; color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; padding-top: 1px; }
+  .empty { color: var(--muted); font-style: italic; }
+  a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--muted); }
   footer {
-    margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
-    font-size: 12px; color: var(--faint); line-height: 1.8;
+    margin-top: 56px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.8;
   }
+  .status { display: flex; flex-wrap: wrap; column-gap: 0; row-gap: 2px; }
+  .status span { white-space: nowrap; }
+  .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; vertical-align: middle; margin-right: 5px; opacity: .55; }
+  .q { margin-top: 8px; color: var(--muted); font-size: 14px; }
+
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<header>
-  <h1>Friday Brief</h1>
-  <div class="date">Friday, August 15, 2026 · generated 5:45 PM EDT · rows are links now — tap through</div>
-</header>
+  <header>
+    <h1>Daily Briefing</h1>
+    <div class="datebar">Friday, August 15, 2026 · 1201 · regenerated Sunday 1:30 AM PT from live sources</div>
+  </header>
 
-<section class="brief">
-  <div class="label"><span>The Brief</span></div>
-  <p><strong>Everything funnels into Tuesday: the RA × 12:01 V2 presentation, 11 AM.</strong> The brutalismo direction is set from yesterday's session, you were deep in the design files today, and Gustavo delivered his A/B section openers — the weekend is runway.</p>
-  <p style="margin-top: 12px;">Two things can't slide around it: Kevin McCaughey's <em>Now-Time</em> goes to print now and still needs your yes-or-no on the solarizations.</p>
-  <p style="margin-top: 12px;">And Stone Island — Oliver's corrections plus Sean's side-text call — has a hard Aug 21 print date.</p>
-  <ul class="decisions">
-    <li><strong>RA book</strong> — pick Gustavo's A/B openers, send him the color palette, and fire off the drafted Front Left status reply (RA's been waiting 9 days; their tracker is done and waiting on you).</li>
-    <li><strong>Kevin McCaughey</strong> — yes-with-a-date or a clean no on the solarizations. His print window is closing this week.</li>
-    <li><strong>Stone Island batch</strong> — apply Oliver's 3 corrections starting from Jaimey's v10, make Sean's side-text call, and answer Greig on the studio visit. One sitting clears all three.</li>
-  </ul>
-</section>
+  <section class="brief">
+    <div class="label">The Brief</div>
+    <p>Friday itself was empty. The week points at <strong>Tuesday</strong>: RA × 12:01 V2. Superhuman has it 11:00–12:00 ET. Google has the same event at 8:00–9:00 AM PT, tagged Europe/London — worth confirming which clock is real before you walk in.</p>
+    <p>Thursday’s book-direction call locked brutalismo. You and Gustavo have design on sections 1–2; Veronica has copy on 3–4. You still owe Gustavo a palette (hex / Pantone) and an A/B opener pick.</p>
+    <p>Two client threads are still waiting on you: Kevin McCaughey needs a yes or no on solarizations this week for the Now-Time / Jeff Mills Kluge print, and Oliver Cooke sent Stone Island artwork notes on Aug 14 (cover date 19 October, page 3 copy, credits).</p>
+    <p>Two things that were open on the old Friday page are not open anymore. You replied to Ja'Tovia on Aug 16. Serato: you replied Aug 10, Bry delivered Aug 14, Kat acknowledged.</p>
 
-<section>
-  <div class="label"><span>Schedule</span><span class="meta">Weekend clear · Tuesday loaded</span></div>
-  <div class="row"><span class="when">Sat–Mon</span><div class="what">Nothing on the calendar — RA book runway.</div></div>
-  <div class="row"><span class="when">Tue 11:00</span><div class="what"><span class="who">RA × 12:01 — V2 presentation</span> <span class="tag urgent">Main event</span><div class="gist">The brutalismo direction's first showing. Sections 1–2 yours &amp; Gustavo's; Veronica flowing copy into 3–4.</div></div></div>
-  <div class="row"><span class="when">Tue 1:00</span><div class="what"><span class="who">12:01 Weekly Team Meeting</span> <span class="tag">Zoom · 1h</span></div></div>
-</section>
+    <div class="decisions">
+      <div class="dl">Only you can decide</div>
+      <ol>
+        <li><strong>RA V2:</strong> send Gustavo the palette and pick an opener before Tuesday.</li>
+        <li><strong>Kevin McCaughey:</strong> yes or no on the solarizations. He said this week, for print.</li>
+      </ol>
+    </div>
+  </section>
 
-<section>
-  <div class="label"><span>Needs Response</span><span class="meta">Tap to open in Superhuman</span></div>
-  <a class="row" href="superhuman://hr@1201.am/thread/19ffeff1e5005b9e" target="_blank" rel="noopener"><span class="when">1d</span><div class="what"><span class="who">Oliver Cooke — Stone Island</span><span class="tag urgent">Print Aug 21</span><div class="gist">Three corrections: cover date → Oct 19, page 3 copy (may need a question back — Milan side out till Aug 25), credits cut to three lines. Start from Jaimey's v10.</div></div><span class="go">Open →</span></a>
-  <a class="row" href="superhuman://hr@1201.am/thread/19ff79c895949793" target="_blank" rel="noopener"><span class="when">3d</span><div class="what"><span class="who">Kevin McCaughey — Now-Time</span><span class="tag urgent">Print now</span><div class="gist">Jeff Mills Kluge reprint: wants one sweeping solarization pass; he fills the image spaces. Chasing since May.</div></div><span class="go">Open →</span></a>
-  <a class="row" href="superhuman://hr@1201.am/thread/19f94a07324a8c37" target="_blank" rel="noopener"><span class="when">9d</span><div class="what"><span class="who">RA — Front Left</span><span class="tag urgent">Draft ready</span><div class="gist">Katie chased twice on iMessage; RA's tracker is 100% waiting on 1201. The lapsed "Estimated Print Date" decision rides along.</div></div><span class="go">Open →</span></a>
-  <a class="row" href="superhuman://hr@1201.am/thread/19d44c4f7d3caecd" target="_blank" rel="noopener"><span class="when">11d</span><div class="what"><span class="who">Ja'Tovia Gary</span><span class="tag">Draft ready</span><div class="gist">Signed, paid engagement — does her revised pickup-shots timeline work? (Fix the "Patrick" addressing.)</div></div><span class="go">Open →</span></a>
-  <a class="row" href="superhuman://hr@1201.am/thread/19ea85ad6b77c812" target="_blank" rel="noopener"><span class="when">11d</span><div class="what"><span class="who">Modem Works — Mantra R&amp;D</span><span class="tag">Draft ready</span><div class="gist">Fanneke back Monday — good moment to send the timeline reset.</div></div><span class="go">Open →</span></a>
-  <a class="row" href="superhuman://hr@1201.am/thread/19e5d7f51c8e6192" target="_blank" rel="noopener"><span class="when">Serato</span><div class="what"><span class="who">Kat Egarr — Serato</span><div class="gist">Bry's motion exports landed Wednesday. Pick A or B versions, send to Kat — she thinks delivery is already complete.</div></div><span class="go">Open →</span></a>
-</section>
+  <section>
+    <div class="label">Schedule <span class="count">ET</span></div>
+    <div class="timeline">
+      <p class="empty" style="margin:0 0 14px;">Fri 15 and Sat 16 — nothing on the calendar.</p>
+      <div class="slot">
+        <div class="t">Mon 4:00</div>
+        <div><strong>LD + HR 1on1</strong> <span class="meta">· Meet · 30 min</span></div>
+      </div>
+      <div class="slot">
+        <div class="t">Tue 11:00</div>
+        <div><strong>RA × 12:01 V2</strong> <span class="flag">confirm time</span> <span class="meta">· 1 hr</span>
+          <div class="sub">Superhuman: 11:00 AM–12:00 PM ET. Google: 8:00–9:00 AM PT, Europe/London.</div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="t">Tue 1:00</div>
+        <div><strong>12:01 Weekly Team Meeting</strong> <span class="meta">· Zoom · 1 hr</span></div>
+      </div>
+      <div class="slot">
+        <div class="t">Wed 1:00</div>
+        <div><strong>Hassan × MG Lunch</strong> <span class="meta">· 1:00–2:15 PM ET</span></div>
+      </div>
+      <div class="slot">
+        <div class="t">Wed 2:00</div>
+        <div><strong>lunch next Wednesday 8/19</strong> <span class="meta">· 2:00–3:30 PM · event is tagged PT</span></div>
+      </div>
+      <div class="slot">
+        <div class="t">Wed 3:00</div>
+        <div><strong>LD 1201 Onboarding</strong> <span class="meta">· 3:00–5:00 PM ET</span></div>
+      </div>
+    </div>
+  </section>
 
-<section>
-  <div class="label"><span>Discord — Midnight Oil</span><span class="meta">Tap to jump to the message</span></div>
-  <a class="row" href="https://discord.com/channels/999843458711818241/1300423848872906762/1537854830691745814" target="_blank" rel="noopener"><span class="when">#ra-book</span><div class="what"><span class="who">Gustavo — yesterday</span><span class="tag urgent">Needs your pick</span><div class="gist">Dropped the A/B section openers (4 sections × 2 variants). Also owed: your color palette so he can build his section.</div></div><span class="go">Jump →</span></a>
-  <a class="row" href="https://discord.com/channels/999843458711818241/1508881027546878092/1537615375183650926" target="_blank" rel="noopener"><span class="when">#stone-island</span><div class="what"><span class="who">Jaimey — Wed night</span><div class="gist">Posted brochure v10 (JS edit) — the base for Oliver's corrections.</div></div><span class="go">Jump →</span></a>
-  <div class="row"><span class="when">quiet</span><div class="what"><div class="gist">#kandis-williams-book and #serato-la each had one admin message; nothing needs you there beyond the commitments below.</div></div></div>
-</section>
+  <section>
+    <div class="label">Needs response <span class="count">4</span></div>
 
-<section>
-  <div class="label"><span>Tasks — ClickUp</span><span class="meta">Tap to open the task</span></div>
-  <a class="row" href="https://app.clickup.com/t/86b8ar133" target="_blank" rel="noopener"><span class="when">Lapsed 8/12</span><div class="what"><span class="who">RA — Estimated Print Date</span><div class="gist">No decision made — fold it into the Front Left reply.</div></div><span class="go">Open →</span></a>
-  <div class="note">324 stale overdue tasks remain excluded per your preferences. Mantra milestones (Aug 12–14) lapsed on a project that hasn't kicked off — the Modem Works reply resets that clock.</div>
-</section>
+    <div class="item urgent">
+      <div class="top"><span class="who"><a href="superhuman://hr@1201.am/thread/19e4c53ed2936fec">Kevin McCaughey — Now-Time</a></span> <span class="flag">print this week</span> <span class="meta">Aug 12</span></div>
+      <div class="gist">Jeff Mills Kluge. He wants solarizations this week for print.</div>
+    </div>
 
-<section>
-  <div class="label"><span>Meetings — Fathom</span><span class="meta">Yesterday</span></div>
-  <a class="row" href="https://fathom.video/calls/785612597" target="_blank" rel="noopener"><span class="when">Thu</span><div class="what"><span class="who">Book direction session</span><div class="gist">Brutalismo locked: varied spreads, layered graphics, primary + neon accent. You owe: palette to Gustavo, NAI outreach email, Capsule-folder graphics review.</div></div><span class="go">Watch →</span></a>
-</section>
+    <div class="item urgent">
+      <div class="top"><span class="who"><a href="superhuman://hr@1201.am/thread/19fd1f91ae17d23f">Oliver Cooke — Stone Island</a></span> <span class="meta">Aug 14</span></div>
+      <div class="gist">Artwork notes: cover date 19 October, page 3 copy, credits.</div>
+    </div>
 
-<section>
-  <div class="label"><span>Recent Files — Dropbox 1201</span><span class="meta">Last 48h · 120 files</span></div>
-  <div class="row"><span class="when">43 files</span><div class="what"><span class="who">RA Book / 04 Design / HR</span><div class="gist">Your working session today.</div></div></div>
-  <div class="row"><span class="when">39 files</span><div class="what"><span class="who">RA Book / 02 Reference / ra25</span><div class="gist">Reference pull for the new direction.</div></div></div>
-  <div class="row"><span class="when">7 files</span><div class="what"><span class="who">RA Book / 04 Design / GE / Sections Openers</span><div class="gist">Gustavo's A/B variants.</div></div></div>
-</section>
+    <div class="item">
+      <div class="top"><span class="who"><a href="superhuman://hr@1201.am/thread/19f94a07324a8c37">RA Front Left — Katie / Nyshka</a></span> <span class="meta">Aug 6</span></div>
+      <div class="gist">Tracker is 100%. Waiting on 1201.</div>
+      <div class="q">Did a Front Left status ever go out?</div>
+    </div>
 
-<footer>
-  Sources — Mail: ok · Calendar: ok · Fathom: ok · Dropbox: ok · Discord: ok · ClickUp: ok<br>
-  Generated by the HR Command Center · next run: Monday 7:00 AM · feedback: just tell Claude
-</footer>
+    <div class="item">
+      <div class="top"><span class="who"><a href="superhuman://hr@1201.am/thread/19ea85ad6b77c812">Bas — Modem Works</a></span> <span class="meta">Aug 3</span></div>
+      <div class="gist">Mantra kick-off and Contractbook. Fanneke back Aug 17.</div>
+    </div>
+  </section>
 
+  <section>
+    <div class="label">Meetings</div>
+    <div class="item">
+      <div class="top"><span class="who"><a href="https://fathom.video/calls/785612597">Thursday — book direction</a></span> <span class="meta">Fathom</span></div>
+      <div class="gist">Brutalismo locked. You + Gustavo: design sections 1–2. Veronica: copy 3–4. You owe a palette and an A/B opener pick. Site rebuild / NAI case studies also came up.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Not in this pass</div>
+    <p class="empty" style="margin:0;">Discord is offline (intents). ClickUp and Dropbox were connected but not extracted for this regen — nothing invented.</p>
+  </section>
+
+  <footer>
+    <div>Regenerated Sunday, August 16, 2026 at 1:30 AM PT from live Superhuman, Calendar, and Fathom.</div>
+    <div class="status">
+      <span><span class="dot"></span>Mail ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Calendar ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Fathom ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Discord offline</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>ClickUp skipped</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Dropbox skipped</span>
+    </div>
+  </footer>
+
+</div>
 </body>
 </html>
