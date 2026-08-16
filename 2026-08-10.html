@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Briefing — Monday, August 10, 2026</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #16161a;
+    --muted: #6b6b76;
+    --rule: #e4e4e9;
+    --card: #fafafa;
+    --accent: #c4321f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101013;
+      --fg: #e8e8ec;
+      --muted: #8f8f9c;
+      --rule: #26262d;
+      --card: #17171c;
+      --accent: #ff6a4d;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 48px 24px 96px;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+
+  header { margin-bottom: 8px; }
+  h1 { font-size: 25px; line-height: 1.25; margin: 0 0 4px; letter-spacing: -0.02em; font-weight: 620; }
+  .datebar { color: var(--muted); font-size: 14px; margin-bottom: 40px; }
+
+  section { margin: 0 0 44px; }
+  .label {
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 20px;
+  }
+  .label .count { float: right; letter-spacing: 0.04em; font-weight: 500; opacity: .8; }
+
+  .brief p { margin: 0 0 14px; font-size: 17px; line-height: 1.6; }
+  .brief p:last-child { margin-bottom: 0; }
+
+  .decisions { margin: 22px 0 0; padding: 16px 20px; background: var(--card); border-radius: 8px; }
+  .decisions .dl { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+  .decisions ol { margin: 0; padding-left: 20px; }
+  .decisions li { margin-bottom: 7px; }
+  .decisions li:last-child { margin-bottom: 0; }
+
+  .item { margin-bottom: 22px; padding-left: 14px; border-left: 2px solid var(--rule); }
+  .item:last-child { margin-bottom: 0; }
+  .item.urgent { border-left-color: var(--accent); }
+  .item .top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+  .who { font-weight: 620; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .gist { margin-top: 2px; }
+  .sub { color: var(--muted); font-size: 14px; margin-top: 3px; }
+
+  .flag {
+    display: inline-block;
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    padding: 0 5px;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  .timeline .slot { display: flex; gap: 16px; margin-bottom: 14px; }
+  .slot .t { flex: 0 0 88px; color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; padding-top: 1px; }
+
+  .empty { color: var(--muted); font-style: italic; }
+
+  ul.tasks { list-style: none; margin: 0; padding: 0; }
+  ul.tasks li { margin-bottom: 9px; display: flex; gap: 12px; align-items: baseline; }
+  ul.tasks li:last-child { margin-bottom: 0; }
+  ul.tasks .due { flex: 0 0 76px; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+  ul.tasks .due.late { color: var(--accent); }
+  .grouphead { font-size: 13px; font-weight: 650; margin: 18px 0 9px; }
+  .grouphead:first-child { margin-top: 0; }
+
+  .files .folder { font-size: 13px; font-weight: 650; margin: 16px 0 5px; }
+  .files .folder:first-child { margin-top: 0; }
+  .files ul { list-style: none; margin: 0; padding: 0; }
+  .files li { color: var(--muted); font-size: 14px; margin-bottom: 3px; }
+  .files li .fname { color: var(--fg); }
+
+  a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--muted); }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.8;
+  }
+  .status span { white-space: nowrap; }
+  .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; vertical-align: middle; margin-right: 5px; opacity: .55; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Daily Briefing</h1>
+    <div class="datebar">Monday, August 10, 2026 · 1201</div>
+  </header>
+
+  <section class="brief">
+    <div class="label">The Brief</div>
+    <p>Your calendar is empty today — the whole day is yours, and it lands the same week several clients are waiting. The sharpest point is <strong>Serato</strong>: Kat Egarr followed up again Sunday night asking for the outstanding assets, her creative team needs them <em>this week</em>, and you told them "sending ASAP" on Aug 3. That's seven days of silence on a promise you made.</p>
+    <p>Stone Island is the one thing already moving — Selfridges feedback landed this morning, you'd independently started the same edit, and you asked Gustavo to jump on voice around 9:29am. Nothing blocked there; it just needs finishing.</p>
+    <p>The rest is the tail of Patrick's departure. Ja'Tovia, Modem Works, and RA are all waiting on replies you owe them personally — RA has now chased across three channels. And Michelle at Something Special confirmed she's fixing the $3k underpayment; she just needs an acknowledgment.</p>
+
+    <div class="decisions">
+      <div class="dl">Only you can decide</div>
+      <ol>
+        <li><strong>Serato:</strong> send the assets today, or give Kat a firm date. A second slip without a date costs the relationship.</li>
+        <li><strong>Greig Scott / NY print studio visit</strong> — yes or no. Open since Jul 30; the Stone Island print deadline is Aug 21, so this stops being optional within days.</li>
+        <li><strong>Ja'Tovia's new timeline</strong> — she's going back for pickup shots and has asked twice whether the shift works for 1201.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Schedule</div>
+    <div class="timeline">
+      <p class="empty" style="margin:0 0 14px;">No events today — clear calendar.</p>
+      <div class="slot">
+        <div class="t">Tue 1:00pm</div>
+        <div><strong>12:01 Weekly Team Meeting</strong> <span class="meta">· Zoom · 1 hr</span>
+          <div class="sub">Tomorrow. First one since the team changed — worth deciding beforehand what you're telling everyone about coverage.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Needs response <span class="count">6</span></div>
+
+    <div class="item urgent">
+      <div class="top"><span class="who">Kat Egarr — Serato</span> <span class="flag">2nd follow-up</span> <span class="meta">Aug 9, 6:58pm · 18 hrs</span></div>
+      <div class="gist">Following up <em>again</em> on the outstanding assets — needs them ASAP, their creative team is building launch assets this week.</div>
+      <div class="sub">You committed to sending everything on Aug 3. Abbas and Kat both on thread; Gustavo and office@ cc'd.</div>
+    </div>
+
+    <div class="item urgent">
+      <div class="top"><span class="who">Katie / Nick — RA</span> <span class="flag">chased 3× </span> <span class="meta">Aug 5–6 · 4 days</span></div>
+      <div class="gist">Front Left timeline and design check-in. Katie flagged she'd messaged twice on iMessage with no response; Nick confirms their tracker is 100% complete and waiting on you.</div>
+      <div class="sub">Related ClickUp item — "RA | Estimated Print Date" — is due Wednesday.</div>
+    </div>
+
+    <div class="item">
+      <div class="top"><span class="who">Ja'Tovia Gary Studio</span> <span class="meta">Aug 4 · 6 days</span></div>
+      <div class="gist">Second check-in: she's going back into production for pickup shots, which moves the delivery timeline. Asking whether the new schedule works for 1201.</div>
+    </div>
+
+    <div class="item">
+      <div class="top"><span class="who">Bas — Modem Works</span> <span class="meta">Aug 4 · 6 days</span></div>
+      <div class="gist">Gracious after your note about Patrick, waiting on you to resurface with project planning and a kick-off date for the Mantra R&amp;D publication.</div>
+      <div class="sub">Fanneke is OOO until Aug 17. Mantra's own workback has second-draft feedback due today.</div>
+    </div>
+
+    <div class="item">
+      <div class="top"><span class="who">Michelle Jones — Something Special Studios</span> <span class="meta">Aug 9, 10:39pm · 12 hrs</span></div>
+      <div class="gist">Confirmed the $3k shortfall (paid $40k against the $43k invoice) and is pushing finance to process it ahead of their usual Thursday run.</div>
+      <div class="sub">Just needs a thank-you — no decision required.</div>
+    </div>
+
+    <div class="item">
+      <div class="top"><span class="who">Ian — West Coast Record Collective</span> <span class="meta">Aug 7 · 3 days</span></div>
+      <div class="gist">Long personal note about the state of the music industry. Not a client ask, no deadline — but it's been sitting three days and he wrote it to you.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Discord digest <span class="count">Midnight Oil · 34 msgs</span></div>
+
+    <div class="item">
+      <div class="top"><span class="who">#stone-island-selfridges</span> <span class="meta">27 messages · this morning</span></div>
+      <div class="gist">Gustavo relayed Selfridges' feedback on the brochure (R1 feedback PDF in Dropbox) and asked Jaimey to take the adjustments. You'd already been working the same file — posted your HR Edit, tighter margins, and a proposed rework of the caption system into a standardized week / day / size / price block. Gustavo suggested left-aligning rather than justifying, and breaking the box on large text; you agreed that helps.</div>
+      <div class="sub">You asked Gustavo to hop into voice at 9:29am — that's the open loop, and it's yours to chase. Adjustments themselves are with Jaimey.</div>
+    </div>
+
+    <div class="item">
+      <div class="top"><span class="who">#gustavo-1201</span> <span class="meta">6 messages</span></div>
+      <div class="gist">Quick check-in; Gustavo was out but back "till late." No decisions.</div>
+    </div>
+
+    <div class="item">
+      <div class="top"><span class="who">#general</span> <span class="meta">1 message</span></div>
+      <div class="gist">Bot post only.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Tasks <span class="count">ClickUp · 12:01 AM</span></div>
+
+    <div class="grouphead">Due today</div>
+    <ul class="tasks">
+      <li><span class="due">Aug 10</span><span><a href="https://app.clickup.com/t/86bakc25h">Phase 2.3 | Second Draft Feedback Due</a> <span class="meta">— Mantra</span></span></li>
+      <li><span class="due">Aug 10</span><span><a href="https://app.clickup.com/t/86bada2tp">Phase 1.3 | Synthesis Meeting</a> <span class="meta">— Performance Space NY</span></span></li>
+      <li><span class="due">Aug 10</span><span><a href="https://app.clickup.com/t/86badb8wa">Phase 2.1 | Internal Meeting #1</a> <span class="meta">— Performance Space NY</span></span></li>
+    </ul>
+
+    <div class="grouphead">Recently overdue</div>
+    <ul class="tasks">
+      <li><span class="due late">Aug 7</span><span><a href="https://app.clickup.com/t/86bakaaed">PHASE 2.1: Design Dev</a> <span class="meta">— Mantra · in progress</span></span></li>
+      <li><span class="due late">Aug 7</span><span><a href="https://app.clickup.com/t/86bakaawc">Phase 2.2: First Draft Complete</a> <span class="meta">— Mantra</span></span></li>
+      <li><span class="due late">Aug 7</span><span><a href="https://app.clickup.com/t/86bada1z0">Phase 1.2 | Audit</a> <span class="meta">— Performance Space NY · in progress</span></span></li>
+      <li><span class="due late">Aug 3</span><span><a href="https://app.clickup.com/t/86bakaexy">Printer Reach-Out</a> <span class="meta">— Mantra</span></span></li>
+      <li><span class="due late">Jul 31</span><span><a href="https://app.clickup.com/t/86bakc0um">Spec Sheet Shared</a> <span class="meta">— Mantra</span></span></li>
+      <li><span class="due late">Jul 30</span><span><a href="https://app.clickup.com/t/86bacntp7">Booklet Shoot Date</a> <span class="meta">— Stone Island</span></span></li>
+      <li><span class="due late">Jul 28</span><span><a href="https://app.clickup.com/t/86bacnu66">[Studio ONE] Artwork Final Sign Off + Asset Suite Sent</a> <span class="meta">— Stone Island</span></span></li>
+    </ul>
+
+    <div class="grouphead">Coming up</div>
+    <ul class="tasks">
+      <li><span class="due">Aug 11</span><span><a href="https://app.clickup.com/t/86badb183">Phase 1.3 | Internal Feedback Review</a> <span class="meta">— Performance Space NY</span></span></li>
+      <li><span class="due">Aug 12</span><span><a href="https://app.clickup.com/t/86b8ar133">RA | Estimated Print Date</a> <span class="meta">— RA Book</span></span></li>
+      <li><span class="due">Aug 12</span><span><a href="https://app.clickup.com/t/86bakcnff">Print Vendor Confirmed</a> <span class="meta">— Mantra</span></span></li>
+      <li><span class="due">Aug 13</span><span><a href="https://app.clickup.com/t/86bakaby0">Phase 3.1: Feedback Implementation</a> <span class="meta">— Mantra · in progress</span></span></li>
+      <li><span class="due">Aug 13</span><span><a href="https://app.clickup.com/t/86bakacnx">Phase 3.2 | Second Draft Complete</a> <span class="meta">— Mantra</span></span></li>
+      <li><span class="due">Aug 13</span><span><a href="https://app.clickup.com/t/86bakc3fe">Phase 4.1 | Print Ready Client Sign-Off</a> <span class="meta">— Mantra</span></span></li>
+      <li><span class="due">Aug 14</span><span><a href="https://app.clickup.com/t/86bakc121">Sample Order Placed</a> <span class="meta">— Mantra</span></span></li>
+      <li><span class="due">Aug 14</span><span><a href="https://app.clickup.com/t/86badaq5r">Phase 1.3 | Synthesis Doc Feedback Due</a> <span class="meta">— Performance Space NY</span></span></li>
+    </ul>
+
+    <p class="sub" style="margin-top:18px;">302 older overdue tasks not shown. Worth noting: nothing in these workbacks has been touched since June — the Mantra and PSNY calendars are running on their original plan, not reality.</p>
+  </section>
+
+  <section>
+    <div class="label">Meetings</div>
+    <p class="empty" style="margin:0;">No Fathom recordings since Aug 8 — nothing to recap.</p>
+  </section>
+
+  <section class="files">
+    <div class="label">Recent files <span class="count">Dropbox · 24 hrs</span></div>
+
+    <div class="folder">Stone Island Selfridges + Studio ONE / Brochure</div>
+    <ul>
+      <li><span class="fname">brochure_09 HR Edit.indd</span> + .pdf — your edit, 9:07–9:12am</li>
+      <li><span class="fname">SI-Selected-Works-Brochure-R1_SI Feedback.pdf</span> — Selfridges feedback, 9:01am</li>
+      <li><span class="fname">hero-bw-mock-hr.tif / .png</span> — hero mock, 7:55am <span class="meta">(1.6 GB tif)</span></li>
+    </ul>
+
+    <div class="folder">LEAF Identity</div>
+    <ul>
+      <li><span class="fname">1201_LEAF_072126_WIP.pdf</span> — 10:05am, most recent file today</li>
+    </ul>
+
+    <div class="folder">1201 Site Update — Summer 2026</div>
+    <ul>
+      <li><span class="fname">1201am keynote for site — v0.key</span> and a downscaled copy — overnight <span class="meta">(3.6 GB / 2.1 GB)</span></li>
+    </ul>
+
+    <div class="folder">Hassan Rahim / Loosies</div>
+    <ul>
+      <li>3 photos + <span class="fname">si logo white.tif</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    <div>Generated Monday, August 10, 2026 at 10:14 AM EDT.</div>
+    <div class="status">
+      <span><span class="dot"></span>Discord ok</span> ·
+      <span><span class="dot"></span>ClickUp ok</span> ·
+      <span><span class="dot"></span>Dropbox ok</span> ·
+      <span><span class="dot"></span>Superhuman mail ok <em>(via thread fallback — natural-language triage timed out)</em></span> ·
+      <span><span class="dot"></span>Calendar ok</span> ·
+      <span><span class="dot"></span>Fathom ok <em>(no meetings)</em></span>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1201 Daily Brief</title>
+<style>
+  :root {
+    --bg: #ffffff; --ink: #1a1a1a; --dim: #6b6b6b; --faint: #9a9a9a;
+    --line: #e5e5e5; --accent: #c44a1a; --panel: #fafafa;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #131313; --ink: #e8e8e8; --dim: #969696; --faint: #6a6a6a;
+      --line: #2a2a2a; --accent: #e8743f; --panel: #1b1b1b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #131313; --ink: #e8e8e8; --dim: #969696; --faint: #6a6a6a;
+    --line: #2a2a2a; --accent: #e8743f; --panel: #1b1b1b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    max-width: 760px; margin: 0 auto; padding: 48px 24px 64px;
+  }
+  header { margin-bottom: 36px; }
+  h1 { font-size: 24px; font-weight: 650; letter-spacing: -0.02em; }
+  .date { color: var(--dim); font-size: 14px; margin-top: 4px; }
+  section { margin-bottom: 34px; }
+  .label {
+    font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--faint); border-bottom: 1px solid var(--line);
+    padding-bottom: 6px; margin-bottom: 14px;
+    display: flex; justify-content: space-between;
+  }
+  .label .meta { font-weight: 500; letter-spacing: 0.04em; }
+  .brief p { font-size: 16px; line-height: 1.6; }
+  .decisions { margin-top: 14px; }
+  .decisions li { margin: 8px 0 8px 20px; }
+  a { color: inherit; }
+  a.row { text-decoration: none; display: flex; gap: 12px; padding: 11px 6px; border-bottom: 1px dotted var(--line); align-items: baseline; border-radius: 6px; }
+  a.row:hover { background: var(--panel); }
+  a.row:hover .go { color: var(--accent); }
+  .row { display: flex; gap: 12px; padding: 11px 6px; border-bottom: 1px dotted var(--line); align-items: baseline; }
+  .row:last-child, a.row:last-child { border-bottom: none; }
+  .when { flex: 0 0 88px; color: var(--dim); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .what { flex: 1; min-width: 0; }
+  .who { font-weight: 600; }
+  .gist { color: var(--dim); font-size: 13.5px; margin-top: 1px; }
+  .go { color: var(--faint); font-size: 12.5px; align-self: center; white-space: nowrap; }
+  .tag {
+    display: inline-block; font-size: 10.5px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.05em; padding: 1px 7px; border-radius: 3px;
+    border: 1px solid var(--line); color: var(--dim); margin-left: 8px; vertical-align: middle;
+  }
+  .tag.urgent { border-color: var(--accent); color: var(--accent); }
+  .note { color: var(--faint); font-size: 12.5px; margin-top: 10px; }
+  footer {
+    margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line);
+    font-size: 12px; color: var(--faint); line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Friday Brief</h1>
+  <div class="date">Friday, August 15, 2026 · generated 5:45 PM EDT · rows are links now — tap through</div>
+</header>
+
+<section class="brief">
+  <div class="label"><span>The Brief</span></div>
+  <p><strong>Everything funnels into Tuesday: the RA × 12:01 V2 presentation, 11 AM.</strong> The brutalismo direction is set from yesterday's session, you were deep in the design files today, and Gustavo delivered his A/B section openers — the weekend is runway.</p>
+  <p style="margin-top: 12px;">Two things can't slide around it: Kevin McCaughey's <em>Now-Time</em> goes to print now and still needs your yes-or-no on the solarizations.</p>
+  <p style="margin-top: 12px;">And Stone Island — Oliver's corrections plus Sean's side-text call — has a hard Aug 21 print date.</p>
+  <ul class="decisions">
+    <li><strong>RA book</strong> — pick Gustavo's A/B openers, send him the color palette, and fire off the drafted Front Left status reply (RA's been waiting 9 days; their tracker is done and waiting on you).</li>
+    <li><strong>Kevin McCaughey</strong> — yes-with-a-date or a clean no on the solarizations. His print window is closing this week.</li>
+    <li><strong>Stone Island batch</strong> — apply Oliver's 3 corrections starting from Jaimey's v10, make Sean's side-text call, and answer Greig on the studio visit. One sitting clears all three.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="label"><span>Schedule</span><span class="meta">Weekend clear · Tuesday loaded</span></div>
+  <div class="row"><span class="when">Sat–Mon</span><div class="what">Nothing on the calendar — RA book runway.</div></div>
+  <div class="row"><span class="when">Tue 11:00</span><div class="what"><span class="who">RA × 12:01 — V2 presentation</span> <span class="tag urgent">Main event</span><div class="gist">The brutalismo direction's first showing. Sections 1–2 yours &amp; Gustavo's; Veronica flowing copy into 3–4.</div></div></div>
+  <div class="row"><span class="when">Tue 1:00</span><div class="what"><span class="who">12:01 Weekly Team Meeting</span> <span class="tag">Zoom · 1h</span></div></div>
+</section>
+
+<section>
+  <div class="label"><span>Needs Response</span><span class="meta">Tap to open in Superhuman</span></div>
+  <a class="row" href="superhuman://hr@1201.am/thread/19ffeff1e5005b9e" target="_blank" rel="noopener"><span class="when">1d</span><div class="what"><span class="who">Oliver Cooke — Stone Island</span><span class="tag urgent">Print Aug 21</span><div class="gist">Three corrections: cover date → Oct 19, page 3 copy (may need a question back — Milan side out till Aug 25), credits cut to three lines. Start from Jaimey's v10.</div></div><span class="go">Open →</span></a>
+  <a class="row" href="superhuman://hr@1201.am/thread/19ff79c895949793" target="_blank" rel="noopener"><span class="when">3d</span><div class="what"><span class="who">Kevin McCaughey — Now-Time</span><span class="tag urgent">Print now</span><div class="gist">Jeff Mills Kluge reprint: wants one sweeping solarization pass; he fills the image spaces. Chasing since May.</div></div><span class="go">Open →</span></a>
+  <a class="row" href="superhuman://hr@1201.am/thread/19f94a07324a8c37" target="_blank" rel="noopener"><span class="when">9d</span><div class="what"><span class="who">RA — Front Left</span><span class="tag urgent">Draft ready</span><div class="gist">Katie chased twice on iMessage; RA's tracker is 100% waiting on 1201. The lapsed "Estimated Print Date" decision rides along.</div></div><span class="go">Open →</span></a>
+  <a class="row" href="superhuman://hr@1201.am/thread/19d44c4f7d3caecd" target="_blank" rel="noopener"><span class="when">11d</span><div class="what"><span class="who">Ja'Tovia Gary</span><span class="tag">Draft ready</span><div class="gist">Signed, paid engagement — does her revised pickup-shots timeline work? (Fix the "Patrick" addressing.)</div></div><span class="go">Open →</span></a>
+  <a class="row" href="superhuman://hr@1201.am/thread/19ea85ad6b77c812" target="_blank" rel="noopener"><span class="when">11d</span><div class="what"><span class="who">Modem Works — Mantra R&amp;D</span><span class="tag">Draft ready</span><div class="gist">Fanneke back Monday — good moment to send the timeline reset.</div></div><span class="go">Open →</span></a>
+  <a class="row" href="superhuman://hr@1201.am/thread/19e5d7f51c8e6192" target="_blank" rel="noopener"><span class="when">Serato</span><div class="what"><span class="who">Kat Egarr — Serato</span><div class="gist">Bry's motion exports landed Wednesday. Pick A or B versions, send to Kat — she thinks delivery is already complete.</div></div><span class="go">Open →</span></a>
+</section>
+
+<section>
+  <div class="label"><span>Discord — Midnight Oil</span><span class="meta">Tap to jump to the message</span></div>
+  <a class="row" href="https://discord.com/channels/999843458711818241/1300423848872906762/1537854830691745814" target="_blank" rel="noopener"><span class="when">#ra-book</span><div class="what"><span class="who">Gustavo — yesterday</span><span class="tag urgent">Needs your pick</span><div class="gist">Dropped the A/B section openers (4 sections × 2 variants). Also owed: your color palette so he can build his section.</div></div><span class="go">Jump →</span></a>
+  <a class="row" href="https://discord.com/channels/999843458711818241/1508881027546878092/1537615375183650926" target="_blank" rel="noopener"><span class="when">#stone-island</span><div class="what"><span class="who">Jaimey — Wed night</span><div class="gist">Posted brochure v10 (JS edit) — the base for Oliver's corrections.</div></div><span class="go">Jump →</span></a>
+  <div class="row"><span class="when">quiet</span><div class="what"><div class="gist">#kandis-williams-book and #serato-la each had one admin message; nothing needs you there beyond the commitments below.</div></div></div>
+</section>
+
+<section>
+  <div class="label"><span>Tasks — ClickUp</span><span class="meta">Tap to open the task</span></div>
+  <a class="row" href="https://app.clickup.com/t/86b8ar133" target="_blank" rel="noopener"><span class="when">Lapsed 8/12</span><div class="what"><span class="who">RA — Estimated Print Date</span><div class="gist">No decision made — fold it into the Front Left reply.</div></div><span class="go">Open →</span></a>
+  <div class="note">324 stale overdue tasks remain excluded per your preferences. Mantra milestones (Aug 12–14) lapsed on a project that hasn't kicked off — the Modem Works reply resets that clock.</div>
+</section>
+
+<section>
+  <div class="label"><span>Meetings — Fathom</span><span class="meta">Yesterday</span></div>
+  <a class="row" href="https://fathom.video/calls/785612597" target="_blank" rel="noopener"><span class="when">Thu</span><div class="what"><span class="who">Book direction session</span><div class="gist">Brutalismo locked: varied spreads, layered graphics, primary + neon accent. You owe: palette to Gustavo, NAI outreach email, Capsule-folder graphics review.</div></div><span class="go">Watch →</span></a>
+</section>
+
+<section>
+  <div class="label"><span>Recent Files — Dropbox 1201</span><span class="meta">Last 48h · 120 files</span></div>
+  <div class="row"><span class="when">43 files</span><div class="what"><span class="who">RA Book / 04 Design / HR</span><div class="gist">Your working session today.</div></div></div>
+  <div class="row"><span class="when">39 files</span><div class="what"><span class="who">RA Book / 02 Reference / ra25</span><div class="gist">Reference pull for the new direction.</div></div></div>
+  <div class="row"><span class="when">7 files</span><div class="what"><span class="who">RA Book / 04 Design / GE / Sections Openers</span><div class="gist">Gustavo's A/B variants.</div></div></div>
+</section>
+
+<footer>
+  Sources — Mail: ok · Calendar: ok · Fathom: ok · Dropbox: ok · Discord: ok · ClickUp: ok<br>
+  Generated by the HR Command Center · next run: Monday 7:00 AM · feedback: just tell Claude
+</footer>
+
+</body>
+</html>
