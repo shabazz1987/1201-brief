@@ -1,6 +1,7 @@
 {
   "name": "12:01 Daily",
   "short_name": "12:01 Daily",
+  "id": "/1201-brief/",
   "start_url": "/1201-brief/",
   "scope": "/1201-brief/",
   "display": "standalone",
