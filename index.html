@@ -6,6 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="12:01 Daily">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>12:01 Daily</title>
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
 <link rel="icon" href="favicon.png?v=2" type="image/png">
@@ -123,76 +124,85 @@
   .status span { white-space: nowrap; }
   .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; vertical-align: middle; margin-right: 5px; opacity: .55; }
   .q { margin-top: 6px; color: var(--muted); font-size: 14px; }
+  .notify { margin: 0 0 20px; }
+  .notify button {
+    appearance: none; border: 1px solid var(--rule); background: var(--card);
+    color: var(--fg); font: inherit; font-size: 14px; padding: 8px 12px; border-radius: 6px;
+  }
+  .notify .ok { color: var(--muted); font-size: 13px; }
 </style>
 </head>
 <body>
 <div class="wrap">
-
   <header>
     <div class="brand"><img class="mark" src="apple-touch-icon.png" alt=""><h1>12:01 Daily</h1></div>
-    <div class="datebar">Friday, August 15, 2026 · 1201 · regenerated Sunday 1:30 AM PT from live sources</div>
+    <div class="notify" id="notify"></div>
+    <div class="datebar" id="datebar">Sunday, August 16, 2026 · 1201</div>
   </header>
-
+  <div id="content">
   <section class="brief">
     <div class="label"><span>The Brief</span></div>
-    <p>Friday itself was empty. The week points at <strong>Tuesday</strong>: RA × 12:01 V2. Superhuman has it 11:00–12:00 ET. Google has the same event at 8:00–9:00 AM PT, tagged Europe/London — worth confirming which clock is real before you walk in.</p>
-    <p>Thursday’s book-direction call locked brutalismo. You and Gustavo have design on sections 1–2; Veronica has copy on 3–4. You still owe Gustavo a palette (hex / Pantone) and an A/B opener pick.</p>
-    <p>Two client threads are still waiting on you: Kevin McCaughey needs a yes or no on solarizations this week for the Now-Time / Jeff Mills Kluge print, and Oliver Cooke sent Stone Island artwork notes on Aug 14 (cover date 19 October, page 3 copy, credits).</p>
-    <p>Two things that were open on the old Friday page are not open anymore. You replied to Ja'Tovia on Aug 16. Serato: you replied Aug 10, Bry delivered Aug 14, Kat acknowledged.</p>
-
+    <p>Sunday is empty. The week points at <strong>Tuesday 8:00am PT</strong>: RA × 12:01 V2. Google has that event as Europe/London, which is 8:00–9:00am PT / 11:00am–12:00pm ET. The invite is still unanswered.</p>
+    <p>Gustavo already dropped the A/B section openers on Friday. You still owe him the hex / Pantone palette and an A or B pick before that call.</p>
+    <p>Two print threads cannot wait on Tuesday. Kevin McCaughey’s last mail is Wednesday: <em>Now-Time</em> is near-final and he wants a solarization pass this week. Oliver Cooke’s Stone Island notes (unread since Friday) are cover date 19 October, page 3 copy, and credits cut to three lines. Jaimey was still in the .indd yesterday.</p>
+    <p>Ja'Tovia chased Saturday at 6:33pm PT. You replied six minutes later and asked for a 10-minute call. She has not written back.</p>
     <div class="decisions">
       <div class="dl">Only you can decide</div>
       <ol>
-        <li><strong>RA V2:</strong> send Gustavo the palette and pick an opener before Tuesday.</li>
-        <li><strong>Kevin McCaughey:</strong> yes or no on the solarizations. He said this week, for print.</li>
+        <li><strong>RA V2:</strong> send Gustavo the palette and pick A or B before Tuesday 8:00am PT.</li>
+        <li><strong>Kevin McCaughey:</strong> yes-with-a-date on the solarizations, or a clean no. He said print this week.</li>
+        <li><strong>Oliver / Stone Island:</strong> apply the three notes on Jaimey’s v10, or write back on page 3 — he did not say what the correct copy is, and Milan is out until Aug 25–26.</li>
       </ol>
     </div>
   </section>
 
   <section>
-    <div class="label"><span>Schedule</span><span class="count">ET</span></div>
-    <div class="row"><span class="when">Fri–Sat</span><div class="what">Nothing on the calendar.</div></div>
-    <div class="row"><span class="when">Mon 4:00</span><div class="what"><span class="who">LD + HR 1on1</span> <span class="meta">· Meet · 30 min</span></div></div>
-    <div class="row"><span class="when">Tue 11:00</span><div class="what"><span class="who">RA × 12:01 V2</span><span class="flag">confirm time</span> <span class="meta">· 1 hr</span>
-      <div class="sub">Superhuman: 11:00 AM–12:00 PM ET. Google: 8:00–9:00 AM PT, Europe/London.</div>
+    <div class="label"><span>Schedule</span><span class="count">PT</span></div>
+    <div class="row"><span class="when">Sun</span><div class="what">Nothing on the calendar.</div></div>
+    <div class="row"><span class="when">Mon 1:00</span><div class="what"><span class="who">LD + HR 1on1</span> <span class="meta">· 1:00–1:30pm PT / 4:00–4:30pm ET · Meet</span></div></div>
+    <div class="row"><span class="when">Tue 8:00</span><div class="what"><span class="who">RA × 12:01 V2</span><span class="flag">confirm time</span> <span class="meta">· 8:00–9:00am PT / 11:00am ET / 4:00pm London</span>
+      <div class="sub">One event, tagged Europe/London. Invite still needsAction.</div>
     </div></div>
-    <div class="row"><span class="when">Tue 1:00</span><div class="what"><span class="who">12:01 Weekly Team Meeting</span> <span class="meta">· Zoom · 1 hr</span></div></div>
-    <div class="row"><span class="when">Wed 1:00</span><div class="what"><span class="who">Hassan × MG Lunch</span> <span class="meta">· 1:00–2:15 PM ET</span></div></div>
-    <div class="row"><span class="when">Wed 2:00</span><div class="what"><span class="who">lunch next Wednesday 8/19</span> <span class="meta">· 2:00–3:30 PM · event is tagged PT</span></div></div>
-    <div class="row"><span class="when">Wed 3:00</span><div class="what"><span class="who">LD 1201 Onboarding</span> <span class="meta">· 3:00–5:00 PM ET</span></div></div>
+    <div class="row"><span class="when">Tue 10:00</span><div class="what"><span class="who">12:01 Weekly Team Meeting</span> <span class="meta">· 10:00–11:00am PT / 1:00pm ET · Zoom</span></div></div>
+    <div class="row"><span class="when">Wed 10:00</span><div class="what"><span class="who">Hassan × MG Lunch</span><span class="flag">overlap</span> <span class="meta">· 10:00–11:15am PT / 1:00–2:15pm ET</span></div></div>
+    <div class="row"><span class="when">Wed 11:00</span><div class="what"><span class="who">lunch next Wednesday 8/19</span> <span class="meta">· 11:00am–12:30pm PT · overlaps MG by 15 min</span></div></div>
+    <div class="row"><span class="when">Wed 12:00</span><div class="what"><span class="who">LD 1201 Onboarding</span> <span class="meta">· 12:00–2:00pm PT / 3:00–5:00pm ET · Studio?</span></div></div>
   </section>
 
   <section>
-    <div class="label"><span>Needs response</span><span class="count">4</span></div>
-    <a class="row" href="superhuman://hr@1201.am/thread/19e4c53ed2936fec"><span class="when">Aug 12</span><div class="what"><span class="who">Kevin McCaughey — Now-Time</span><span class="flag">print this week</span><div class="gist">Jeff Mills Kluge. He wants solarizations this week for print.</div></div><span class="go">Open</span></a>
-    <a class="row" href="superhuman://hr@1201.am/thread/19fd1f91ae17d23f"><span class="when">Aug 14</span><div class="what"><span class="who">Oliver Cooke — Stone Island</span><div class="gist">Artwork notes: cover date 19 October, page 3 copy, credits.</div></div><span class="go">Open</span></a>
-    <a class="row" href="superhuman://hr@1201.am/thread/19f94a07324a8c37"><span class="when">Aug 6</span><div class="what"><span class="who">RA Front Left — Katie / Nyshka</span><div class="gist">Tracker is 100%. Waiting on 1201.</div><div class="q">Did a Front Left status ever go out?</div></div><span class="go">Open</span></a>
-    <a class="row" href="superhuman://hr@1201.am/thread/19ea85ad6b77c812"><span class="when">Aug 3</span><div class="what"><span class="who">Bas — Modem Works</span><div class="gist">Mantra kick-off and Contractbook. Fanneke back Aug 17.</div></div><span class="go">Open</span></a>
+    <div class="label"><span>Needs response</span><span class="count">5</span></div>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/19e4c53ed2936fec"><span class="when">Aug 12</span><div class="what"><span class="who">Kevin McCaughey — Now-Time</span><span class="flag">print this week</span><div class="gist">Near-final layout. He wants a solarization pass on the images he already placed. You have not written in this thread since May 21.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/19fd1f91ae17d23f"><span class="when">Aug 14</span><div class="what"><span class="who">Oliver Cooke — Stone Island</span><span class="flag">unread</span><div class="gist">Cover date 19 October, page 3 incorrect copy, credits to three lines. You told Sean “back shortly” on Aug 13.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/19f94a07324a8c37"><span class="when">Aug 6</span><div class="what"><span class="who">RA Front Left — Katie / Nyshka</span><div class="gist">Tracker is 100%. A draft from Aug 9 is still sitting. No 1201 reply after Kaz’s Jul 30 note.</div><div class="q">Did a Front Left status ever go out?</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/19ea85ad6b77c812"><span class="when">Aug 4</span><div class="what"><span class="who">Bas — Modem Works</span><div class="gist">Mantra. They’ll wait after Patrick. Two drafts sit on the thread. Fanneke was due back Aug 17.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/17f3282c4ee318e0"><span class="when">Aug 11</span><div class="what"><span class="who">Nahoko Mori — Nigh</span><div class="gist">You asked to pick up the website. She said yes and wants to hear how it has evolved. Still unread.</div></div><span class="go">Open</span></a>
   </section>
 
   <section>
     <div class="label"><span>Meetings</span></div>
-    <a class="row" href="https://fathom.video/calls/785612597"><span class="when">Thu</span><div class="what"><span class="who">Book direction</span> <span class="meta">· Fathom</span><div class="gist">Brutalismo locked. You + Gustavo: design sections 1–2. Veronica: copy 3–4. You owe a palette and an A/B opener pick.</div></div><span class="go">Watch</span></a>
+    <a class="row" href="https://fathom.video/calls/785612597"><span class="when">Fri 14</span><div class="what"><span class="who">Book direction</span> <span class="meta">· Fathom</span><div class="gist">Brutalismo locked. You + Gustavo: sections 1–2. Veronica: copy 3–4. You owe the palette, Nahoko/NAI outreach, and an A/B opener pick.</div></div><span class="go">Watch</span></a>
   </section>
 
   <section>
-    <div class="label"><span>Not in this pass</span></div>
-    <p class="empty" style="margin:0;">Discord is offline (intents). ClickUp and Dropbox were connected but not extracted for this regen — nothing invented.</p>
+    <div class="label"><span>Discord</span><span class="count">Midnight Oil</span></div>
+    <a class="row" href="https://www.dropbox.com/scl/fo/1urlc4gm2g8cm03qx7r3l/AP438yGCA0ZYGk_iGywL8FI?rlkey=1sz0ujvs75i920u9op2otrra7&dl=0"><span class="when">#ra-book</span><div class="what"><span class="who">Gustavo — Friday</span><div class="gist">A/B section openers. You posted refs the same afternoon. No written pick.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://www.dropbox.com/scl/fi/ympqhey37xtoau4wpemvc/brochure_10-JS-Edit.pdf?rlkey=09fb6pba0xqjzju1cbb9jzrsp&dl=0"><span class="when">#stone-island</span><div class="what"><span class="who">Jaimey — Thu / Sat</span><div class="gist">brochure_10-JS-Edit.pdf Thursday. She was still in the .indd Saturday 12:31pm PT.</div></div><span class="go">Open</span></a>
   </section>
 
+  </div>
   <footer>
-    <div class="archive">Earlier: <a href="2026-08-15.html">Aug 15</a> <a href="2026-08-10.html">Aug 10</a> <a href="archive.html">All briefs</a></div>
-
-    <div>Regenerated Sunday, August 16, 2026 at 1:30 AM PT from live Superhuman, Calendar, and Fathom.</div>
+    <div class="archive" id="archive-links">Earlier: <a href="2026-08-15.html">Aug 15</a> <a href="2026-08-10.html">Aug 10</a> <a href="archive.html">All briefs</a></div>
+    <div>Sunday, August 16, 2026 · generated 11:15 AM PT from live Superhuman, Calendar, Fathom, Discord, ClickUp, and Dropbox.</div>
     <div class="status">
       <span><span class="dot"></span>Mail ok</span>&nbsp;·&nbsp;
       <span><span class="dot"></span>Calendar ok</span>&nbsp;·&nbsp;
       <span><span class="dot"></span>Fathom ok</span>&nbsp;·&nbsp;
-      <span><span class="dot"></span>Discord offline</span>&nbsp;·&nbsp;
-      <span><span class="dot"></span>ClickUp skipped</span>&nbsp;·&nbsp;
-      <span><span class="dot"></span>Dropbox skipped</span>
+      <span><span class="dot"></span>Discord ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>ClickUp ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Dropbox ok</span>
     </div>
   </footer>
 </div>
+<script src="app.js"></script>
 </body>
 </html>
