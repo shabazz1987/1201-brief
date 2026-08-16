@@ -1,11 +1,12 @@
 {
-  "name": "1201",
-  "short_name": "1201",
+  "name": "12:01 Daily",
+  "short_name": "12:01 Daily",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#101013",
   "theme_color": "#101013",
   "icons": [
-    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
   ]
 }
