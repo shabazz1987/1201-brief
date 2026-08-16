@@ -1,12 +1,13 @@
 {
   "name": "12:01 Daily",
   "short_name": "12:01 Daily",
-  "start_url": "/",
+  "start_url": "/1201-brief/",
+  "scope": "/1201-brief/",
   "display": "standalone",
   "background_color": "#101013",
   "theme_color": "#101013",
   "icons": [
-    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+    { "src": "/1201-brief/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/1201-brief/icon-512.png", "sizes": "512x512", "type": "image/png" }
   ]
 }
