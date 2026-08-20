@@ -1,39 +1,180 @@
-
-<div id="content">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="12:01 Daily">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>12:01 Daily</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+<link rel="icon" href="favicon.png?v=2" type="image/png">
+<link rel="manifest" href="/1201-brief/manifest.json?v=4">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #16161a;
+    --muted: #6b6b76;
+    --rule: #e4e4e9;
+    --card: #fafafa;
+    --accent: #c4321f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101013;
+      --fg: #e8e8ec;
+      --muted: #8f8f9c;
+      --rule: #26262d;
+      --card: #17171c;
+      --accent: #ff6a4d;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
+  body {
+    margin: 0;
+    padding: 32px 16px 80px;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (min-width: 640px) {
+    body { padding: 48px 24px 96px; }
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  header { margin-bottom: 8px; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  .mark { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; flex: 0 0 36px; }
+  h1 { font-size: 25px; line-height: 1.25; margin: 0; letter-spacing: -0.02em; font-weight: 620; }
+  .datebar { color: var(--muted); font-size: 14px; margin-bottom: 36px; }
+  section { margin: 0 0 40px; }
+  .label {
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .label .count { letter-spacing: 0.04em; font-weight: 500; opacity: .8; }
+  .brief p { margin: 0 0 14px; font-size: 17px; line-height: 1.6; }
+  .brief p:last-child { margin-bottom: 0; }
+  .decisions { margin: 18px 0 0; padding: 14px 16px; background: var(--card); border-radius: 8px; }
+  .decisions .dl { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+  .decisions ol { margin: 0; padding-left: 18px; }
+  .decisions li { margin-bottom: 7px; }
+  .decisions li:last-child { margin-bottom: 0; }
+  .row, a.row {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px dotted var(--rule);
+    color: inherit;
+    text-decoration: none;
+  }
+  a.row { display: flex; gap: 10px; align-items: baseline; }
+  .row:last-child, a.row:last-child { border-bottom: none; }
+  .when { flex: 0 0 72px; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .what { flex: 1; min-width: 0; }
+  .who { font-weight: 620; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .gist { margin-top: 2px; color: var(--fg); }
+  .sub, .gist.dim { color: var(--muted); font-size: 14px; margin-top: 3px; }
+  .go { color: var(--muted); font-size: 12.5px; white-space: nowrap; margin-left: auto; }
+  a.row:hover .go { color: var(--accent); }
+  .flag {
+    display: inline-block;
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    padding: 0 5px;
+    line-height: 1.5;
+    white-space: nowrap;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .empty { color: var(--muted); font-style: italic; padding: 12px 0; }
+  a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--muted); }
+  a.row { border-bottom: 1px dotted var(--rule); }
+  a.row:hover { border-bottom-color: var(--rule); }
+  footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.8;
+  }
+  .archive { margin-top: 8px; }
+  .archive a { margin-right: 12px; }
+  .status { display: flex; flex-wrap: wrap; }
+  .status span { white-space: nowrap; }
+  .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; vertical-align: middle; margin-right: 5px; opacity: .55; }
+  .q { margin-top: 6px; color: var(--muted); font-size: 14px; }
+  .notify { margin: 0 0 20px; }
+  .notify button {
+    appearance: none; border: 1px solid var(--rule); background: var(--card);
+    color: var(--fg); font: inherit; font-size: 14px; padding: 8px 12px; border-radius: 6px;
+  }
+  .notify .ok { color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><img class="mark" src="apple-touch-icon.png" alt=""><h1>12:01 Daily</h1></div>
+    <div class="notify" id="notify"></div>
+    <div class="datebar" id="datebar">Thursday, August 20, 2026 · 1201</div>
+  </header>
+    <div id="content">
   <section class="brief">
     <div class="label"><span>The Brief</span></div>
-    <p>You are in LA. Michael canceled today’s lunch after your note, then wrote at 5:46am PT: next Wednesday, same time. That mail is unread.</p>
-    <p>Nyshka’s Tuesday ask is still open. Email them Version 2, they review internally, then a call. Nothing new from RA overnight.</p>
-    <p>Stone Island did not go out last night. Jaimey posted brochure_11 yesterday at 10:58am PT, without the page 3 copy fix. Gustavo wants your approval before he sends. Sean checked in again at 4:11pm PT.</p>
-    <p>Gustavo was in the RA book this morning. Best Electronic Music of 2000–25 was touched at 7:06am PT. Yesterday he posted a TOC for the double spreads, and you asked to get dialed after the V2 call moved.</p>
+    <p>You are in LA. Lindsee is 1:00–3:00pm PT today. This is a briefing, not her start. The guidebook is locked. lindsee@1201.am is not live until you create it in Google Admin. She is on yerrr@operation-l.xyz until then.</p>
+    <p>Jaimey applied Sean’s edits last night and posted brochure_12. Gustavo thanked her at 4:11am PT. Print is tomorrow, August 21.</p>
+    <p>Nyshka followed up yesterday at 7:47am PT: email them Version 2, they review internally, then a call. Still unread. Nothing new from RA overnight.</p>
+    <p>Michael is on the calendar for next Wednesday. Michelle then asked about dinner. That mail is unread.</p>
     <div class="decisions">
       <div class="dl">Only you can decide</div>
       <ol>
-        <li><strong>Michael:</strong> next Wednesday, same time (1:00–2:15pm ET / 10:00–11:15am PT).</li>
-        <li><strong>Stone Island:</strong> approve brochure_11 so Gustavo can send. Sean is waiting.</li>
+        <li><strong>Stone Island:</strong> is brochure_12 ready to send before tomorrow’s print?</li>
+        <li><strong>RA:</strong> send Nyshka Version 2 today?</li>
       </ol>
     </div>
   </section>
 
   <section>
     <div class="label"><span>Schedule</span><span class="count">PT</span></div>
-    <div class="row"><span class="when">Wed 11:00</span><div class="what"><span class="who">lunch next Wednesday 8/19</span><span class="flag">still on</span> <span class="meta">· 11:00am–12:30pm PT</span>
-      <div class="sub">Your event. MG lunch is gone. You are in LA.</div>
+    <a class="row" href="https://meet.google.com/vee-bros-znm"><span class="when">Thu 1:00</span><div class="what"><span class="who">LD 1201 Onboarding</span><span class="flag">needsAction</span> <span class="meta">· 1:00–3:00pm PT · Studio? · Meet</span>
+      <div class="sub">Briefing, not a start. Invite still unanswered. Guidebook is live.</div>
+    </div><span class="go">Join</span></a>
+    <div class="row"><span class="when">Fri 10:45</span><div class="what"><span class="who">Delta 676 LAX → JFK</span> <span class="meta">· 10:45pm PT · lands 7:03am ET Sat · GAISGJ · 30F</span></div></div>
+    <div class="row"><span class="when">Tue 10:00</span><div class="what"><span class="who">12:01 Weekly Team Meeting</span> <span class="meta">· 10:00–11:00am PT · Zoom</span>
+      <div class="sub">Recurring. Patrick is gone. Shape is still being rebuilt.</div>
     </div></div>
-    <div class="row"><span class="when">Wed 12:00</span><div class="what"><span class="who">LD 1201 Onboarding</span><span class="flag">needsAction</span> <span class="meta">· 12:00–2:00pm PT · Studio? · Meet</span>
-      <div class="sub">You are in LA. Invite still unanswered.</div>
-    </div></div>
-    <div class="row"><span class="when">Wed 11:55</span><div class="what"><span class="who">Delta 915 LAX → JFK</span> <span class="meta">· 11:55pm PT · lands 8:16am ET Thu</span></div></div>
-    <div class="row"><span class="when">Wed 26</span><div class="what"><span class="who">Michael — next Wednesday same time?</span><span class="flag">proposed</span> <span class="meta">· 1:00–2:15pm ET / 10:00–11:15am PT</span></div></div>
+    <a class="row" href="https://www.google.com/calendar/event?eid=N3FqcWhnYm1vODUxZmRpZThyazVwZ2NxcHAgaHJAMTIwMS5hbQ&ctz=America/Los_Angeles"><span class="when">Wed 10:00</span><div class="what"><span class="who">Hassan x MG</span><span class="flag">needsAction</span> <span class="meta">· 10:00–11:15am PT / 1:00–2:15pm ET</span>
+      <div class="sub">Michael booked next Wednesday. Invite unanswered.</div>
+    </div><span class="go">Open</span></a>
   </section>
 
   <section>
-    <div class="label"><span>Needs response</span><span class="count">5</span></div>
-    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/1a019c4bdefb0170"><span class="when">5:46am</span><div class="what"><span class="who">Michael Goldberg</span><span class="flag">unread</span><div class="gist">No worries. How’s next Wednesday, same time?</div></div><span class="go">Open</span></a>
-    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/19fa5af37983face"><span class="when">Tue 6:46</span><div class="what"><span class="who">Nyshka — RA V2</span><span class="flag">unread</span><div class="gist">Email them Version 2, they review internally, then a call. Still no V2 on the thread.</div></div><span class="go">Open</span></a>
-    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/19fd1f91ae17d23f"><span class="when">Tue 4:11pm</span><div class="what"><span class="who">Sean Bell — Stone Island</span><span class="flag">waiting</span><div class="gist">Checking whether the updates are ready. Gustavo is holding brochure_11 for your approval. Page 3 copy still not applied.</div></div><span class="go">Open</span></a>
+    <div class="label"><span>Needs response</span><span class="count">4</span></div>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/1a01a7e1372537fe"><span class="when">Wed 7:47</span><div class="what"><span class="who">Nyshka — RA V2</span><span class="flag">unread</span><div class="gist">Gentle follow up. Email them Version 2, they review internally, then a call. Still no V2 on the thread.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/1a019c4bdefb0170"><span class="when">Wed 8:07</span><div class="what"><span class="who">Michelle Jones</span><span class="flag">unread</span><div class="gist">Next week works if you still wanted dinner, or lunch. Michael is already booked Wednesday.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/19fd1f91ae17d23f"><span class="when">Tue 4:11pm</span><div class="what"><span class="who">Sean Bell — Stone Island</span><span class="flag">print tomorrow</span><div class="gist">Jaimey applied his edits last night. brochure_12 is up. Gustavo thanked her this morning. Your call to send.</div></div><span class="go">Open</span></a>
     <a class="row" href="https://mail.google.com/mail/u/0/#inbox/19e4c53ed2936fec"><span class="when">Aug 12</span><div class="what"><span class="who">Kevin McCaughey — Now-Time</span><span class="flag">print this week</span><div class="gist">Solarizations. Still unread. No closer since Monday.</div></div><span class="go">Open</span></a>
-    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/19f94a07324a8c37"><span class="when">Aug 6</span><div class="what"><span class="who">RA Front Left — Katie / Nyshka</span><div class="gist">Tracker is 100%. An Aug 9 draft sits in Superhuman. It was never sent.</div></div><span class="go">Open</span></a>
   </section>
 
   <section>
@@ -43,9 +184,8 @@
 
   <section>
     <div class="label"><span>Discord</span><span class="count">Midnight Oil</span></div>
-    <a class="row" href="https://www.dropbox.com/scl/fi/wkpmxejlivxa3moqybzrm/_RA-x-1201-Table-of-Contents-XX.pdf?rlkey=irh3tj8deemas8c398rtpx8er&st=u13yn6fl&dl=0"><span class="when">#ra-book</span><div class="what"><span class="who">Gustavo — yesterday</span><div class="gist">TOC for double spreads, then a spread in progress at 10:21am PT. You asked to catch up and get dialed. File this morning: Best Electronic Music of 2000–25.</div></div><span class="go">Open</span></a>
-    <a class="row" href="https://www.dropbox.com/scl/fi/vp1hfqkwyamnfom4bzkwg/brochure_11-JS-Edit.pdf?rlkey=x17fnd7nv9pz7vgdkdekt0ikn&dl=0"><span class="when">#stone-island</span><div class="what"><span class="who">Jaimey + Gustavo — yesterday / 2:25am</span><div class="gist">brochure_11-JS-Edit.pdf. Gustavo wants your approval before sending. He asked Jaimey for the working file at 2:25am PT.</div></div><span class="go">Open</span></a>
-    <a class="row" href="https://www.dropbox.com/scl/fo/1urlc4gm2g8cm03qx7r3l/AP438yGCA0ZYGk_iGywL8FI?rlkey=1sz0ujvs75i920u9op2otrra7&dl=0"><span class="when">#ra-book</span><div class="what"><span class="who">A/B openers — Friday</span><div class="gist">Still waiting on your pick. No palette or opener text since Monday.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://www.dropbox.com/scl/fi/wnqanzxhz7v56lzjdhi1u/brochure_12-JS-Edit_GE.pdf?rlkey=jubyy4k3ip0haa5tn2y6tyokr&amp;dl=0"><span class="when">#stone-island</span><div class="what"><span class="who">Jaimey — last night</span><div class="gist">brochure_12-JS-Edit_GE.pdf. Sean’s PDF edits applied. Working InDesign is next to it. Gustavo: thank you jaimey, 4:11am PT.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://www.dropbox.com/scl/fi/wkpmxejlivxa3moqybzrm/_RA-x-1201-Table-of-Contents-XX.pdf?rlkey=irh3tj8deemas8c398rtpx8er&amp;st=u13yn6fl&amp;dl=0"><span class="when">#ra-book</span><div class="what"><span class="who">Gustavo — yesterday</span><div class="gist">Touched Best Electronic Music of 2000–25. TOC for double spreads is still the last posted file. A/B openers still waiting on your pick.</div></div><span class="go">Open</span></a>
   </section>
 
   <section>
@@ -54,3 +194,17 @@
   </section>
 
   </div>
+  <footer>
+    <div class="archive" id="archive-links">Earlier: <a href="2026-08-19.html">Aug 19</a> <a href="2026-08-18.html">Aug 18</a> <a href="2026-08-17.html">Aug 17</a> <a href="archive.html">All briefs</a></div>
+    <div>Thursday, August 20, 2026 · generated 7:06 AM PT from live Calendar, Gmail, Superhuman, Discord, Dropbox, and ClickUp.</div>
+    <div class="status">
+      <span><span class="dot"></span>Calendar ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Gmail ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Discord ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Fathom ok</span>
+    </div>
+  </footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
