@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>12:01 · How the Daily works</title>
+<title>12:01 Daily · How it works</title>
 <link rel="stylesheet" href="system.css?v=9">
 <style>
 .flow { display: flex; flex-direction: column; gap: 10px; }
@@ -11,19 +11,18 @@
   background: var(--card);
   border: 1px solid var(--rule);
   border-radius: 10px;
-  padding: 14px 14px 12px;
+  padding: 16px 16px 14px;
 }
-.box h3 { margin: 0 0 6px; font-size: 16px; font-weight: 620; letter-spacing: -0.02em; }
-.box p { margin: 0; color: var(--muted); font-size: 14px; }
+.box h3 { margin: 0 0 6px; font-size: 17px; font-weight: 620; letter-spacing: -0.02em; }
+.box p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-@media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
-.src { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 12px; min-height: 72px; }
+.src { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 12px; min-height: 78px; }
 .src b { display: block; font-size: 14px; font-weight: 620; margin-bottom: 4px; }
 .src span { color: var(--muted); font-size: 13px; line-height: 1.4; }
 .arr { text-align: center; color: var(--accent); font-size: 13px; font-weight: 620; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 0; }
 .box.peak { border-color: var(--accent); }
 .box.peak h3 { color: var(--fg); }
-.mono { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.lede { margin: 0 0 8px; font-size: 17px; line-height: 1.5; }
 </style>
 </head>
 <body>
@@ -32,69 +31,71 @@
     <a class="back" href="index.html">← System</a>
     <div class="brand">
       <img class="mark" src="../../apple-touch-icon.png" alt="">
-      <h1>How the Daily works</h1>
+      <h1>12:01 Daily</h1>
     </div>
-    <p class="whenuse">1201 secretary writes a hosted page every morning. Chat is talk-back. Nothing is invented.</p>
+    <p class="whenuse">A morning page for Hassan Rahim, creative director of 1201. What needs him today.</p>
   </header>
 
   <section>
-    <div class="label"><span>Sources</span><span>live only</span></div>
+    <p class="lede">Every day at 7am PT, a hosted page tells him what needs him. A software secretary reads his live tools and writes that page. Chat is talk-back after. Nothing is invented. Nothing is sent unless he says yes.</p>
+  </section>
+
+  <section>
+    <div class="label"><span>01 · Sources</span><span>live only</span></div>
     <div class="grid">
-      <div class="src"><b>Superhuman</b><span>hr@1201.am mail. Unread, needs a yes, drafts.</span></div>
-      <div class="src"><b>Calendar</b><span>Holds on the day. Google Calendar as backup. Label ET vs PT.</span></div>
-      <div class="src"><b>Discord</b><span>Midnight Oil. Channels, who, files. Repair before marking offline.</span></div>
-      <div class="src"><b>Fathom / Granola</b><span>Meetings. What was said. What Hassan owes.</span></div>
-      <div class="src"><b>ClickUp</b><span>Tasks due ±14 days or updated this week. Lapsed stays visible.</span></div>
-      <div class="src"><b>Dropbox</b><span>Recent 1201 files as tap links, not a file browser.</span></div>
-      <div class="src"><b>Vault</b><span>preferences, commitments, people. Read first. Not a source of new facts.</span></div>
+      <div class="src"><b>Work email</b><span>Superhuman. hr@1201.am. People waiting. Needs a yes.</span></div>
+      <div class="src"><b>Personal email</b><span>Gmail. h@hassanrahim.com. People waiting. Skip newsletters.</span></div>
+      <div class="src"><b>Work calendar</b><span>Google. hr@1201.am. Google is the source of truth. Label ET vs PT. Skip junk holds.</span></div>
+      <div class="src"><b>Personal calendar</b><span>Google. h@hassanrahim.com. Label ET vs PT. Skip junk holds.</span></div>
+      <div class="src"><b>Studio chat</b><span>Discord. Midnight Oil. Channels, who, files.</span></div>
+      <div class="src"><b>Meetings</b><span>Fathom / Granola. What was said. What he owes.</span></div>
+      <div class="src"><b>Tasks</b><span>ClickUp. Due ±14 days or updated this week. A lapsed task stays visible.</span></div>
+      <div class="src"><b>Files</b><span>Dropbox. Recent studio files as tap links, not a file browser.</span></div>
     </div>
+    <div class="src" style="margin-top:8px"><b>Memory</b><span>Standing notes: who people are, what he already promised. Not a source of new facts. (Internally this is the Vault.)</span></div>
   </section>
 
   <div class="arr">↓ 7am PT every day</div>
 
   <section>
     <div class="box">
-      <h3>1201 secretary</h3>
-      <p>Pulls live sources. Writes the HTML. Never invents. Never says a source is down until a repair was tried. Never sends mail unless Hassan says yes in that chat.</p>
+      <h3>02 · 1201 secretary</h3>
+      <p>Reads those live sources. Writes one page. Never invents. Never sends mail unless Hassan says yes.</p>
     </div>
   </section>
 
-  <div class="arr">↓ publish</div>
+  <div class="arr">↓ the page</div>
 
   <section>
     <div class="box peak">
-      <h3>12:01 Daily · hosted page</h3>
-      <p>The product. <span class="mono">index.html</span> and <span class="mono">today.html</span> are always today. A dated file and archive sit next to them. Push hits the home-screen app.</p>
+      <h3>03 · 12:01 Daily</h3>
+      <p>The product. A web page on his phone, always today. That is the morning brief — not a chat wall, not a feed.</p>
     </div>
   </section>
 
-  <div class="arr">↓ Hassan</div>
+  <div class="arr">↓ after</div>
 
   <section>
+    <div class="label"><span>04 · After the page</span></div>
     <div class="flow">
       <div class="box">
-        <h3>Morning talk-back</h3>
-        <p>Secretary chat opens with the 12:01 Daily link. Then one or two questions. Not a wall of the brief.</p>
+        <h3>Talk-back</h3>
+        <p>Short chat after the page. The secretary opens with the Daily link, then one or two questions. Not a wall of the brief.</p>
       </div>
       <div class="box">
         <h3>Live alerts</h3>
-        <p>New inbound, calendar (flight in four hours), people waiting. No Daily link on these. A draft sits in the alert. Hassan’s reply in chat is the send.</p>
+        <p>Someone waiting. A draft sits ready. His reply in chat is the send. Calendar pings when it matters — a flight in a few hours, a person who just wrote.</p>
       </div>
       <div class="box">
         <h3>Meeting prep</h3>
-        <p>About 30 minutes before a real meeting. Who, last notes, what he owes. Skip holds, focus blocks, travel buffers. Travel stays a flight alert.</p>
+        <p>About 30 minutes before a real meeting. Who, last notes, what he owes. Skip holds, focus blocks, and travel buffers. A flight stays a flight alert.</p>
       </div>
     </div>
-  </section>
-
-  <section>
-    <div class="label"><span>What it is not</span></div>
-    <p class="meta" style="margin:0">Not a chat wall. Not Salesforce. Not Gong. Not email sent on its own. Lindsee owns studio mail as herself. Secretary briefs Hassan.</p>
   </section>
 
   <footer class="site">
     <a class="back" href="index.html">← System</a><br>
-    Night diagram. Live Daily is unchanged.
+    Nothing is sent unless he says yes.
   </footer>
 </div>
 </body>
