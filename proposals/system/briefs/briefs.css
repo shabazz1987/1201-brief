@@ -8,3 +8,36 @@
 }
 .mock-nav a { border-bottom: none; }
 .mock-nav .here { color: var(--muted); }
+
+/* X-style media row. Images only. Fixed height. Two-up peek. */
+.xrail {
+  display: flex;
+  gap: 3px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  margin: 8px -12px 10px;
+  padding: 0 12px;
+  height: 178px;
+  align-items: stretch;
+  scrollbar-width: none;
+}
+.xrail::-webkit-scrollbar { height: 0; display: none; }
+.xrail a {
+  flex: 0 0 calc(50% - 1.5px);
+  width: calc(50% - 1.5px);
+  height: 178px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #141418;
+  scroll-snap-align: start;
+  border: none !important;
+  display: block;
+  padding: 0;
+}
+.xrail img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
