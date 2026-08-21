@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>12:01 Daily — modules</title>
+<style>
+  :root {
+    --bg: #101013;
+    --fg: #e8e8ec;
+    --muted: #8f8f9c;
+    --rule: #26262d;
+    --card: #17171c;
+    --accent: #ff6a4d;
+  }
+  html { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
+  body {
+    margin: 0;
+    padding: 32px 16px 80px;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (min-width: 640px) {
+    body { padding: 48px 24px 96px; }
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  header { margin-bottom: 8px; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  .mark { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; flex: 0 0 36px; background: var(--card); }
+  h1 { font-size: 25px; line-height: 1.25; margin: 0; letter-spacing: -0.02em; font-weight: 620; }
+  .datebar { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+  .note { color: var(--muted); font-size: 14px; margin: 0 0 36px; }
+  section { margin: 0 0 40px; }
+  .label {
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .brief p { margin: 0 0 14px; font-size: 17px; line-height: 1.6; }
+  .brief p:last-child { margin-bottom: 0; }
+  .decisions { margin: 18px 0 0; padding: 14px 16px; background: var(--card); border-radius: 8px; }
+  .decisions .dl { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+  .decisions ol { margin: 0; padding-left: 18px; }
+  .decisions li { margin-bottom: 7px; }
+  .decisions li:last-child { margin-bottom: 0; }
+  .row, a.row {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px dotted var(--rule);
+    color: inherit;
+    text-decoration: none;
+  }
+  a.row { display: flex; gap: 10px; align-items: baseline; }
+  .row:last-child, a.row:last-child { border-bottom: none; }
+  .when { flex: 0 0 72px; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .what { flex: 1; min-width: 0; }
+  .who { font-weight: 620; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .gist { margin-top: 2px; color: var(--fg); }
+  .sub, .gist.dim { color: var(--muted); font-size: 14px; margin-top: 3px; }
+  .go { color: var(--muted); font-size: 12.5px; white-space: nowrap; margin-left: auto; }
+  a.row:hover .go { color: var(--accent); }
+  .flag {
+    display: inline-block;
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    padding: 0 5px;
+    line-height: 1.5;
+    white-space: nowrap;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .empty { color: var(--muted); font-style: italic; padding: 12px 0; }
+  a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--muted); }
+  a.row { border-bottom: 1px dotted var(--rule); }
+  a.row:hover { border-bottom-color: var(--rule); }
+  footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.8;
+  }
+
+  blockquote.pull {
+    margin: 0;
+    padding: 4px 0 4px 16px;
+    border-left: 2px solid var(--rule);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .alert {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 0 0 10px;
+  }
+  .alert h3 { font-size: 16px; font-weight: 620; margin: 0 0 6px; }
+  .alert p { margin: 0; color: var(--muted); font-size: 14px; }
+  .itemg { border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .item {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 12px 14px; border-top: 1px solid var(--rule);
+    color: inherit; text-decoration: none;
+  }
+  .item:first-child { border-top: none; }
+  .item .t { flex: 0 0 72px; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .item .n { font-weight: 620; }
+  .item .g { color: var(--muted); font-size: 14px; margin-top: 2px; }
+  .pcard {
+    background: var(--card); border-radius: 8px; padding: 14px 16px; margin: 0 0 10px;
+  }
+  .pcard h3 { font-size: 16px; font-weight: 620; margin: 0 0 6px; }
+  .pcard p { margin: 0; font-size: 14px; color: var(--muted); }
+  details.box {
+    border: 1px solid var(--rule); border-radius: 8px; padding: 0;
+  }
+  details.box summary {
+    list-style: none; padding: 12px 14px; font-weight: 620; cursor: pointer;
+  }
+  details.box summary::-webkit-details-marker { display: none; }
+  details.box .inn { padding: 0 14px 12px; border-top: 1px solid var(--rule); }
+  .sel summary {
+    list-style: none; display: flex; justify-content: space-between;
+    padding: 10px 12px; border: 1px solid var(--rule); border-radius: 8px;
+    background: var(--card); cursor: pointer; font-size: 15px;
+  }
+  .sel summary::-webkit-details-marker { display: none; }
+  .sel .menu { margin-top: 6px; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; background: var(--card); }
+  .sel .menu a { display: block; padding: 10px 12px; border-top: 1px solid var(--rule); }
+  .sel .menu a:first-child { border-top: none; }
+  .week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .wd {
+    background: var(--card); border-radius: 8px; text-align: center; padding: 8px 0;
+    font-size: 13px;
+  }
+  .wd b { display: block; font-weight: 400; color: var(--muted); font-size: 11px; }
+  .wd.on { outline: 1px solid var(--fg); }
+  .month { font-size: 13px; }
+  .month .hd { font-weight: 620; margin-bottom: 8px; }
+  .month .g { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; text-align: center; }
+  .month span { padding: 7px 0; border-radius: 6px; color: var(--muted); }
+  .month span.d { color: var(--fg); }
+  .month span.s { background: var(--fg); color: var(--bg); font-weight: 620; }
+  .tabs { display: flex; gap: 6px; margin-bottom: 10px; }
+  .tabs button {
+    appearance: none; border: 1px solid var(--rule); background: var(--card);
+    color: var(--muted); font: inherit; font-size: 14px; padding: 7px 12px; border-radius: 6px;
+  }
+  .tabs button.on { color: var(--fg); border-color: var(--fg); }
+  .tabp { display: none; }
+  .tabp.on { display: block; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; }
+  .badge {
+    display: inline-block; font-size: 10.5px; letter-spacing: .08em;
+    text-transform: uppercase; font-weight: 700; color: var(--accent);
+    border: 1px solid var(--accent); border-radius: 3px; padding: 0 5px; line-height: 1.5;
+  }
+  .person { padding: 10px 0; border-bottom: 1px dotted var(--rule); }
+  .person:last-child { border-bottom: none; }
+  .person .nm { font-weight: 620; }
+  .person .ln { color: var(--muted); font-size: 14px; }
+  .tl { border-left: 1px solid var(--rule); margin: 0 0 0 8px; padding: 0 0 0 16px; }
+  .tl .ev { padding: 0 0 16px; }
+  .tl .ev:last-child { padding-bottom: 0; }
+  .tl .w { font-size: 13px; color: var(--muted); }
+  table.rep { width: 100%; border-collapse: collapse; font-size: 14px; }
+  table.rep th, table.rep td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--rule); }
+  table.rep th { color: var(--muted); font-weight: 600; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .chip { border: 1px solid var(--rule); border-radius: 999px; padding: 3px 10px; font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <img class="mark" src="../apple-touch-icon.png" alt="">
+      <h1>12:01 Daily</h1>
+    </div>
+    <div class="datebar">Thursday, August 20, 2026 · 1201</div>
+    <p class="note">Module catalog. Same Thursday facts, different containers. Not today’s published brief.</p>
+  </header>
+
+  <section class="brief">
+    <div class="label"><span>Live · brief paragraphs</span></div>
+    <p>Hassan is in LA. Lindsee is 1:00–3:00pm PT today — a briefing, not her start. The guidebook is locked. lindsee@1201.am is not live until he creates it.</p>
+    <p>Jaimey applied Sean’s edits and posted brochure_12. Gustavo thanked her at 4:11am PT. Print is tomorrow, August 21.</p>
+    <p>Nyshka followed up at 7:47am PT: email them Version 2, they review, then a call. Still unread. Michael is next Wednesday. Michelle asked about dinner. Unread.</p>
+  </section>
+
+  <section>
+    <div class="label"><span>Live · decisions card</span></div>
+    <div class="decisions">
+      <div class="dl">Only you can decide</div>
+      <ol>
+        <li><strong>Stone Island:</strong> is brochure_12 ready to send before tomorrow’s print?</li>
+        <li><strong>RA:</strong> send Nyshka Version 2 today?</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Live · tap-row</span><span>Schedule</span></div>
+    <div class="row"><span class="when">Thu 1:00</span><div class="what"><span class="who">LD 1201 Onboarding</span> <span class="meta">· 1:00–3:00pm PT · briefing</span></div></div>
+    <div class="row"><span class="when">Fri 10:45</span><div class="what"><span class="who">Delta 676 LAX → JFK</span></div></div>
+    <div class="row"><span class="when">Tue 10:00</span><div class="what"><span class="who">12:01 Weekly</span><span class="flag">needsAction</span></div></div>
+    <div class="row"><span class="when">Wed 10:00</span><div class="what"><span class="who">Hassan x MG</span><span class="flag">needsAction</span>
+      <div class="sub">Michael is booked. Michelle asked about dinner. Unread.</div>
+    </div></div>
+  </section>
+
+  <section>
+    <div class="label"><span>Live · tap-row + flag</span><span>Needs response</span></div>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/1a01a7e1372537fe"><span class="when">7:47am</span><div class="what"><span class="who">Nyshka — RA V2</span><span class="flag">unread</span><div class="gist">Email Version 2, they review, then a call.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/1a019c4bdefb0170"><span class="when">unread</span><div class="what"><span class="who">Michelle Jones</span><span class="flag">unread</span><div class="gist">Dinner, or lunch. Michael is already booked Wednesday.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/19fd1f91ae17d23f"><span class="when">print Fri</span><div class="what"><span class="who">Sean Bell — Stone Island</span><span class="flag">print Friday</span></div><span class="go">Open</span></a>
+    <div class="row"><span class="when">this week</span><div class="what"><span class="who">Kevin McCaughey — Now-Time</span></div></div>
+  </section>
+
+  <section>
+    <div class="label"><span>Blockquote</span></div>
+    <blockquote class="pull">Lindsee is in the studio this afternoon. Two things still need a yes before Friday print.</blockquote>
+  </section>
+
+  <section>
+    <div class="label"><span>Alert</span></div>
+    <div class="alert">
+      <h3>Stone Island — is brochure_12 ready to send before Friday print?</h3>
+      <p>Jaimey posted it. Gustavo thanked her at 4:11am PT. Print is tomorrow, August 21.</p>
+    </div>
+    <div class="alert">
+      <h3>RA — send Nyshka Version 2 today?</h3>
+      <p>She followed up at 7:47am PT. They review, then a call. Still unread.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Item row</span></div>
+    <div class="itemg">
+      <div class="item"><div class="t">1:00–3:00</div><div><div class="n">Lindsee — briefing, not her start</div><div class="g">Guidebook locked. lindsee@1201.am not live until he creates it.</div></div></div>
+      <a class="item" href="https://mail.google.com/mail/u/0/#inbox/1a01a7e1372537fe"><div class="t">7:47am</div><div><div class="n">Nyshka — RA V2</div><div class="g">Email Version 2, they review, then a call.</div></div></a>
+      <div class="item"><div class="t">Fri 10:45</div><div><div class="n">Delta 676 LAX → JFK</div></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Card · Stone Island</span></div>
+    <div class="pcard">
+      <h3>Stone Island</h3>
+      <p>brochure_12 is up. Jaimey applied Sean’s edits. Gustavo thanked her at 4:11am PT. Print is Friday, August 21. Is it ready to send?</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Card · RA / Nyshka</span></div>
+    <div class="pcard">
+      <h3>RA</h3>
+      <p>Nyshka followed up at 7:47am PT. Email them Version 2, they review, then a call. Still unread. Send it today?</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Accordion · later this week</span></div>
+    <details class="box">
+      <summary>Later this week</summary>
+      <div class="inn">
+        <div class="row"><span class="when">Fri 10:45</span><div class="what"><span class="who">Delta 676 LAX → JFK</span></div></div>
+        <div class="row"><span class="when">Tue 10:00</span><div class="what"><span class="who">12:01 Weekly</span></div></div>
+        <div class="row"><span class="when">Wed 10:00</span><div class="what"><span class="who">Hassan x MG</span></div></div>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <div class="label"><span>Accordion · Discord / files</span></div>
+    <details class="box">
+      <summary>Discord / files</summary>
+      <div class="inn">
+        <a class="row" href="https://www.dropbox.com/scl/fi/wnqanzxhz7v56lzjdhi1u/brochure_12-JS-Edit_GE.pdf?rlkey=jubyy4k3ip0haa5tn2y6tyokr&amp;dl=0"><span class="when">#stone-island</span><div class="what"><span class="who">brochure_12</span></div></a>
+        <a class="row" href="https://www.dropbox.com/scl/fi/wkpmxejlivxa3moqybzrm/_RA-x-1201-Table-of-Contents-XX.pdf?rlkey=irh3tj8deemas8c398rtpx8er&amp;st=u13yn6fl&amp;dl=0"><span class="when">#ra-book</span><div class="what"><span class="who">TOC / A–B openers</span></div></a>
+        <a class="row" href="https://fathom.video/calls/785612597"><span class="when">Fathom</span><div class="what"><span class="who">Book direction</span><div class="sub">Brutalismo locked. Palette still owed.</div></div></a>
+        <a class="row" href="https://app.clickup.com/t/86b8ar133"><span class="when">ClickUp</span><div class="what"><span class="who">RA — Estimated Print Date</span><div class="sub">Still open. Due Aug 12.</div></div></a>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <div class="label"><span>Select · jump day</span></div>
+    <details class="sel">
+      <summary>Thursday, August 20 <span>▾</span></summary>
+      <div class="menu">
+        <a href="#top">Thursday, August 20</a>
+        <a href="#top">Wednesday, August 19</a>
+        <a href="#top">Tuesday, August 18</a>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <div class="label"><span>Week strip</span></div>
+    <div class="week">
+      <div class="wd"><b>M</b>17</div>
+      <div class="wd"><b>T</b>18</div>
+      <div class="wd"><b>W</b>19</div>
+      <div class="wd on"><b>T</b>20</div>
+      <div class="wd"><b>F</b>21</div>
+      <div class="wd"><b>S</b>22</div>
+      <div class="wd"><b>S</b>23</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Compact month</span></div>
+    <div class="month">
+      <div class="hd">August 2026</div>
+      <div class="g">
+        <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span class="d">1</span>
+        <span class="d">2</span><span class="d">3</span><span class="d">4</span><span class="d">5</span><span class="d">6</span><span class="d">7</span><span class="d">8</span>
+        <span class="d">9</span><span class="d">10</span><span class="d">11</span><span class="d">12</span><span class="d">13</span><span class="d">14</span><span class="d">15</span>
+        <span class="d">16</span><span class="d">17</span><span class="d">18</span><span class="d">19</span><span class="d s">20</span><span class="d">21</span><span class="d">22</span>
+        <span class="d">23</span><span class="d">24</span><span class="d">25</span><span class="d">26</span><span class="d">27</span><span class="d">28</span><span class="d">29</span>
+        <span class="d">30</span><span class="d">31</span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Tabs</span></div>
+    <div class="tabs" id="tabs">
+      <button type="button" class="on" data-t="today">Today</button>
+      <button type="button" data-t="wait">Waiting</button>
+      <button type="button" data-t="later">Later</button>
+    </div>
+    <div id="today" class="tabp on">
+      <div class="row"><span class="when">1:00–3:00</span><div class="what"><span class="who">Lindsee briefing</span></div></div>
+      <div class="row"><span class="when">Thu 1:00</span><div class="what"><span class="who">LD 1201 Onboarding</span></div></div>
+    </div>
+    <div id="wait" class="tabp">
+      <div class="row"><span class="when">unread</span><div class="what"><span class="who">Nyshka — RA V2</span></div></div>
+      <div class="row"><span class="when">unread</span><div class="what"><span class="who">Michelle Jones</span></div></div>
+      <div class="row"><span class="when">print Fri</span><div class="what"><span class="who">Sean Bell</span></div></div>
+      <div class="row"><span class="when">this week</span><div class="what"><span class="who">Kevin McCaughey</span></div></div>
+    </div>
+    <div id="later" class="tabp">
+      <div class="row"><span class="when">Fri 10:45</span><div class="what"><span class="who">Delta 676</span></div></div>
+      <div class="row"><span class="when">Tue 10:00</span><div class="what"><span class="who">12:01 Weekly</span></div></div>
+      <div class="row"><span class="when">Wed 10:00</span><div class="what"><span class="who">Hassan x MG</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Badge row</span></div>
+    <div class="badges">
+      <span class="badge">unread</span>
+      <span class="badge">print Friday</span>
+      <span class="badge">needsAction</span>
+      <span class="badge">Stone Island</span>
+      <span class="badge">RA</span>
+      <span class="badge">Lindsee</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Person row</span></div>
+    <div class="person"><div class="nm">Nyshka</div><div class="ln">RA Version 2. Follow-up 7:47am PT. Unread.</div></div>
+    <div class="person"><div class="nm">Michelle Jones</div><div class="ln">Dinner, or lunch. Michael is booked Wednesday. Unread.</div></div>
+    <div class="person"><div class="nm">Lindsee</div><div class="ln">Briefing 1:00–3:00pm PT today. Not her start.</div></div>
+    <div class="person"><div class="nm">Sean Bell</div><div class="ln">Stone Island. brochure_12. Print Friday.</div></div>
+  </section>
+
+  <section>
+    <div class="label"><span>Timeline</span></div>
+    <div class="tl">
+      <div class="ev"><div class="w">Thu 1:00</div><div class="who">Lindsee briefing / LD Onboarding</div></div>
+      <div class="ev"><div class="w">Fri 10:45</div><div class="who">Delta 676 LAX → JFK</div></div>
+      <div class="ev"><div class="w">Tue 10:00</div><div class="who">12:01 Weekly</div></div>
+      <div class="ev"><div class="w">Wed 10:00</div><div class="who">Hassan x MG</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Table · four replies</span></div>
+    <table class="rep">
+      <thead><tr><th>When</th><th>Who</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>7:47am</td><td>Nyshka — RA V2</td><td>unread</td></tr>
+        <tr><td>—</td><td>Michelle Jones</td><td>unread</td></tr>
+        <tr><td>print Fri</td><td>Sean Bell</td><td>print Friday</td></tr>
+        <tr><td>this week</td><td>Kevin McCaughey</td><td>Now-Time</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="label"><span>Collapsible · only you</span></div>
+    <details class="box" open>
+      <summary>Only you</summary>
+      <div class="inn">
+        <p>Stone Island — is brochure_12 ready to send before tomorrow’s print?</p>
+        <p>RA — send Nyshka Version 2 today?</p>
+      </div>
+    </details>
+    <details class="box" style="margin-top:8px">
+      <summary>The rest</summary>
+      <div class="inn">
+        <p>Lindsee 1:00–3:00pm PT. Flight Friday. Weekly Tuesday. Hassan x MG Wednesday. Four replies. Discord files. ClickUp print date still open.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="brief">
+    <div class="label"><span>Quote chips</span></div>
+    <p>Lindsee is in the studio this afternoon. Two things still need a yes before Friday print.</p>
+    <div class="chips">
+      <span class="chip">Lindsee</span>
+      <span class="chip">Stone Island</span>
+      <span class="chip">RA</span>
+      <span class="chip">print Friday</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Empty state</span></div>
+    <div class="empty">Nothing waiting.</div>
+  </section>
+
+  <footer>
+    Catalog only. Live brief is unchanged.<br>
+    Thursday, August 20, 2026
+  </footer>
+</div>
+<script>
+(function(){
+  var bar = document.getElementById('tabs');
+  if(!bar) return;
+  bar.addEventListener('click', function(e){
+    var b = e.target.closest('button');
+    if(!b) return;
+    bar.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', x===b); });
+    ['today','wait','later'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.classList.toggle('on', id===b.getAttribute('data-t'));
+    });
+  });
+})();
+</script>
+</body>
+</html>
