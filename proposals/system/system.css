@@ -211,8 +211,11 @@ a.row:hover .go { color: var(--accent); }
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0 8px;
-  margin: 0 0 3px;
+  margin: 0;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
 }
+.term .lg div:last-child, .cli .lg div:last-child { border-bottom: none; padding-bottom: 2px; }
 .term .lg a.go, .cli .lg a.go {
   color: var(--accent);
   border-bottom: none;
@@ -508,7 +511,7 @@ a.fcard .go { color: var(--accent); margin-left: auto; flex: 0 0 auto; }
 .media-rail::-webkit-scrollbar { height: 0; display: none; }
 .media-rail a.thumb,
 .media-rail figure.thumb {
-  flex: 0 0 120px; width: 120px;
+  flex: 0 0 148px; width: 148px;
   scroll-snap-align: start;
   background: var(--recess);
   border: 1px solid var(--rule);
@@ -520,14 +523,12 @@ a.fcard .go { color: var(--accent); margin-left: auto; flex: 0 0 auto; }
 }
 .media-rail a.thumb { min-height: 44px; }
 .media-rail .ph {
-  aspect-ratio: 4 / 5;
   background: #141418;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--muted); font-family: var(--mono); font-size: 11px; letter-spacing: .06em;
-  overflow: hidden;
+  display: block;
 }
 .media-rail .ph img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
+  width: 100%; height: auto; object-fit: contain; display: block;
+  vertical-align: top;
 }
 .media-rail .ph.pdf {
   flex-direction: column; gap: 6px; text-transform: uppercase;
