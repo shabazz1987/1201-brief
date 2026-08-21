@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12:01 system — ClickUp</title>
+<link rel="stylesheet" href="system.css">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="back" href="index.html">← System</a>
+    <div class="brand">
+      <img class="mark" src="../../apple-touch-icon.png" alt="">
+      <h1>ClickUp</h1>
+    </div>
+    <p class="whenuse">A task, especially a dead due date. Still open is not the same as closed.</p>
+  </header>
+
+  <section>
+    <div class="label"><span>Proposed</span><span>Ship it</span></div>
+    <p class="meta" style="margin:0 0 12px">One row. The due date is the when. Lapsed is the status. ClickUp is the kind. RA is the job. Open goes to the task, not a search. Thursday this is the only ClickUp object that exists.</p>
+    <a class="row" href="https://app.clickup.com/t/86b8ar133">
+      <span class="when">Aug 12</span>
+      <div class="what">
+        <span class="who">RA — Estimated Print Date</span>
+        <span class="badge status">lapsed</span>
+        <span class="badge kind">clickup</span>
+        <span class="badge project">RA</span>
+        <div class="gist">Still open. Due Aug 12.</div>
+      </div>
+      <span class="go">Open</span>
+    </a>
+    <p class="meta" style="margin:12px 0 0">Do not move the due date. Do not mark it waiting. Waiting means the ball is with someone else. This date already passed and the task is still open — that is lapsed. Id <span class="mono">86b8ar133</span> stays in the href, not in the name.</p>
+  </section>
+
+  <section>
+    <div class="label"><span>Variation A</span><span>Due date as hero</span></div>
+    <p class="meta" style="margin:0 0 12px">The card leads with the date in mono and the lapsed badge. Use when the miss is the point, not the task title. Still a link to the same task.</p>
+    <a class="plain" href="https://app.clickup.com/t/86b8ar133">
+      <div class="card">
+        <div class="mono" style="color:var(--muted);margin-bottom:8px">Due Aug 12</div>
+        <h3>RA — Estimated Print Date</h3>
+        <div class="badges" style="margin:8px 0 10px">
+          <span class="badge status">lapsed</span>
+          <span class="badge kind">clickup</span>
+          <span class="badge project">RA</span>
+        </div>
+        <p>Still open. Print Friday is Aug 21. This due date is not that print. It is the estimate that already slipped.</p>
+      </div>
+    </a>
+  </section>
+
+  <section>
+    <div class="label"><span>Variation B</span><span>Tiny table</span></div>
+    <p class="meta" style="margin:0 0 12px">Task / Due / Status. One real row. A table is for scanning more than one task — Thursday only has this one, so the table is here to show the container, not to invent a second task.</p>
+    <table class="rep">
+      <thead>
+        <tr><th>Task</th><th>Due</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://app.clickup.com/t/86b8ar133">RA — Estimated Print Date</a></td>
+          <td class="mono">Aug 12</td>
+          <td><span class="badge status">lapsed</span> <span class="badge kind">clickup</span> <span class="badge project">RA</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="label"><span>Variation C</span><span>What closed looks like</span></div>
+    <p class="meta" style="margin:0 0 12px">The real task stays lapsed. That is Thursday. Underneath, the empty module — labeled as a variation — so he can see the adjacent state if this were closed. Do not pretend the task is closed. Do not put the empty where Proposed lives.</p>
+    <a class="row" href="https://app.clickup.com/t/86b8ar133">
+      <span class="when">Aug 12</span>
+      <div class="what">
+        <span class="who">RA — Estimated Print Date</span>
+        <span class="badge status">lapsed</span>
+        <span class="badge kind">clickup</span>
+        <span class="badge project">RA</span>
+        <div class="gist">Still open. This is the real Thursday row.</div>
+      </div>
+      <span class="go">Open</span>
+    </a>
+    <p class="meta" style="margin:18px 0 8px">Variation — empty, if it were closed. Not a fact.</p>
+    <div class="empty-card">
+      <div class="empty" style="padding:0;text-align:center">Nothing waiting.</div>
+      <p class="meta" style="margin:8px 0 0">ClickUp would drop off the brief. No lapsed badge. No ghost of Aug 12.</p>
+    </div>
+  </section>
+
+  <footer class="site">
+    <a class="back" href="index.html">← System</a><br>
+    Thursday, August 20, 2026
+  </footer>
+</div>
+
+</body>
+</html>
