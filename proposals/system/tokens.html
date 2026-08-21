@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>12:01 system — tokens</title>
-<link rel="stylesheet" href="system.css?v=5">
+<link rel="stylesheet" href="system.css?v=6">
 </head>
 <body>
 <div class="wrap">
@@ -24,15 +24,15 @@
     <div class="swatch"><i style="background:#8f8f9c"></i><div><div class="k">muted</div><div class="v">#8f8f9c · meta, CTA, gists that recede</div></div></div>
     <div class="swatch"><i style="background:#26262d"></i><div><div class="k">rule</div><div class="v">#26262d · lines, kind-badge outlines</div></div></div>
     <div class="swatch"><i style="background:#17171c"></i><div><div class="k">card</div><div class="v">#17171c · raised surface</div></div></div>
-    <div class="swatch"><i style="background:#ff6a4d"></i><div><div class="k">accent</div><div class="v">#ff6a4d · status badges, see-more</div></div></div>
-    <div class="swatch"><i style="background:#0c0c0f"></i><div><div class="k">recess</div><div class="v">#0c0c0f · drafts, files, logs, ids. Not the page.</div></div></div>
+    <div class="swatch"><i style="background:#ff6a4d"></i><div><div class="k">accent</div><div class="v">#ff6a4d · purpose badges, Open / Show at rest</div></div></div>
+    <div class="swatch"><i style="background:#0c0c0f"></i><div><div class="k">recess</div><div class="v">#0c0c0f · optional window. Drafts. Not required for CLI.</div></div></div>
     <div class="swatch"><i style="background:#3d9a5f"></i><div><div class="k">ok</div><div class="v">#3d9a5f · one meaning: source is up / in progress</div></div></div>
   </section>
 
   <section>
     <div class="label"><span>Type roles</span></div>
     <p style="font-size:17px;line-height:1.6;margin:0 0 16px">Body / brief. Lindsee is in the studio this afternoon. Two things still need a yes before Friday print.</p>
-    <div class="name" style="margin-bottom:16px">Nyshka</div>
+    <div class="name" style="margin-bottom:16px">Nyshka Chandran</div>
     <blockquote class="quote" style="margin-bottom:16px">“thank you jaimey”<div class="attr">Gustavo · #stone-island · 4:11am PT</div></blockquote>
     <div class="mono" style="color:var(--muted);margin-bottom:16px">4:11am PT · lindsee@1201.am · #stone-island · brochure_12-JS-Edit_GE.pdf · 1a01a7e1372537fe</div>
     <pre class="snip">Nyshka —
@@ -40,23 +40,40 @@
 Version 2 is attached. Review internally, then a call.
 
 Hassan</pre>
-    <div class="prompt">20260820 07:47  Nyshka  unread  RA V2</div>
+    <div class="prompt">20260820 07:47  <span class="nm">Nyshka Chandran</span>  unread  RA V2</div>
   </section>
 
   <section>
-    <div class="label"><span>Status badges</span><span>accent outline</span></div>
+    <div class="label"><span>Names</span></div>
+    <p class="meta" style="margin:0 0 12px">Internal first. External full. Two Bryans always both — they are not on this Thursday.</p>
+    <div class="person">
+      <div class="name">Hassan · Lindsee · Jaimey · Gustavo · Patrick</div>
+      <div class="ln">Internal. First name is enough.</div>
+    </div>
+    <div class="person">
+      <div class="name">Nyshka Chandran · Michelle Jones · Sean Bell · Kevin McCaughey · Michael Goldberg</div>
+      <div class="ln">External. Full name in who / name. Draft salutations stay first: Nyshka —, Michelle —.</div>
+    </div>
+    <div class="person">
+      <div class="name">Bryan Chu · Brian Vo</div>
+      <div class="ln">Always both names. Teach here. Do not invent them onto Thursday.</div>
+    </div>
+    <p class="meta" style="margin:12px 0 0">Names are type, never mono. Inside CLI they stay <span class="nm">.nm</span> in the body face.</p>
+  </section>
+
+  <section>
+    <div class="label"><span>Status badges</span><span>coral · purpose only</span></div>
     <div class="stack">
       <div><span class="badge status">unread</span> <span class="meta">He has not opened it. Mail, mostly.</span></div>
-      <div><span class="badge status">needsAction</span> <span class="meta">Calendar still wants a yes. Weekly, Hassan x MG.</span></div>
+      <div><span class="badge status">needsAction</span> <span class="meta">Calendar still wants a yes. Weekly, Hassan x MG. Same as needs reply.</span></div>
       <div><span class="badge status">print Friday</span> <span class="meta">Stone Island print is Aug 21. Same as print tomorrow on Friday.</span></div>
       <div><span class="badge status">lapsed</span> <span class="meta">A due date already passed. RA print date Aug 12.</span></div>
-      <div><span class="badge status">waiting</span> <span class="meta">Ball is not with him. Someone else owes the next move.</span></div>
-      <div><span class="badge status">confirmed</span> <span class="meta">On the books. Flight, Lindsee briefing window.</span></div>
     </div>
+    <p class="meta" style="margin:12px 0 0">Coral is purpose. Not kind. Not “on the books.” Confirmed is not a badge — Lindsee and Delta 676 sit in type. Waiting is not coral. Kind badges do not live inside a named section. Project is muted, only to scan two jobs.</p>
   </section>
 
   <section>
-    <div class="label"><span>Kind badges</span><span>muted outline</span></div>
+    <div class="label"><span>Kind badges</span><span>muted outline · catalog only</span></div>
     <div class="stack">
       <div><span class="badge kind">mail</span> <span class="meta">Gmail thread. Open goes to inbox id.</span></div>
       <div><span class="badge kind">calendar</span> <span class="meta">A hold on the day.</span></div>
@@ -64,19 +81,18 @@ Hassan</pre>
       <div><span class="badge kind">clickup</span> <span class="meta">A task row, often lapsed.</span></div>
       <div><span class="badge kind">dropbox</span> <span class="meta">A file someone posted.</span></div>
       <div><span class="badge kind">fathom</span> <span class="meta">A recording. Book direction.</span></div>
-      <div><span class="badge kind">draft</span> <span class="meta">Something he would send. Lives in recess.</span></div>
+      <div><span class="badge kind">draft</span> <span class="meta">Something he would send. Lives in a window.</span></div>
     </div>
+    <p class="meta" style="margin:12px 0 0">Do not hang a kind badge inside a section already named Mail, Discord, ClickUp, Meetings.</p>
   </section>
 
   <section>
-    <div class="label"><span>Project badges</span><span>fg outline</span></div>
+    <div class="label"><span>Project badges</span><span>muted · two jobs</span></div>
     <div class="badges" style="margin-bottom:10px">
       <span class="badge project">Stone Island</span>
       <span class="badge project">RA</span>
-      <span class="badge project">Lindsee</span>
-      <span class="badge project">1201</span>
     </div>
-    <p class="meta">Project marks the job, not the urgency. Pair with a status badge when both are true.</p>
+    <p class="meta">Project is muted so he can scan two jobs. Not Lindsee. Not 1201. Not urgency.</p>
   </section>
 
   <section>
@@ -84,9 +100,8 @@ Hassan</pre>
     <a class="row" href="https://mail.google.com/mail/u/0/#inbox/1a01a7e1372537fe">
       <span class="when">7:47am</span>
       <div class="what">
-        <span class="who">Nyshka</span>
+        <span class="who">Nyshka Chandran</span>
         <span class="badge status">unread</span>
-        <span class="badge kind">mail</span>
         <span class="badge project">RA</span>
         <div class="gist">Email Version 2, they review, then a call.</div>
       </div>
@@ -97,8 +112,6 @@ Hassan</pre>
       <div class="what">
         <span class="who">12:01 Weekly</span>
         <span class="badge status">needsAction</span>
-        <span class="badge kind">calendar</span>
-        <span class="badge project">1201</span>
       </div>
     </div>
     <a class="row" href="https://app.clickup.com/t/86b8ar133">
@@ -106,7 +119,6 @@ Hassan</pre>
       <div class="what">
         <span class="who">RA — Estimated Print Date</span>
         <span class="badge status">lapsed</span>
-        <span class="badge kind">clickup</span>
         <span class="badge project">RA</span>
       </div>
       <span class="go">Open</span>
@@ -114,16 +126,30 @@ Hassan</pre>
   </section>
 
   <section>
-    <div class="label"><span>Recessed surface</span></div>
-    <p class="meta" style="margin:0 0 10px">Use for drafts, file paths, secretary logs, ids. Do not use for the lede, person names, or the decision he has to make. Green dot means the source is up.</p>
+    <div class="label"><span>CLI setup</span><span>Proposed · chrome-less columns</span></div>
+    <p class="meta" style="margin:0 0 10px">CLI is the information setup — dense, aligned, mono columns, times, ids, paths. Not a costume terminal. No border, no header, no green dot, no #0c0c0f pane. Names stay .nm in the body face. 12px.</p>
+    <div class="cli">
+      <div class="pl">20260820 07:47  <span class="nm">Nyshka Chandran</span>  unread  RA V2</div>
+      <div class="lg">
+        <div>04:11  discord   #stone-island  thank you jaimey</div>
+        <div>07:47  mail      <span class="nm">Nyshka Chandran</span>  unread</div>
+        <div>13:00  calendar  <span class="nm">Lindsee</span>  briefing</div>
+      </div>
+      <div class="fu">?  send Version 2 today</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>CLI variation</span><span>recessed window</span></div>
+    <p class="meta" style="margin:0 0 10px">The window is optional. Use .term for drafts (the thing he would send) and maybe one secretary sweep. Green dot means the source is up. One recessed pane is enough if you keep any.</p>
     <div class="term">
-      <div class="term-hd"><span class="dot" aria-hidden="true"></span>1201 · brief · thu</div>
+      <div class="term-hd"><span class="dot" aria-hidden="true"></span>1201 · draft · thu</div>
       <div class="term-bd">
-        <div class="pl">20260820 07:47  Nyshka  unread  RA V2</div>
-        <div class="lg">
-          <div>04:11  discord   #stone-island  thank you jaimey</div>
-          <div>07:47  mail      Nyshka  unread</div>
-        </div>
+        <pre class="snip">Nyshka —
+
+Version 2 is attached. Review internally, then a call.
+
+Hassan</pre>
       </div>
     </div>
   </section>
