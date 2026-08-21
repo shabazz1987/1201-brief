@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12:01 Daily — A</title>
+<style>
+
+:root {
+  --bg: #ffffff;
+  --fg: #16161a;
+  --muted: #6b6b76;
+  --rule: #e4e4e9;
+  --card: #fafafa;
+  --accent: #c4321f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101013;
+    --fg: #e8e8ec;
+    --muted: #8f8f9c;
+    --rule: #26262d;
+    --card: #17171c;
+    --accent: #ff6a4d;
+  }
+}
+* { box-sizing: border-box; }
+html, body { overflow-x: hidden; }
+body {
+  margin: 0;
+  padding: 28px 16px 80px;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 420px; margin: 0 auto; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.mark { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; flex: 0 0 36px; background: var(--card); }
+h1 { font-size: 25px; line-height: 1.2; margin: 0; letter-spacing: -0.02em; font-weight: 620; }
+.datebar { color: var(--muted); font-size: 13px; margin: 6px 0 0; }
+.prop {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+  margin: 18px 0 22px; padding-bottom: 10px; border-bottom: 1px solid var(--rule);
+}
+.prop .name { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
+.prop .idea { font-size: 13px; color: var(--muted); text-align: right; }
+.nav {
+  display: flex; gap: 6px; flex-wrap: wrap; margin: 0 0 8px;
+}
+.nav a {
+  font-size: 12px; color: var(--muted); text-decoration: none;
+  border: 1px solid var(--rule); border-radius: 999px; padding: 3px 9px;
+}
+.nav a.on { color: var(--fg); border-color: var(--fg); }
+.nav a:hover { color: var(--accent); border-color: var(--accent); }
+footer {
+  margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--rule);
+  color: var(--muted); font-size: 12.5px; line-height: 1.8;
+}
+footer a { color: inherit; }
+.flag {
+  display: inline-block; font-size: 10.5px; letter-spacing: .08em;
+  text-transform: uppercase; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 3px; padding: 0 5px;
+  line-height: 1.5; margin-left: 6px; vertical-align: middle;
+}
+a { color: inherit; text-decoration: none; }
+
+
+.slab {
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 14px 14px 10px;
+  margin: 0 0 12px;
+  background: var(--card);
+}
+.slab h2 {
+  font-size: 17px; margin: 0 0 4px; font-weight: 620; letter-spacing: -0.01em;
+}
+.slab .ask { font-size: 16px; margin: 0 0 10px; }
+.kids { margin: 0; padding: 0; list-style: none; }
+.kids li { padding: 8px 0 8px 14px; border-top: 1px dotted var(--rule); }
+.kids a { display: block; }
+.kids .src { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.kids .who { font-weight: 620; display: block; }
+.kids .gist { font-size: 14px; color: var(--muted); margin-top: 2px; }
+.group { margin: 28px 0 10px; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.flight {
+  padding: 14px 0 4px;
+  border-top: 2px solid var(--fg);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 8px;
+}
+.flight .when { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+.flight h2 { font-size: 20px; margin: 4px 0 2px; }
+.flight .meta { color: var(--muted); font-size: 14px; }
+.wait { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 0; }
+.wait span {
+  border: 1px solid var(--rule); border-radius: 999px; padding: 4px 10px; font-size: 13px;
+}
+.later { margin: 0; padding: 0; list-style: none; }
+.later li { padding: 11px 0; border-bottom: 1px dotted var(--rule); display: flex; gap: 10px; }
+.later .when { flex: 0 0 72px; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.later .who { font-weight: 620; }
+.later .sub { font-size: 14px; color: var(--muted); margin-top: 2px; }
+
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="nav">
+    <a href="index.html">Compare</a>
+    <a href="a.html" class="on">A</a>
+    <a href="b.html">B</a>
+    <a href="c.html">C</a>
+    <a href="d.html">D</a>
+  </div>
+  <header>
+    <div class="brand">
+      <img class="mark" src="../apple-touch-icon.png" alt="">
+      <h1>12:01 Daily</h1>
+    </div>
+    <div class="datebar">Thursday, August 20, 2026 · 1201</div>
+  </header>
+  <div class="prop"><span class="name">A · Nested under the ask</span><span class="idea">Evidence hangs off the decision</span></div>
+
+
+  <div class="group">Only you</div>
+
+  <div class="slab">
+    <h2>RA</h2>
+    <p class="ask">Send Nyshka Version 2?</p>
+    <ul class="kids">
+      <li>
+        <a href="https://mail.google.com/mail/u/0/#inbox/1a01a7e1372537fe">
+          <span class="src">Mail · Wed 7:47</span>
+          <span class="who">Nyshka — RA V2 <span class="flag">unread</span></span>
+          <div class="gist">Gentle follow up. Email them Version 2, they review internally, then a call. You said you would send it.</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.dropbox.com/scl/fi/wkpmxejlivxa3moqybzrm/_RA-x-1201-Table-of-Contents-XX.pdf?rlkey=irh3tj8deemas8c398rtpx8er&amp;st=u13yn6fl&amp;dl=0">
+          <span class="src">#ra-book · yesterday</span>
+          <span class="who">Gustavo — TOC</span>
+          <div class="gist">WIP double spread. A/B openers still waiting on your pick.</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://app.clickup.com/t/86b8ar133">
+          <span class="src">ClickUp · lapsed</span>
+          <span class="who">Estimated Print Date</span>
+          <div class="gist">Still Open. Due Aug 12.</div>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slab">
+    <h2>Stone Island</h2>
+    <p class="ask">Is brochure_12 ready to send before tomorrow’s print?</p>
+    <ul class="kids">
+      <li>
+        <a href="https://mail.google.com/mail/u/0/#inbox/19fd1f91ae17d23f">
+          <span class="src">Mail · print Fri</span>
+          <span class="who">Sean Bell <span class="flag">print tomorrow</span></span>
+          <div class="gist">Jaimey applied his edits. brochure_12 is up. Gustavo thanked her this morning.</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.dropbox.com/scl/fi/wnqanzxhz7v56lzjdhi1u/brochure_12-JS-Edit_GE.pdf?rlkey=jubyy4k3ip0haa5tn2y6tyokr&amp;dl=0">
+          <span class="src">#stone-island · last night</span>
+          <span class="who">Jaimey</span>
+          <div class="gist">brochure_12-JS-Edit_GE.pdf. Gustavo: thank you jaimey, 4:11am PT.</div>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="group">Tomorrow</div>
+  <div class="flight">
+    <div class="when">Fri 10:45pm PT</div>
+    <h2>Delta 676 LAX → JFK</h2>
+    <div class="meta">Lands 7:03am ET Sat · GAISGJ · seat 30F</div>
+  </div>
+
+  <div class="group">Waiting on them</div>
+  <p style="margin:0 0 8px;color:var(--muted);font-size:14px">Inbox is caught up. Ball is with:</p>
+  <div class="wait">
+    <span>Ian</span><span>Tyler</span><span>Bas</span><span>Nahoko</span>
+    <span>Isaac</span><span>Netflix</span><span>Firelight</span><span>Kevin</span>
+  </div>
+
+  <div class="group">Next</div>
+  <ul class="later">
+    <li>
+      <span class="when">Darcy</span>
+      <div>
+        <div class="who">Will try you tomorrow</div>
+        <div class="sub">Monday and Tuesday are open if you miss each other.</div>
+      </div>
+    </li>
+    <li>
+      <span class="when">Tue 10:00</span>
+      <div>
+        <a href="https://us06web.zoom.us/j/86226951182?pwd=7hbH2erFmIIQxwd8FEU0X3faVaAi2h.1">
+          <div class="who">12:01 Weekly Team Meeting <span class="flag">needsAction</span></div>
+          <div class="sub">Recurring. Patrick is gone. Shape is still being rebuilt.</div>
+        </a>
+      </div>
+    </li>
+    <li>
+      <span class="when">Wed 10:00</span>
+      <div>
+        <a href="https://www.google.com/calendar/event?eid=N3FqcWhnYm1vODUxZmRpZThyazVwZ2NxcHAgaHJAMTIwMS5hbQ&ctz=America/Los_Angeles">
+          <div class="who">Hassan x MG <span class="flag">needsAction</span></div>
+          <div class="sub">Michael is booked. Michelle asked about dinner or lunch. That mail is still open.</div>
+        </a>
+      </div>
+    </li>
+    <li>
+      <span class="when">Thu 1:00</span>
+      <div>
+        <a href="https://meet.google.com/hdc-cqyo-ojp">
+          <div class="who">Serato Merch kickoff</div>
+          <div class="sub">You accepted. Gustavo is on it. Kat and Abbas. Still pick the LA outro plus 9:16 / 3:4 / 16:9 cuts.</div>
+        </a>
+      </div>
+    </li>
+  </ul>
+
+  <div class="group">House</div>
+  <ul class="later">
+    <li>
+      <span class="when">Studio</span>
+      <div>
+        <div class="who">Lindsee</div>
+        <div class="sub">Briefing cancelled. lindsee@1201.am is still not live until you create it in Google Admin.</div>
+      </div>
+    </li>
+    <li>
+      <span class="when">Fri 14</span>
+      <div>
+        <a href="https://fathom.video/calls/785612597">
+          <div class="who">Book direction · Fathom</div>
+          <div class="sub">Brutalismo locked. Palette still owed. No new recordings since Friday.</div>
+        </a>
+      </div>
+    </li>
+  </ul>
+
+
+  <footer>
+    Structure mock. Same data as tonight. Accent unchanged.
+    <div>Earlier: <a href="../2026-08-19.html">Aug 19</a> · <a href="../archive.html">All briefs</a></div>
+  </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12:01 Daily — structure proposals</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #16161a; --muted: #6b6b76; --rule: #e4e4e9;
+  --card: #fafafa; --accent: #c4321f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101013; --fg: #e8e8ec; --muted: #8f8f9c; --rule: #26262d;
+    --card: #17171c; --accent: #ff6a4d;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 28px 16px 80px;
+  background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased;
+}
+h1 { font-size: 24px; letter-spacing: -0.02em; margin: 0 0 6px; }
+.lede { color: var(--muted); max-width: 640px; margin: 0 0 22px; }
+.lede a { color: var(--accent); }
+.grid {
+  display: grid; grid-template-columns: 1fr; gap: 28px;
+}
+@media (min-width: 900px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1400px) {
+  .grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
+}
+.cell h2 { font-size: 15px; margin: 0 0 4px; }
+.cell p { font-size: 13px; color: var(--muted); margin: 0 0 10px; min-height: 3.2em; }
+.phone {
+  width: 100%; max-width: 390px; height: 720px;
+  border: 1px solid var(--rule); border-radius: 12px; background: var(--card);
+}
+.links { margin: 10px 0 0; font-size: 13px; }
+.links a { color: var(--accent); margin-right: 12px; }
+</style>
+</head>
+<body>
+  <h1>12:01 Daily · structure</h1>
+  <p class="lede">
+    Four information-architecture mockups of tonight’s brief. Same copy, same accent
+    (#c4321f / #ff6a4d), system fonts. Not color restyles.
+    Live page stays as it is until you pick one.
+    <a href="../index.html">Tonight as published</a>.
+  </p>
+  <div class="grid">
+    <div class="cell">
+      <h2>A · Nested under the ask</h2>
+      <p>Each decision is a block. Mail, Discord, and ClickUp for that job sit indented underneath. Schedule and house stay below.</p>
+      <iframe class="phone" src="a.html" title="Proposal A"></iframe>
+      <div class="links"><a href="a.html">Open A</a></div>
+    </div>
+    <div class="cell">
+      <h2>B · Time spine</h2>
+      <p>A left-hand day column (Now / Fri / Next / Parked). Items hang off the spine. One lead paragraph instead of four.</p>
+      <iframe class="phone" src="b.html" title="Proposal B"></iframe>
+      <div class="links"><a href="b.html">Open B</a></div>
+    </div>
+    <div class="cell">
+      <h2>C · Numbered outline</h2>
+      <p>Document hierarchy. Projects are numbered parents. Evidence is a tree with a left rule. Source labels are whispers, not section titles.</p>
+      <iframe class="phone" src="c.html" title="Proposal C"></iframe>
+      <div class="links"><a href="c.html">Open C</a></div>
+    </div>
+    <div class="cell">
+      <h2>D · Two cards, one river</h2>
+      <p>The two decisions get heavy top rules. Everything else is one list: person on the left, source on the right, snippet indented.</p>
+      <iframe class="phone" src="d.html" title="Proposal D"></iframe>
+      <div class="links"><a href="d.html">Open D</a></div>
+    </div>
+  </div>
+</body>
+</html>
