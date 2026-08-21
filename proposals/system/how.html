@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>12:01 Daily · How it works</title>
-<link rel="stylesheet" href="system.css?v=9">
+<link rel="stylesheet" href="system.css?v=10">
 <style>
 .lede { margin: 0 0 8px; font-size: 17px; line-height: 1.5; }
 .box {
@@ -18,14 +18,53 @@
 .box p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
 .box.peak { border-color: var(--accent); }
 .arr { text-align: center; color: var(--accent); font-size: 13px; font-weight: 620; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 0 12px; }
-.term .lg .ln { display: flex; flex-wrap: wrap; gap: 0 10px; padding: 8px 0; border-bottom: 1px solid var(--rule); margin: 0; color: var(--muted); }
-.term .lg .ln:last-child { border-bottom: none; padding-bottom: 2px; }
-.term .lg .k { color: var(--fg); min-width: 10.5em; }
-.term .peakline { color: var(--accent); padding: 8px 0; }
-.term .cmd { color: var(--muted); margin: 12px 0 4px; }
-.term .cmd:first-child { margin-top: 0; }
-.term .cmd .dl { color: var(--ok); }
-.term .note { color: var(--muted); margin: 0 0 3px; }
+.term .sec {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  padding: 4px 0 10px;
+}
+.term .col { display: flex; flex-direction: column; gap: 10px; }
+.term .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.term .row3 { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 560px) {
+  .term .row3 { grid-template-columns: 1fr 1fr 1fr; }
+}
+.term .sbox {
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 14px 16px 12px;
+}
+.term .sbox .k { color: var(--fg); }
+.term .sbox .v { color: var(--muted); margin-top: 8px; }
+.term .sbox.peak { border-color: var(--accent); }
+.term .sbox.peak .k { color: var(--accent); }
+.term .flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0 10px;
+}
+.term .flow .spine {
+  width: 1px;
+  height: 16px;
+  background: var(--accent);
+}
+.term .flow .lab {
+  color: var(--accent);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  padding: 5px 0 4px;
+}
+.term .flow .head {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid var(--accent);
+}
 </style>
 </head>
 <body>
@@ -48,27 +87,49 @@
     <div class="term">
       <div class="term-hd"><span class="dot" aria-hidden="true"></span>1201 · how it works</div>
       <div class="term-bd">
-        <div class="cmd"><span class="dl">$</span> sources   live only</div>
-        <div class="lg">
-          <div class="ln"><span class="k">Superhuman</span><span>hr@1201.am</span></div>
-          <div class="ln"><span class="k">Gmail</span><span>h@hassanrahim.com</span></div>
-          <div class="ln"><span class="k">Google Calendar</span><span>work + personal · ET / PT</span></div>
-          <div class="ln"><span class="k">Discord</span><span>Midnight Oil</span></div>
-          <div class="ln"><span class="k">Fathom / Granola</span></div>
-          <div class="ln"><span class="k">ClickUp</span><span>±14 days</span></div>
-          <div class="ln"><span class="k">Dropbox</span><span>tap links</span></div>
-          <div class="ln"><span class="k">Vault</span><span>people, promises</span></div>
+        <div class="sec">sources · live only</div>
+        <div class="col">
+          <div class="sbox">
+            <div class="k">Superhuman</div>
+            <div class="v">hr@1201.am · h@hassanrahim.com</div>
+          </div>
+          <div class="row2">
+            <div class="sbox"><div class="k">Google Calendar</div><div class="v">work + personal · ET / PT</div></div>
+            <div class="sbox"><div class="k">Discord</div><div class="v">Midnight Oil</div></div>
+          </div>
+          <div class="row2">
+            <div class="sbox"><div class="k">Fathom / Granola</div><div class="v">meetings</div></div>
+            <div class="sbox"><div class="k">ClickUp</div><div class="v">±14 days</div></div>
+          </div>
+          <div class="row2">
+            <div class="sbox"><div class="k">Dropbox</div><div class="v">tap links</div></div>
+            <div class="sbox"><div class="k">Vault</div><div class="v">people, promises</div></div>
+          </div>
         </div>
-        <div class="cmd"><span class="dl">$</span> agent   1201 secretary</div>
-        <p class="note">Reads those live. Writes one page. Never invents.</p>
-        <p class="note">Never sends mail unless Hassan says yes.</p>
-        <div class="cmd"><span class="dl">$</span> product</div>
-        <div class="peakline">12:01 Daily     hosted page     always today     on his phone</div>
-        <div class="cmd"><span class="dl">$</span> after</div>
-        <div class="lg">
-          <div class="ln"><span class="k">talk-back</span><span>short chat after the page</span></div>
-          <div class="ln"><span class="k">live alerts</span><span>someone waiting · his reply is the send</span></div>
-          <div class="ln"><span class="k">meeting prep</span><span>30 min before a real meeting</span></div>
+
+        <div class="flow"><div class="spine"></div><div class="lab">read</div><div class="head"></div></div>
+
+        <div class="sec">agent · 1201 secretary</div>
+        <div class="sbox">
+          <div class="k">An agent, not a person</div>
+          <div class="v">Reads those live. Writes one page. Never invents. Never sends mail unless Hassan says yes.</div>
+        </div>
+
+        <div class="flow"><div class="spine"></div><div class="lab">write</div><div class="head"></div></div>
+
+        <div class="sec">product</div>
+        <div class="sbox peak">
+          <div class="k">12:01 Daily</div>
+          <div class="v">hosted page · always today · on his phone</div>
+        </div>
+
+        <div class="flow"><div class="spine"></div><div class="lab">open</div><div class="head"></div></div>
+
+        <div class="sec">after</div>
+        <div class="row3">
+          <div class="sbox"><div class="k">talk-back</div><div class="v">short chat after the page</div></div>
+          <div class="sbox"><div class="k">live alerts</div><div class="v">someone waiting · his reply is the send</div></div>
+          <div class="sbox"><div class="k">meeting prep</div><div class="v">30 min before a real meeting</div></div>
         </div>
         <div class="fu">// nothing is sent unless he says yes</div>
       </div>
@@ -80,7 +141,7 @@
   <section>
     <div class="box">
       <h3>Sources</h3>
-      <p>Superhuman (hr@1201.am) — people waiting, needs a yes. Gmail (h@hassanrahim.com) — people waiting, skip newsletters. Google Calendar for work and personal; Google is the source of truth. Label ET vs PT. Skip junk holds. Discord is Midnight Oil. Fathom / Granola for meetings. ClickUp, due ±14 days or updated this week. Dropbox tap links. Vault: who people are, what he already promised.</p>
+      <p>Superhuman is all mail: hr@1201.am and h@hassanrahim.com. Gmail is only a fallback if Superhuman cannot see an inbox. Google Calendar is the source of truth for work and personal. Label ET vs PT. Skip junk holds. Discord is Midnight Oil. Fathom / Granola for meetings. ClickUp, due ±14 days or updated this week. Dropbox tap links. Vault: who people are, what he already promised.</p>
     </div>
     <div class="box">
       <h3>An agent · 1201 secretary</h3>
