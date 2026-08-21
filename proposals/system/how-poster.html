@@ -8,7 +8,7 @@
   body {
     width: 1080px;
     height: 1920px;
-    padding: 36px 32px;
+    padding: 32px 28px;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     color: #e8e8ec;
     background: #000;
@@ -17,114 +17,123 @@
     height: 100%;
     background: #0c0c0f;
     border: 1px solid #26262d;
-    border-radius: 12px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
-  .bar {
+  .term-hd {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 15px 22px;
+    gap: 8px;
+    padding: 14px 22px;
     border-bottom: 1px solid #26262d;
     color: #8f8f9c;
-    font-size: 17px;
+    font-size: 18px;
     flex: 0 0 auto;
   }
-  .dot { width: 11px; height: 11px; border-radius: 50%; background: #3d9a5f; }
-  .inner {
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3d9a5f;
+    flex: 0 0 8px;
+  }
+  .term-bd {
     flex: 1;
-    padding: 26px 24px 22px;
+    padding: 28px 26px 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-size: 20px;
+    line-height: 1.35;
   }
-  h1 { font-size: 30px; font-weight: 500; color: #e8e8ec; margin: 0 0 8px; letter-spacing: -0.02em; }
-  .lede { margin: 0; font-size: 18px; line-height: 1.4; color: #8f8f9c; }
-  .lede em { color: #e8e8ec; font-style: normal; }
-  .lab { color: #8f8f9c; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; margin: 0 0 10px; }
-  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
-  .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 9px; }
-  .col { display: flex; flex-direction: column; gap: 9px; }
-  .box {
-    background: #101013;
-    border: 1px solid #26262d;
-    border-radius: 6px;
-    padding: 13px 14px 12px;
+  .pl { color: #e8e8ec; margin: 0 0 6px; }
+  .lede { color: #8f8f9c; margin: 0; }
+  .lede + .lede { margin-top: 2px; }
+  .cmd {
+    color: #8f8f9c;
+    padding: 4px 0 10px;
   }
-  .box .k { color: #e8e8ec; font-size: 18px; line-height: 1.2; }
-  .box .v { color: #8f8f9c; font-size: 14px; margin-top: 4px; line-height: 1.35; }
-  .peak { border-color: #ff6a4d; }
-  .peak .k { color: #ff6a4d; }
-  .arr {
-    text-align: center;
+  .cmd .dl { color: #3d9a5f; }
+  .lg { color: #8f8f9c; }
+  .ln {
+    display: grid;
+    grid-template-columns: 16.5em 1fr;
+    gap: 0 22px;
+    padding: 13px 0;
+    border-bottom: 1px solid #26262d;
+    align-items: baseline;
+  }
+  .ln:last-child { border-bottom: none; padding-bottom: 2px; }
+  .ln .a { color: #e8e8ec; }
+  .ln2 {
+    display: grid;
+    grid-template-columns: 11em 1fr;
+    gap: 0 18px;
+    padding: 13px 0;
+    border-bottom: 1px solid #26262d;
+    align-items: baseline;
+  }
+  .ln2:last-child { border-bottom: none; padding-bottom: 2px; }
+  .ln2 .a { color: #e8e8ec; }
+  .note { color: #8f8f9c; margin: 0; padding: 4px 0; }
+  .peak {
+    display: grid;
+    grid-template-columns: 11em 11em 11em 1fr;
+    gap: 0 18px;
+    padding: 14px 0;
     color: #ff6a4d;
-    font-size: 15px;
-    line-height: 1.2;
-    padding: 6px 0 4px;
+    border-bottom: 1px solid #26262d;
   }
-  .foot { color: #8f8f9c; font-size: 15px; margin: 0; }
+  .foot { color: #8f8f9c; margin: 0; padding-top: 8px; }
 </style>
 </head>
 <body>
   <div class="term">
-    <div class="bar"><span class="dot"></span>1201 · morning page</div>
-    <div class="inner">
+    <div class="term-hd"><span class="dot"></span>1201 · how it works</div>
+    <div class="term-bd">
       <div>
-        <h1>12:01 Daily</h1>
-        <p class="lede">A morning page for <em>Hassan Rahim</em>, creative director of 1201. What needs him today.</p>
+        <div class="pl">12:01 Daily</div>
+        <div class="lede">A morning page for Hassan Rahim, creative director of 1201.</div>
+        <div class="lede">An agent reads his live tools and writes what needs him today.</div>
       </div>
 
       <div>
-        <div class="lab">01  sources · live only</div>
-        <div class="col">
-          <div class="row2">
-            <div class="box"><div class="k">Work email</div><div class="v">Superhuman · hr@1201.am<br>People waiting. Needs a yes.</div></div>
-            <div class="box"><div class="k">Personal email</div><div class="v">Gmail · h@hassanrahim.com<br>People waiting. Skip newsletters.</div></div>
-          </div>
-          <div class="row2">
-            <div class="box"><div class="k">Work calendar</div><div class="v">Google · hr@1201.am<br>Label ET vs PT. Skip junk holds.</div></div>
-            <div class="box"><div class="k">Personal calendar</div><div class="v">Google · h@hassanrahim.com<br>Label ET vs PT. Skip junk holds.</div></div>
-          </div>
-          <div class="row2">
-            <div class="box"><div class="k">Studio chat</div><div class="v">Discord · Midnight Oil</div></div>
-            <div class="box"><div class="k">Meetings</div><div class="v">Fathom / Granola · notes</div></div>
-          </div>
-          <div class="row2">
-            <div class="box"><div class="k">Tasks</div><div class="v">ClickUp · due ±14 days<br>or updated this week</div></div>
-            <div class="box"><div class="k">Files</div><div class="v">Dropbox · tap links</div></div>
-          </div>
-          <div class="box"><div class="k">Memory</div><div class="v">Standing notes. Who people are. What he already promised.</div></div>
+        <div class="cmd"><span class="dl">$</span> sources<span>   live only</span></div>
+        <div class="lg">
+          <div class="ln"><span class="a">Superhuman</span><span>hr@1201.am</span></div>
+          <div class="ln"><span class="a">Gmail</span><span>h@hassanrahim.com</span></div>
+          <div class="ln"><span class="a">Google Calendar</span><span>work + personal · ET / PT</span></div>
+          <div class="ln"><span class="a">Discord</span><span>Midnight Oil</span></div>
+          <div class="ln"><span class="a">Fathom / Granola</span><span></span></div>
+          <div class="ln"><span class="a">ClickUp</span><span>±14 days</span></div>
+          <div class="ln"><span class="a">Dropbox</span><span>tap links</span></div>
+          <div class="ln"><span class="a">Vault</span><span>people, promises</span></div>
         </div>
       </div>
 
-      <div class="arr">↓  7am PT every day</div>
-
-      <div class="box">
-        <div class="k">02  1201 secretary</div>
-        <div class="v">Reads those live sources. Writes one page. Never invents.<br>Never sends mail unless Hassan says yes.</div>
+      <div>
+        <div class="cmd"><span class="dl">$</span> agent<span>   1201 secretary</span></div>
+        <div class="note">Reads those live. Writes one page. Never invents.</div>
+        <div class="note">Never sends mail unless Hassan says yes.</div>
       </div>
-
-      <div class="arr">↓  the page</div>
-
-      <div class="box peak">
-        <div class="k">03  12:01 Daily</div>
-        <div class="v">The product. A web page on his phone, always today.</div>
-      </div>
-
-      <div class="arr">↓  after</div>
 
       <div>
-        <div class="lab">04  after</div>
-        <div class="row3">
-          <div class="box"><div class="k">Talk-back</div><div class="v">Short chat<br>after the page</div></div>
-          <div class="box"><div class="k">Live alerts</div><div class="v">Someone waiting.<br>A draft sits ready.<br>His reply is the send.</div></div>
-          <div class="box"><div class="k">Meeting prep</div><div class="v">30 minutes<br>before a real meeting</div></div>
+        <div class="cmd"><span class="dl">$</span> product</div>
+        <div class="peak"><span>12:01 Daily</span><span>hosted page</span><span>always today</span><span>on his phone</span></div>
+      </div>
+
+      <div>
+        <div class="cmd"><span class="dl">$</span> after</div>
+        <div class="lg">
+          <div class="ln2"><span class="a">talk-back</span><span>short chat after the page</span></div>
+          <div class="ln2"><span class="a">live alerts</span><span>someone waiting · his reply is the send</span></div>
+          <div class="ln2"><span class="a">meeting prep</span><span>30 min before a real meeting</span></div>
         </div>
       </div>
 
-      <p class="foot">// nothing is sent unless he says yes</p>
+      <div class="foot">// nothing is sent unless he says yes</div>
     </div>
   </div>
 </body>

@@ -6,23 +6,26 @@
 <title>12:01 Daily · How it works</title>
 <link rel="stylesheet" href="system.css?v=9">
 <style>
-.flow { display: flex; flex-direction: column; gap: 10px; }
+.lede { margin: 0 0 8px; font-size: 17px; line-height: 1.5; }
 .box {
   background: var(--card);
   border: 1px solid var(--rule);
   border-radius: 10px;
   padding: 16px 16px 14px;
+  margin: 0 0 10px;
 }
 .box h3 { margin: 0 0 6px; font-size: 17px; font-weight: 620; letter-spacing: -0.02em; }
 .box p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.src { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 12px; min-height: 78px; }
-.src b { display: block; font-size: 14px; font-weight: 620; margin-bottom: 4px; }
-.src span { color: var(--muted); font-size: 13px; line-height: 1.4; }
-.arr { text-align: center; color: var(--accent); font-size: 13px; font-weight: 620; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 0; }
 .box.peak { border-color: var(--accent); }
-.box.peak h3 { color: var(--fg); }
-.lede { margin: 0 0 8px; font-size: 17px; line-height: 1.5; }
+.arr { text-align: center; color: var(--accent); font-size: 13px; font-weight: 620; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 0 12px; }
+.term .lg .ln { display: flex; flex-wrap: wrap; gap: 0 10px; padding: 8px 0; border-bottom: 1px solid var(--rule); margin: 0; color: var(--muted); }
+.term .lg .ln:last-child { border-bottom: none; padding-bottom: 2px; }
+.term .lg .k { color: var(--fg); min-width: 10.5em; }
+.term .peakline { color: var(--accent); padding: 8px 0; }
+.term .cmd { color: var(--muted); margin: 12px 0 4px; }
+.term .cmd:first-child { margin-top: 0; }
+.term .cmd .dl { color: var(--ok); }
+.term .note { color: var(--muted); margin: 0 0 3px; }
 </style>
 </head>
 <body>
@@ -33,63 +36,63 @@
       <img class="mark" src="../../apple-touch-icon.png" alt="">
       <h1>12:01 Daily</h1>
     </div>
-    <p class="whenuse">A morning page for Hassan Rahim, creative director of 1201. What needs him today.</p>
+    <p class="whenuse">A morning page for Hassan Rahim, creative director of 1201. An agent reads his live tools and writes what needs him today.</p>
   </header>
 
   <section>
-    <p class="lede">Every day at 7am PT, a hosted page tells him what needs him. A software secretary reads his live tools and writes that page. Chat is talk-back after. Nothing is invented. Nothing is sent unless he says yes.</p>
+    <p class="lede">Every day at 7am PT, a hosted page tells him what needs him. An agent — 1201 secretary, software, not a person — reads his live tools and writes that page. Chat is talk-back after. Nothing is invented. Nothing is sent unless he says yes.</p>
   </section>
 
   <section>
-    <div class="label"><span>01 · Sources</span><span>live only</span></div>
-    <div class="grid">
-      <div class="src"><b>Work email</b><span>Superhuman. hr@1201.am. People waiting. Needs a yes.</span></div>
-      <div class="src"><b>Personal email</b><span>Gmail. h@hassanrahim.com. People waiting. Skip newsletters.</span></div>
-      <div class="src"><b>Work calendar</b><span>Google. hr@1201.am. Google is the source of truth. Label ET vs PT. Skip junk holds.</span></div>
-      <div class="src"><b>Personal calendar</b><span>Google. h@hassanrahim.com. Label ET vs PT. Skip junk holds.</span></div>
-      <div class="src"><b>Studio chat</b><span>Discord. Midnight Oil. Channels, who, files.</span></div>
-      <div class="src"><b>Meetings</b><span>Fathom / Granola. What was said. What he owes.</span></div>
-      <div class="src"><b>Tasks</b><span>ClickUp. Due ±14 days or updated this week. A lapsed task stays visible.</span></div>
-      <div class="src"><b>Files</b><span>Dropbox. Recent studio files as tap links, not a file browser.</span></div>
+    <div class="label"><span>How it works</span><span>live only</span></div>
+    <div class="term">
+      <div class="term-hd"><span class="dot" aria-hidden="true"></span>1201 · how it works</div>
+      <div class="term-bd">
+        <div class="cmd"><span class="dl">$</span> sources   live only</div>
+        <div class="lg">
+          <div class="ln"><span class="k">Superhuman</span><span>hr@1201.am</span></div>
+          <div class="ln"><span class="k">Gmail</span><span>h@hassanrahim.com</span></div>
+          <div class="ln"><span class="k">Google Calendar</span><span>work + personal · ET / PT</span></div>
+          <div class="ln"><span class="k">Discord</span><span>Midnight Oil</span></div>
+          <div class="ln"><span class="k">Fathom / Granola</span></div>
+          <div class="ln"><span class="k">ClickUp</span><span>±14 days</span></div>
+          <div class="ln"><span class="k">Dropbox</span><span>tap links</span></div>
+          <div class="ln"><span class="k">Vault</span><span>people, promises</span></div>
+        </div>
+        <div class="cmd"><span class="dl">$</span> agent   1201 secretary</div>
+        <p class="note">Reads those live. Writes one page. Never invents.</p>
+        <p class="note">Never sends mail unless Hassan says yes.</p>
+        <div class="cmd"><span class="dl">$</span> product</div>
+        <div class="peakline">12:01 Daily     hosted page     always today     on his phone</div>
+        <div class="cmd"><span class="dl">$</span> after</div>
+        <div class="lg">
+          <div class="ln"><span class="k">talk-back</span><span>short chat after the page</span></div>
+          <div class="ln"><span class="k">live alerts</span><span>someone waiting · his reply is the send</span></div>
+          <div class="ln"><span class="k">meeting prep</span><span>30 min before a real meeting</span></div>
+        </div>
+        <div class="fu">// nothing is sent unless he says yes</div>
+      </div>
     </div>
-    <div class="src" style="margin-top:8px"><b>Memory</b><span>Standing notes: who people are, what he already promised. Not a source of new facts. (Internally this is the Vault.)</span></div>
   </section>
 
-  <div class="arr">↓ 7am PT every day</div>
+  <div class="arr">↓ in plain words</div>
 
   <section>
     <div class="box">
-      <h3>02 · 1201 secretary</h3>
-      <p>Reads those live sources. Writes one page. Never invents. Never sends mail unless Hassan says yes.</p>
+      <h3>Sources</h3>
+      <p>Superhuman (hr@1201.am) — people waiting, needs a yes. Gmail (h@hassanrahim.com) — people waiting, skip newsletters. Google Calendar for work and personal; Google is the source of truth. Label ET vs PT. Skip junk holds. Discord is Midnight Oil. Fathom / Granola for meetings. ClickUp, due ±14 days or updated this week. Dropbox tap links. Vault: who people are, what he already promised.</p>
     </div>
-  </section>
-
-  <div class="arr">↓ the page</div>
-
-  <section>
+    <div class="box">
+      <h3>An agent · 1201 secretary</h3>
+      <p>A software agent, not a person. Reads those live sources. Writes one page. Never invents. Never sends mail unless Hassan says yes.</p>
+    </div>
     <div class="box peak">
-      <h3>03 · 12:01 Daily</h3>
+      <h3>12:01 Daily</h3>
       <p>The product. A web page on his phone, always today. That is the morning brief — not a chat wall, not a feed.</p>
     </div>
-  </section>
-
-  <div class="arr">↓ after</div>
-
-  <section>
-    <div class="label"><span>04 · After the page</span></div>
-    <div class="flow">
-      <div class="box">
-        <h3>Talk-back</h3>
-        <p>Short chat after the page. The secretary opens with the Daily link, then one or two questions. Not a wall of the brief.</p>
-      </div>
-      <div class="box">
-        <h3>Live alerts</h3>
-        <p>Someone waiting. A draft sits ready. His reply in chat is the send. Calendar pings when it matters — a flight in a few hours, a person who just wrote.</p>
-      </div>
-      <div class="box">
-        <h3>Meeting prep</h3>
-        <p>About 30 minutes before a real meeting. Who, last notes, what he owes. Skip holds, focus blocks, and travel buffers. A flight stays a flight alert.</p>
-      </div>
+    <div class="box">
+      <h3>After the page</h3>
+      <p>Talk-back is short chat after the page. Live alerts: someone waiting, a draft sits ready, his reply is the send. Meeting prep is 30 minutes before a real meeting — who, last notes, what he owes.</p>
     </div>
   </section>
 
