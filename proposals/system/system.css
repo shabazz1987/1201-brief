@@ -402,21 +402,31 @@ a:not(.plain):not(.row):not(.item):not(.dir):not(.seeweek):not(.back) {
   border-bottom-color: var(--accent);
 }
 a.back { color: var(--accent); }
+
+.dir { display: flex; flex-direction: column; gap: 8px; }
 a.dir {
-  position: relative;
-  padding-right: 18px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 12px;
+  align-items: center;
+  background: var(--card);
+  border-radius: 8px;
+  border-bottom: none;
+  padding: 12px 14px;
+  min-height: 52px;
 }
+a.dir .k { grid-column: 1; grid-row: 1; font-weight: 620; }
+a.dir .v { grid-column: 1; grid-row: 2; color: var(--muted); font-size: 13px; text-align: left; }
 a.dir::after {
-  content: "›";
-  position: absolute;
-  right: 0;
-  top: 12px;
+  content: "Open";
+  grid-column: 2;
+  grid-row: 1 / span 2;
   color: var(--accent);
-  font-size: 18px;
-  line-height: 1;
-  font-weight: 400;
+  font-size: 13px;
+  font-weight: 520;
 }
-a.dir .v { padding-right: 4px; }
+
 a.row .go,
 a.item .go { color: var(--accent); }
 a.row:not(:has(.go))::after,
