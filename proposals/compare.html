@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12:01 Daily — structure proposals</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #16161a; --muted: #6b6b76; --rule: #e4e4e9;
+  --card: #fafafa; --accent: #c4321f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101013; --fg: #e8e8ec; --muted: #8f8f9c; --rule: #26262d;
+    --card: #17171c; --accent: #ff6a4d;
+  }
+}
+* { box-sizing: border-box; }
+html, body { overflow-x: hidden; }
+body {
+  margin: 0; padding: 28px 16px 80px;
+  background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 520px; margin: 0 auto; }
+h1 { font-size: 24px; letter-spacing: -0.02em; margin: 0 0 6px; }
+.lede { color: var(--muted); margin: 0 0 22px; }
+a.card {
+  display: block;
+  padding: 16px 16px 14px;
+  margin: 0 0 10px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+a.card:active { border-color: var(--accent); }
+.letter {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  font-weight: 700; color: var(--accent); margin: 0 0 6px;
+}
+a.card h2 { font-size: 18px; margin: 0 0 6px; font-weight: 620; letter-spacing: -0.02em; }
+a.card p { font-size: 14px; color: var(--muted); margin: 0 0 10px; }
+.go { font-size: 13px; color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>12:01 Daily · structure</h1>
+  <p class="lede">
+    Four information-architecture mockups of tonight’s brief. Same copy, same type, same red.
+    Tap one to open it full-screen. No embeds.
+  </p>
+  <a class="card" href="a.html">
+    <div class="letter">A</div>
+    <h2>Nested under the ask</h2>
+    <p>Each decision is a block. Mail, Discord, and ClickUp for that job sit indented underneath.</p>
+    <div class="go">Open A</div>
+  </a>
+  <a class="card" href="b.html">
+    <div class="letter">B</div>
+    <h2>Time spine</h2>
+    <p>A left-hand day column: Now / Friday / Next / Parked. One lead paragraph instead of four.</p>
+    <div class="go">Open B</div>
+  </a>
+  <a class="card" href="c.html">
+    <div class="letter">C</div>
+    <h2>Numbered outline</h2>
+    <p>Projects are numbered parents. Evidence is a tree. Source labels are whispers, not section titles.</p>
+    <div class="go">Open C</div>
+  </a>
+  <a class="card" href="d.html">
+    <div class="letter">D</div>
+    <h2>Two cards, one river</h2>
+    <p>The two decisions get heavy top rules. Everything else is one list.</p>
+    <div class="go">Open D</div>
+  </a>
+</div>
+</body>
+</html>
