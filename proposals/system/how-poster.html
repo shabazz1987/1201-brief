@@ -8,7 +8,7 @@
   body {
     width: 1080px;
     height: 1920px;
-    padding: 32px 28px;
+    padding: 28px 24px;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     color: #e8e8ec;
     background: #000;
@@ -41,13 +41,13 @@
   }
   .term-bd {
     flex: 1;
-    padding: 26px 24px 22px;
+    padding: 22px 22px 18px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
   .pl { color: #e8e8ec; margin: 0 0 8px; font-size: 26px; line-height: 1.2; }
-  .lede { color: #8f8f9c; margin: 0; font-size: 17px; line-height: 1.45; }
+  .lede { color: #8f8f9c; margin: 0; font-size: 17px; line-height: 1.4; }
   .lede + .lede { margin-top: 2px; }
   .sec { color: #8f8f9c; font-size: 13px; letter-spacing: 0.12em; text-transform: lowercase; padding: 0 0 10px; }
   .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -57,37 +57,36 @@
     background: transparent;
     border: 1px solid #26262d;
     border-radius: 8px;
-    padding: 18px 20px 16px;
+    padding: 16px 18px 14px;
   }
   .box .k { color: #e8e8ec; font-size: 18px; line-height: 1.35; }
-  .box .v { color: #8f8f9c; font-size: 15px; margin-top: 10px; line-height: 1.45; }
-  .wide { padding: 20px 22px 18px; }
-  .wide .v { font-size: 16px; margin-top: 12px; }
+  .box .v { color: #8f8f9c; font-size: 15px; margin-top: 8px; line-height: 1.4; }
+  .wide { padding: 18px 20px 16px; }
   .peak { border-color: #ff6a4d; }
   .peak .k { color: #ff6a4d; }
   .flow {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 8px 0 6px;
+    padding: 4px 0;
   }
   .flow .spine {
-    width: 1px;
-    height: 18px;
+    width: 2px;
+    height: 36px;
     background: #ff6a4d;
   }
   .flow .lab {
     color: #ff6a4d;
-    font-size: 14px;
-    letter-spacing: 0.06em;
-    padding: 5px 0 4px;
+    font-size: 16px;
+    letter-spacing: 0.08em;
+    padding: 6px 0;
   }
   .flow .head {
     width: 0;
     height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 7px solid #ff6a4d;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 9px solid #ff6a4d;
   }
   .foot { color: #8f8f9c; font-size: 15px; margin: 0; }
 </style>
@@ -124,7 +123,7 @@
         </div>
       </div>
 
-      <div class="flow"><div class="spine"></div><div class="lab">read</div><div class="head"></div></div>
+      <div class="flow"><div class="spine"></div><div class="lab">read</div><div class="spine"></div><div class="head"></div></div>
 
       <div>
         <div class="sec">agent · 1201 secretary</div>
@@ -134,7 +133,7 @@
         </div>
       </div>
 
-      <div class="flow"><div class="spine"></div><div class="lab">write</div><div class="head"></div></div>
+      <div class="flow"><div class="spine"></div><div class="lab">write</div><div class="spine"></div><div class="head"></div></div>
 
       <div>
         <div class="sec">product</div>
@@ -144,7 +143,7 @@
         </div>
       </div>
 
-      <div class="flow"><div class="spine"></div><div class="lab">open</div><div class="head"></div></div>
+      <div class="flow"><div class="spine"></div><div class="lab">open</div><div class="spine"></div><div class="head"></div></div>
 
       <div>
         <div class="sec">after</div>

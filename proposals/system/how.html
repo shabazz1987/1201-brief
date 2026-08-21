@@ -4,163 +4,182 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>12:01 Daily · How it works</title>
-<link rel="stylesheet" href="system.css?v=10">
 <style>
-.lede { margin: 0 0 8px; font-size: 17px; line-height: 1.5; }
-.box {
-  background: var(--card);
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  padding: 16px 16px 14px;
-  margin: 0 0 10px;
-}
-.box h3 { margin: 0 0 6px; font-size: 17px; font-weight: 620; letter-spacing: -0.02em; }
-.box p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
-.box.peak { border-color: var(--accent); }
-.arr { text-align: center; color: var(--accent); font-size: 13px; font-weight: 620; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 0 12px; }
-.term .sec {
-  color: var(--muted);
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: lowercase;
-  padding: 4px 0 10px;
-}
-.term .col { display: flex; flex-direction: column; gap: 10px; }
-.term .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.term .row3 { display: grid; grid-template-columns: 1fr; gap: 10px; }
-@media (min-width: 560px) {
-  .term .row3 { grid-template-columns: 1fr 1fr 1fr; }
-}
-.term .sbox {
-  background: transparent;
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  padding: 14px 16px 12px;
-}
-.term .sbox .k { color: var(--fg); }
-.term .sbox .v { color: var(--muted); margin-top: 8px; }
-.term .sbox.peak { border-color: var(--accent); }
-.term .sbox.peak .k { color: var(--accent); }
-.term .flow {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 12px 0 10px;
-}
-.term .flow .spine {
-  width: 1px;
-  height: 16px;
-  background: var(--accent);
-}
-.term .flow .lab {
-  color: var(--accent);
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  padding: 5px 0 4px;
-}
-.term .flow .head {
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 7px solid var(--accent);
-}
+  :root {
+    --bg: #101013;
+    --fg: #e8e8ec;
+    --muted: #8f8f9c;
+    --rule: #26262d;
+    --card: #17171c;
+    --accent: #ff6a4d;
+    --recess: #0c0c0f;
+    --ok: #3d9a5f;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #000; color: var(--fg); }
+  body {
+    font-family: var(--mono);
+    -webkit-text-size-adjust: 100%;
+  }
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 18px 16px 40px;
+  }
+  .back {
+    display: inline-block;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    margin: 0 0 14px;
+  }
+  .chart {
+    background: var(--recess);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .chart-hd {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ok);
+    flex: 0 0 8px;
+  }
+  .chart-bd { padding: 20px 16px 18px; }
+  .pl { margin: 0 0 8px; font-size: 24px; line-height: 1.2; }
+  .lede { color: var(--muted); margin: 0; font-size: 15px; line-height: 1.45; }
+  .lede + .lede { margin-top: 2px; }
+  .intro { margin: 0 0 22px; }
+  .sec {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: lowercase;
+    padding: 0 0 10px;
+  }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .row3 { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  @media (min-width: 560px) {
+    .row3 { grid-template-columns: 1fr 1fr 1fr; }
+    .chart-bd { padding: 24px 22px 20px; }
+  }
+  .col { display: flex; flex-direction: column; gap: 10px; }
+  .box {
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 16px 16px 14px;
+  }
+  .box .k { font-size: 16px; line-height: 1.35; }
+  .box .v { color: var(--muted); font-size: 14px; margin-top: 8px; line-height: 1.4; }
+  .peak { border-color: var(--accent); }
+  .peak .k { color: var(--accent); }
+  .flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 0;
+  }
+  .flow .spine {
+    width: 2px;
+    height: 28px;
+    background: var(--accent);
+  }
+  .flow .lab {
+    color: var(--accent);
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    padding: 6px 0;
+  }
+  .flow .head {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 9px solid var(--accent);
+  }
+  .foot { color: var(--muted); font-size: 13px; margin: 18px 0 0; }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="site">
-    <a class="back" href="index.html">← System</a>
-    <div class="brand">
-      <img class="mark" src="../../apple-touch-icon.png" alt="">
-      <h1>12:01 Daily</h1>
-    </div>
-    <p class="whenuse">A morning page for Hassan Rahim, creative director of 1201. An agent reads his live tools and writes what needs him today.</p>
-  </header>
+<div class="page">
+  <a class="back" href="index.html">← System</a>
+  <div class="chart">
+    <div class="chart-hd"><span class="dot"></span>1201 · how it works</div>
+    <div class="chart-bd">
+      <div class="intro">
+        <div class="pl">12:01 Daily</div>
+        <div class="lede">A morning page for Hassan Rahim, creative director of 1201.</div>
+        <div class="lede">An agent reads his live tools and writes what needs him today.</div>
+      </div>
 
-  <section>
-    <p class="lede">Every day at 7am PT, a hosted page tells him what needs him. An agent — 1201 secretary, software, not a person — reads his live tools and writes that page. Chat is talk-back after. Nothing is invented. Nothing is sent unless he says yes.</p>
-  </section>
-
-  <section>
-    <div class="label"><span>How it works</span><span>live only</span></div>
-    <div class="term">
-      <div class="term-hd"><span class="dot" aria-hidden="true"></span>1201 · how it works</div>
-      <div class="term-bd">
+      <div>
         <div class="sec">sources · live only</div>
         <div class="col">
-          <div class="sbox">
+          <div class="box">
             <div class="k">Superhuman</div>
             <div class="v">hr@1201.am · h@hassanrahim.com</div>
           </div>
           <div class="row2">
-            <div class="sbox"><div class="k">Google Calendar</div><div class="v">work + personal · ET / PT</div></div>
-            <div class="sbox"><div class="k">Discord</div><div class="v">Midnight Oil</div></div>
+            <div class="box"><div class="k">Google Calendar</div><div class="v">work + personal · ET / PT</div></div>
+            <div class="box"><div class="k">Discord</div><div class="v">Midnight Oil</div></div>
           </div>
           <div class="row2">
-            <div class="sbox"><div class="k">Fathom / Granola</div><div class="v">meetings</div></div>
-            <div class="sbox"><div class="k">ClickUp</div><div class="v">±14 days</div></div>
+            <div class="box"><div class="k">Fathom / Granola</div><div class="v">meetings</div></div>
+            <div class="box"><div class="k">ClickUp</div><div class="v">±14 days</div></div>
           </div>
           <div class="row2">
-            <div class="sbox"><div class="k">Dropbox</div><div class="v">tap links</div></div>
-            <div class="sbox"><div class="k">Vault</div><div class="v">people, promises</div></div>
+            <div class="box"><div class="k">Dropbox</div><div class="v">tap links</div></div>
+            <div class="box"><div class="k">Vault</div><div class="v">people, promises</div></div>
           </div>
         </div>
+      </div>
 
-        <div class="flow"><div class="spine"></div><div class="lab">read</div><div class="head"></div></div>
+      <div class="flow"><div class="spine"></div><div class="lab">read</div><div class="spine"></div><div class="head"></div></div>
 
+      <div>
         <div class="sec">agent · 1201 secretary</div>
-        <div class="sbox">
+        <div class="box">
           <div class="k">An agent, not a person</div>
           <div class="v">Reads those live. Writes one page. Never invents. Never sends mail unless Hassan says yes.</div>
         </div>
+      </div>
 
-        <div class="flow"><div class="spine"></div><div class="lab">write</div><div class="head"></div></div>
+      <div class="flow"><div class="spine"></div><div class="lab">write</div><div class="spine"></div><div class="head"></div></div>
 
+      <div>
         <div class="sec">product</div>
-        <div class="sbox peak">
+        <div class="box peak">
           <div class="k">12:01 Daily</div>
           <div class="v">hosted page · always today · on his phone</div>
         </div>
+      </div>
 
-        <div class="flow"><div class="spine"></div><div class="lab">open</div><div class="head"></div></div>
+      <div class="flow"><div class="spine"></div><div class="lab">open</div><div class="spine"></div><div class="head"></div></div>
 
+      <div>
         <div class="sec">after</div>
         <div class="row3">
-          <div class="sbox"><div class="k">talk-back</div><div class="v">short chat after the page</div></div>
-          <div class="sbox"><div class="k">live alerts</div><div class="v">someone waiting · his reply is the send</div></div>
-          <div class="sbox"><div class="k">meeting prep</div><div class="v">30 min before a real meeting</div></div>
+          <div class="box"><div class="k">talk-back</div><div class="v">short chat after the page</div></div>
+          <div class="box"><div class="k">live alerts</div><div class="v">someone waiting · his reply is the send</div></div>
+          <div class="box"><div class="k">meeting prep</div><div class="v">30 min before a real meeting</div></div>
         </div>
-        <div class="fu">// nothing is sent unless he says yes</div>
       </div>
-    </div>
-  </section>
 
-  <div class="arr">↓ in plain words</div>
-
-  <section>
-    <div class="box">
-      <h3>Sources</h3>
-      <p>Superhuman is all mail: hr@1201.am and h@hassanrahim.com. Gmail is only a fallback if Superhuman cannot see an inbox. Google Calendar is the source of truth for work and personal. Label ET vs PT. Skip junk holds. Discord is Midnight Oil. Fathom / Granola for meetings. ClickUp, due ±14 days or updated this week. Dropbox tap links. Vault: who people are, what he already promised.</p>
+      <div class="foot">// nothing is sent unless he says yes</div>
     </div>
-    <div class="box">
-      <h3>An agent · 1201 secretary</h3>
-      <p>A software agent, not a person. Reads those live sources. Writes one page. Never invents. Never sends mail unless Hassan says yes.</p>
-    </div>
-    <div class="box peak">
-      <h3>12:01 Daily</h3>
-      <p>The product. A web page on his phone, always today. That is the morning brief — not a chat wall, not a feed.</p>
-    </div>
-    <div class="box">
-      <h3>After the page</h3>
-      <p>Talk-back is short chat after the page. Live alerts: someone waiting, a draft sits ready, his reply is the send. Meeting prep is 30 minutes before a real meeting — who, last notes, what he owes.</p>
-    </div>
-  </section>
-
-  <footer class="site">
-    <a class="back" href="index.html">← System</a><br>
-    Nothing is sent unless he says yes.
-  </footer>
+  </div>
 </div>
 </body>
 </html>
