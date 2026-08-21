@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12:01 system — Day</title>
+<link rel="stylesheet" href="system.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="back" href="index.html">← System</a>
+    <div class="brand"><img class="mark" src="../../apple-touch-icon.png" alt=""><h1>Day</h1></div>
+    <p class="whenuse">When locating today in the week. Date, city, and the strip that says which Thursday this is.</p>
+  </header>
+
+  <section>
+    <div class="label"><span>Proposed</span><span>datebar + city + week strip</span></div>
+    <p class="meta" style="margin:0 0 12px">Ship this. The date is a bar, the city is spoken, the week is seven cells. Thursday 20 is marked. Hassan is in LA.</p>
+    <div class="datebar">Thursday, August 20, 2026</div>
+    <p class="note" style="margin:2px 0 14px">Los Angeles</p>
+    <div class="week">
+      <div class="wd"><b>M</b>17</div>
+      <div class="wd"><b>T</b>18</div>
+      <div class="wd"><b>W</b>19</div>
+      <div class="wd on"><b>T</b>20</div>
+      <div class="wd"><b>F</b>21</div>
+      <div class="wd"><b>S</b>22</div>
+      <div class="wd"><b>S</b>23</div>
+    </div>
+    <div class="row" style="margin-top:14px">
+      <span class="when">1:00</span>
+      <div class="what">
+        <span class="who">LD 1201 Onboarding</span>
+        <span class="badge status">confirmed</span>
+        <span class="badge kind">calendar</span>
+        <span class="badge project">Lindsee</span>
+        <div class="sub">1:00–3:00pm PT · briefing, not her start. Guidebook locked.</div>
+      </div>
+    </div>
+    <div class="row">
+      <span class="when">Fri 10:45</span>
+      <div class="what">
+        <span class="who">Delta 676</span>
+        <span class="badge status">confirmed</span>
+        <span class="badge kind">calendar</span>
+        <span class="badge project">1201</span>
+        <div class="sub">LAX → JFK</div>
+      </div>
+    </div>
+    <p class="meta" style="margin:14px 0 0">The week is M17–S23. Print is Friday 21. The two yeses sit on Thursday because Friday is already spoken for.</p>
+  </section>
+
+  <section>
+    <div class="label"><span>Variation A</span><span>compact month · Aug 1 is Saturday</span></div>
+    <p class="meta" style="margin:0 0 12px">A whole August instead of a week. Same selected day. Denser. Use when the month matters more than the strip — print Friday, ClickUp due Aug 12, the week after.</p>
+    <div class="month">
+      <div class="hd">August 2026</div>
+      <div class="g">
+        <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span class="d">1</span>
+        <span class="d">2</span><span class="d">3</span><span class="d">4</span><span class="d">5</span><span class="d">6</span><span class="d">7</span><span class="d">8</span>
+        <span class="d">9</span><span class="d">10</span><span class="d">11</span><span class="d">12</span><span class="d">13</span><span class="d">14</span><span class="d">15</span>
+        <span class="d">16</span><span class="d">17</span><span class="d">18</span><span class="d">19</span><span class="s">20</span><span class="d">21</span><span class="d">22</span>
+        <span class="d">23</span><span class="d">24</span><span class="d">25</span><span class="d">26</span><span class="d">27</span><span class="d">28</span><span class="d">29</span>
+        <span class="d">30</span><span class="d">31</span>
+      </div>
+    </div>
+    <div class="row" style="margin-top:14px">
+      <span class="when">Aug 12</span>
+      <div class="what">
+        <span class="who">RA — Estimated Print Date</span>
+        <span class="badge status">lapsed</span>
+        <span class="badge kind">clickup</span>
+        <span class="badge project">RA</span>
+        <div class="sub">Still open. The month is how you see a due that already passed.</div>
+      </div>
+    </div>
+    <div class="row">
+      <span class="when">Aug 21</span>
+      <div class="what">
+        <span class="who">Stone Island print</span>
+        <span class="badge status">print Friday</span>
+        <span class="badge project">Stone Island</span>
+        <div class="sub">brochure_12. The yes is Thursday so the file can move Friday.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Variation B</span><span>jump-day select</span></div>
+    <p class="meta" style="margin:0 0 12px">Not a calendar. A select. Jump day is the kicker. Thu 20 is current. Wed 19 and Tue 18 are the two days behind it. Show / Hide on the summary.</p>
+    <details class="sel">
+      <summary>
+        <span><span class="sel-kicker">Jump day</span>Thu 20</span>
+        <span class="cta"><span class="on">Show</span><span class="off">Hide</span><span class="chev">▾</span></span>
+      </summary>
+      <div class="menu">
+        <a class="plain" href="#thu20">Thu 20 · Lindsee in the studio. Two yeses before Friday print.</a>
+        <a class="plain" href="#wed19">Wed 19</a>
+        <a class="plain" href="#tue18">Tue 18</a>
+      </div>
+    </details>
+    <div id="thu20" class="card" style="margin-top:12px">
+      <div class="datebar">Thursday, August 20, 2026 · Los Angeles</div>
+      <p style="margin:8px 0 0;font-size:17px;line-height:1.6">Lindsee is in the studio this afternoon. Two things still need a yes before Friday print.</p>
+    </div>
+    <p class="meta" style="margin:12px 0 0">Wed 19 and Tue 18 are listed because they are the two days in this week already behind Thursday. Do not invent what happened on them.</p>
+  </section>
+
+  <section>
+    <div class="label"><span>Variation C</span><span>stacked date + city card · no calendar</span></div>
+    <p class="meta" style="margin:0 0 12px">No week. No month. The day is a card: weekday large, date, city. Use when the locator should recede and the lede should take the screen.</p>
+    <div class="card">
+      <div class="name-lg">Thursday</div>
+      <div class="name" style="margin-top:4px">August 20, 2026</div>
+      <p style="margin-top:8px">Los Angeles</p>
+      <div class="chips" style="margin-top:12px">
+        <span class="chip">Lindsee 1:00–3:00</span>
+        <span class="chip">print Friday</span>
+        <span class="chip">LAX → JFK Fri 10:45</span>
+      </div>
+    </div>
+    <p class="meta" style="margin:12px 0 0">Hassan is in LA. The flight is tomorrow. The card can hold those two facts without drawing a grid.</p>
+  </section>
+
+  <section>
+    <div class="label"><span>On this Thursday</span><span>holds that sit on the day</span></div>
+    <div class="row">
+      <span class="when">1:00</span>
+      <div class="what">
+        <span class="who">Lindsee</span>
+        <span class="badge status">confirmed</span>
+        <span class="badge project">Lindsee</span>
+        <div class="gist">Studio this afternoon. Briefing, not her start.</div>
+        <div class="sub">lindsee@1201.am is not live until he creates it in Google Admin.</div>
+      </div>
+    </div>
+    <div class="row">
+      <span class="when">Tue 10:00</span>
+      <div class="what">
+        <span class="who">12:01 Weekly</span>
+        <span class="badge status">needsAction</span>
+        <span class="badge kind">calendar</span>
+        <span class="badge project">1201</span>
+        <div class="sub">Recurring. Patrick is gone. Shape still being rebuilt.</div>
+      </div>
+    </div>
+    <div class="row">
+      <span class="when">Wed 10:00</span>
+      <div class="what">
+        <span class="who">Hassan x MG</span>
+        <span class="badge status">needsAction</span>
+        <span class="badge kind">calendar</span>
+        <div class="sub">Michael booked. Michelle asked dinner or lunch.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Notes</span></div>
+    <p class="meta" style="margin:0">Day locates. It does not decide. Do not put brochure_12 or Nyshka V2 in the week strip. Do not write a city he is not in. The green dot is not for a calendar — source-up belongs on logs and drafts.</p>
+  </section>
+
+  <footer class="site">
+    <a class="back" href="index.html">← System</a><br>
+    Thursday, August 20, 2026
+  </footer>
+</div>
+</body>
+</html>
