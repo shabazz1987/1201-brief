@@ -395,3 +395,43 @@ footer.site {
 }
 
 .token-row { margin: 0 0 8px; }
+
+/* Clickable at rest. Phone has no hover. */
+a:not(.plain):not(.row):not(.item):not(.dir):not(.seeweek):not(.back) {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+a.back { color: var(--accent); }
+a.dir {
+  position: relative;
+  padding-right: 18px;
+}
+a.dir::after {
+  content: "›";
+  position: absolute;
+  right: 0;
+  top: 12px;
+  color: var(--accent);
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 400;
+}
+a.dir .v { padding-right: 4px; }
+a.row .go,
+a.item .go { color: var(--accent); }
+a.row:not(:has(.go))::after,
+a.item:not(:has(.go))::after {
+  content: "Open";
+  color: var(--accent);
+  font-size: 12.5px;
+  white-space: nowrap;
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+.cta { color: var(--accent); }
+details.box summary,
+details.sel summary { color: var(--fg); }
+.tabs button { color: var(--fg); border-color: var(--muted); }
+.tabs button.on { color: var(--bg); background: var(--fg); border-color: var(--fg); }
+a.fcard { color: inherit; border-bottom: none; }
+a.fcard .fn { color: var(--accent); }
