@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12:01 system — Calendar event</title>
+<link rel="stylesheet" href="system.css">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="back" href="index.html">← System</a>
+    <div class="brand">
+      <img class="mark" src="../../apple-touch-icon.png" alt="">
+      <h1>Calendar event</h1>
+    </div>
+    <p class="whenuse">A hold on the day. A briefing, a recurring leftover, an unanswered invite. Not a flight.</p>
+  </header>
+
+  <section>
+    <div class="label"><span>Proposed</span><span>Ship it</span></div>
+    <p class="meta" style="margin:0 0 12px">Three holds. Delta 676 is travel — it does not live here. No invented Zoom or calendar hrefs; FACTS does not have them. Badge the kind and the project. Confirmed is on the books. needsAction still wants a yes.</p>
+    <div class="row">
+      <span class="when">Thu 1:00</span>
+      <div class="what">
+        <span class="who">LD 1201 Onboarding</span>
+        <span class="badge status">confirmed</span>
+        <span class="badge kind">calendar</span>
+        <span class="badge project">Lindsee</span>
+        <div class="gist">1:00–3:00pm PT. Briefing, not her start. Guidebook locked.</div>
+      </div>
+    </div>
+    <div class="row">
+      <span class="when">Tue 10:00</span>
+      <div class="what">
+        <span class="who">12:01 Weekly</span>
+        <span class="badge status">needsAction</span>
+        <span class="badge kind">calendar</span>
+        <span class="badge project">1201</span>
+        <div class="sub">Recurring. Patrick is gone. Shape still being rebuilt.</div>
+      </div>
+    </div>
+    <div class="row">
+      <span class="when">Wed 10:00</span>
+      <div class="what">
+        <span class="who">Hassan x MG</span>
+        <span class="badge status">needsAction</span>
+        <span class="badge kind">calendar</span>
+        <span class="badge project">1201</span>
+        <div class="sub">Michael booked. Michelle asked dinner or lunch.</div>
+      </div>
+    </div>
+    <p class="meta" style="margin:12px 0 0">Lindsee’s window is today. Weekly and Hassan x MG are later in the week and still unanswered. That difference is the badge, not a louder color on the name.</p>
+  </section>
+
+  <section>
+    <div class="label"><span>Variation A</span><span>Cards, time in mono</span></div>
+    <p class="meta" style="margin:0 0 12px">Each hold is a card. Time is an id, so it sits in mono. Use when a row is too thin for the gist (briefing vs start, Patrick gone, Michelle’s mail).</p>
+    <div class="pcard">
+      <div class="mono" style="color:var(--muted);margin-bottom:6px">Thu 1:00–3:00pm PT</div>
+      <h3>LD 1201 Onboarding</h3>
+      <p>Lindsee briefing, not her start. Guidebook locked. <span class="mono">lindsee@1201.am</span> is not live until he creates it.</p>
+      <div class="badges" style="margin-top:10px">
+        <span class="badge status">confirmed</span>
+        <span class="badge kind">calendar</span>
+        <span class="badge project">Lindsee</span>
+      </div>
+    </div>
+    <div class="pcard">
+      <div class="mono" style="color:var(--muted);margin-bottom:6px">Tue 10:00</div>
+      <h3>12:01 Weekly</h3>
+      <p>Recurring. Patrick is gone. Shape still being rebuilt.</p>
+      <div class="badges" style="margin-top:10px">
+        <span class="badge status">needsAction</span>
+        <span class="badge kind">calendar</span>
+        <span class="badge project">1201</span>
+      </div>
+    </div>
+    <div class="pcard">
+      <div class="mono" style="color:var(--muted);margin-bottom:6px">Wed 10:00</div>
+      <h3>Hassan x MG</h3>
+      <p>Michael booked. Michelle asked dinner or lunch. That mail is still unread.</p>
+      <div class="badges" style="margin-top:10px">
+        <span class="badge status">needsAction</span>
+        <span class="badge kind">calendar</span>
+        <span class="badge project">1201</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Variation B</span><span>Unanswered invites</span></div>
+    <p class="meta" style="margin:0 0 12px">Lindsee stays a quiet confirmed row. Weekly and Hassan x MG get the alert treatment — they are the ones that still need a yes. Do not alert the briefing. Do not put the flight here.</p>
+    <div class="row">
+      <span class="when">Thu 1:00</span>
+      <div class="what">
+        <span class="who">LD 1201 Onboarding</span>
+        <span class="badge status">confirmed</span>
+        <span class="badge kind">calendar</span>
+        <span class="badge project">Lindsee</span>
+        <div class="gist">1:00–3:00pm PT. Briefing, not her start.</div>
+      </div>
+    </div>
+    <div class="alert" style="margin-top:12px">
+      <h3>12:01 Weekly <span class="badge status">needsAction</span></h3>
+      <p>Tue 10:00. Recurring. Patrick is gone. Shape still being rebuilt. Calendar still wants a yes.</p>
+    </div>
+    <div class="alert">
+      <h3>Hassan x MG <span class="badge status">needsAction</span></h3>
+      <p>Wed 10:00. Michael booked. Michelle asked dinner or lunch. Still unanswered.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Variation C</span><span>First screen vs later</span></div>
+    <p class="meta" style="margin:0 0 12px">Today’s hold is the only event on the first screen. Later this week — Weekly, Hassan x MG — sits in a closed Show 2. The flight is still travel, not a second accordion item.</p>
+    <div class="row">
+      <span class="when">Thu 1:00</span>
+      <div class="what">
+        <span class="who">Lindsee briefing</span>
+        <span class="badge status">confirmed</span>
+        <span class="badge kind">calendar</span>
+        <span class="badge project">Lindsee</span>
+        <div class="gist">LD 1201 Onboarding. 1:00–3:00pm PT. Not her start.</div>
+      </div>
+    </div>
+    <details class="box" style="margin-top:12px">
+      <summary>
+        <span>Later this week</span>
+        <span class="cta"><span class="on">Show 2</span><span class="off">Hide</span><span class="chev">▾</span></span>
+      </summary>
+      <div class="inn">
+        <div class="row">
+          <span class="when">Tue 10:00</span>
+          <div class="what">
+            <span class="who">12:01 Weekly</span>
+            <span class="badge status">needsAction</span>
+            <span class="badge kind">calendar</span>
+            <span class="badge project">1201</span>
+            <div class="sub">Recurring. Patrick is gone. Shape still being rebuilt.</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="when">Wed 10:00</span>
+          <div class="what">
+            <span class="who">Hassan x MG</span>
+            <span class="badge status">needsAction</span>
+            <span class="badge kind">calendar</span>
+            <span class="badge project">1201</span>
+            <div class="sub">Michael booked. Michelle asked dinner or lunch.</div>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <footer class="site">
+    <a class="back" href="index.html">← System</a><br>
+    Thursday, August 20, 2026
+  </footer>
+</div>
+
+</body>
+</html>
