@@ -1,0 +1,10 @@
+/* Assembled mocks — composition only. Catalog tokens stay in system.css. */
+.mock-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 12px 0 0;
+  font-size: 13px;
+}
+.mock-nav a { border-bottom: none; }
+.mock-nav .here { color: var(--muted); }
