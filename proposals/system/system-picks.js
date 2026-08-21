@@ -113,18 +113,22 @@
     }
   }
 
+  function choose(sec) {
+    if (!sec) return;
+    picks[sec.getAttribute("data-family")] = sec.getAttribute("data-pick");
+    save();
+    apply();
+  }
+
   document.addEventListener("click", function (e) {
-    var use = e.target.closest(".usebtn");
-    if (use) {
-      var sec = use.closest("section[data-family][data-pick]");
-      if (!sec) return;
-      picks[sec.getAttribute("data-family")] = sec.getAttribute("data-pick");
-      save();
-      apply();
+    var copy = e.target.closest("#copy-picks");
+    if (copy) {
+      copyPicks(copy);
       return;
     }
-    var copy = e.target.closest("#copy-picks");
-    if (copy) copyPicks(copy);
+    if (e.target.closest("a, details, button.copybtn, input, textarea, select")) return;
+    var sec = e.target.closest("section[data-family][data-pick]");
+    if (sec) choose(sec);
   });
 
   load();
