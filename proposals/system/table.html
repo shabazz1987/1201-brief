@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12:01 system — Table</title>
+<link rel="stylesheet" href="system.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="back" href="index.html">← System</a>
+    <div class="brand"><img class="mark" src="../../apple-touch-icon.png" alt=""><h1>Table</h1></div>
+    <p class="whenuse">When comparing the four replies. Columns, not a stack. Same Thursday names.</p>
+  </header>
+
+  <section>
+    <div class="label"><span>Proposed</span><span>When / Who / Status</span></div>
+    <p class="meta" style="margin:0 0 12px">Ship the three-column table. The comparison is the point. Nyshka, Michelle, Sean, Kevin. Status is a badge when the brief has one. Kevin has Now-Time and a week — not unread, not a thread.</p>
+    <table class="rep">
+      <thead>
+        <tr><th>When</th><th>Who</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mono">7:47am</td>
+          <td>Nyshka — RA V2</td>
+          <td><span class="badge status">unread</span></td>
+        </tr>
+        <tr>
+          <td class="mono">—</td>
+          <td>Michelle</td>
+          <td><span class="badge status">unread</span></td>
+        </tr>
+        <tr>
+          <td class="mono">print Fri</td>
+          <td>Sean Bell — Stone Island</td>
+          <td><span class="badge status">print Friday</span></td>
+        </tr>
+        <tr>
+          <td class="mono">this week</td>
+          <td>Kevin McCaughey</td>
+          <td>Now-Time</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="meta" style="margin:12px 0 0">Michelle’s when is an em dash. The brief says unread, not a clock. Do not invent 08:07. Kevin’s status cell is the job name, not a badge — Now-Time is not a status token.</p>
+  </section>
+
+  <section>
+    <div class="label"><span>Variation A</span><span>Source column</span></div>
+    <p class="meta" style="margin:0 0 12px">A fourth column. Mail, mail, mail, then an em dash. Kevin has no thread in the brief. Do not invent an id for him. The three Gmail ids stay in mono under the name, not as a fifth column.</p>
+    <table class="rep">
+      <thead>
+        <tr><th>When</th><th>Who</th><th>Status</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mono">7:47am</td>
+          <td>Nyshka<div class="meta mono">1a01a7e1372537fe</div></td>
+          <td><span class="badge status">unread</span></td>
+          <td><span class="badge kind">mail</span></td>
+        </tr>
+        <tr>
+          <td class="mono">—</td>
+          <td>Michelle<div class="meta mono">1a019c4bdefb0170</div></td>
+          <td><span class="badge status">unread</span></td>
+          <td><span class="badge kind">mail</span></td>
+        </tr>
+        <tr>
+          <td class="mono">print Fri</td>
+          <td>Sean Bell<div class="meta mono">19fd1f91ae17d23f</div></td>
+          <td><span class="badge status">print Friday</span></td>
+          <td><span class="badge kind">mail</span></td>
+        </tr>
+        <tr>
+          <td class="mono">this week</td>
+          <td>Kevin McCaughey</td>
+          <td>Now-Time</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="meta" style="margin:12px 0 0">Ids are recessed type — mono, muted. They are not a decision. Recess the string, not the row.</p>
+  </section>
+
+  <section>
+    <div class="label"><span>Variation B</span><span>definition-list stack</span></div>
+    <p class="meta" style="margin:0 0 12px">No table. Each reply is a <span class="mono">dl</span>. Name is the term. When, status, and gist are the definitions. Same four people. A stack you can scan on a phone without columns.</p>
+    <dl>
+      <div class="person">
+        <dt class="name">Nyshka</dt>
+        <dd class="ln" style="margin:4px 0 0">7:47am PT · unread · RA</dd>
+        <dd class="gist" style="margin:4px 0 0">Email them Version 2, they review internally, then a call.</dd>
+      </div>
+      <div class="person">
+        <dt class="name">Michelle</dt>
+        <dd class="ln" style="margin:4px 0 0">unread · dinner, or lunch</dd>
+        <dd class="gist" style="margin:4px 0 0">Next week works. Michael already booked Wednesday.</dd>
+      </div>
+      <div class="person">
+        <dt class="name">Sean Bell</dt>
+        <dd class="ln" style="margin:4px 0 0">print Friday · Stone Island</dd>
+        <dd class="gist" style="margin:4px 0 0">brochure_12. Jaimey posted Sean’s edits.</dd>
+      </div>
+      <div class="person">
+        <dt class="name">Kevin McCaughey</dt>
+        <dd class="ln" style="margin:4px 0 0">this week · Now-Time</dd>
+        <dd class="gist" style="margin:4px 0 0">No thread. No Open. The name is the row.</dd>
+      </div>
+    </dl>
+    <p class="meta" style="margin:12px 0 0">B loses the glance of columns. It gains a place for the gist. Proposed stays a table because the family is comparison, not reading.</p>
+  </section>
+
+  <section>
+    <div class="label"><span>Variation C</span><span>table + Open on Gmail only</span></div>
+    <p class="meta" style="margin:0 0 12px">Same three columns, plus Open. Only the three threads that exist. Kevin has no href. Do not mint one.</p>
+    <table class="rep">
+      <thead>
+        <tr><th>When</th><th>Who</th><th>Status</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mono">7:47am</td>
+          <td>Nyshka</td>
+          <td><span class="badge status">unread</span></td>
+          <td><a href="https://mail.google.com/mail/u/0/#inbox/1a01a7e1372537fe">Open</a></td>
+        </tr>
+        <tr>
+          <td class="mono">—</td>
+          <td>Michelle</td>
+          <td><span class="badge status">unread</span></td>
+          <td><a href="https://mail.google.com/mail/u/0/#inbox/1a019c4bdefb0170">Open</a></td>
+        </tr>
+        <tr>
+          <td class="mono">print Fri</td>
+          <td>Sean Bell</td>
+          <td><span class="badge status">print Friday</span></td>
+          <td><a href="https://mail.google.com/mail/u/0/#inbox/19fd1f91ae17d23f">Open</a></td>
+        </tr>
+        <tr>
+          <td class="mono">this week</td>
+          <td>Kevin McCaughey</td>
+          <td>Now-Time</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="meta" style="margin:12px 0 0">Open is a leave. Proposed does not leave — it compares. C is for when the table is also the inbox.</p>
+  </section>
+
+  <section>
+    <div class="label"><span>What the four sit next to</span><span>not the table</span></div>
+    <div class="decisions">
+      <div class="dl">Only you</div>
+      <ol>
+        <li>Stone Island — is brochure_12 ready to send before Friday print?</li>
+        <li>RA — send Nyshka Version 2 today?</li>
+      </ol>
+    </div>
+    <p class="meta" style="margin:12px 0 0">Sean’s row is the print. Nyshka’s row is the Version 2 ask. Michelle is dinner next to a Wednesday already booked. Kevin is this week. The table does not decide. It lines them up.</p>
+  </section>
+
+  <section>
+    <div class="label"><span>Notes</span></div>
+    <p class="meta" style="margin:0 0 10px">A table is for comparison. If the replies should be tap-rows, that is Mail. If they should be a number, that is Count. If they should be a quiet pile, that is Empty’s twin — Thursday is not empty.</p>
+    <p class="meta" style="margin:0">Do not add a seat, a PNR, or a fifth reply. Do not put Kevin’s name on a Gmail id. Do not time Michelle.</p>
+  </section>
+
+  <footer class="site">
+    <a class="back" href="index.html">← System</a><br>
+    Thursday, August 20, 2026
+  </footer>
+</div>
+</body>
+</html>
