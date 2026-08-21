@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>12:01 system — Carousel</title>
+<link rel="stylesheet" href="system.css">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="back" href="index.html">← System</a>
+    <div class="brand">
+      <img class="mark" src="../../apple-touch-icon.png" alt="">
+      <h1>Carousel</h1>
+    </div>
+    <p class="whenuse">A few dated events in a horizontal strip. Snap, then a way into the week.</p>
+  </header>
+
+  <section>
+    <div class="label"><span>Proposed</span><span>Ship it</span></div>
+    <p class="meta" style="margin:0 0 12px">Four snap cards in a .bleed. Wednesday the file went up. Thursday the briefing. Friday print and the hop. Aug 12 the RA date that already lapsed — it belongs in the strip because it is still on the brief. Accent link to the week. Week strip is the landing, id week.</p>
+    <div class="bleed">
+      <div class="ccard">
+        <div class="cd">Aug 19</div>
+        <div class="ct">brochure_12 posted</div>
+      </div>
+      <div class="ccard">
+        <div class="cd">Aug 20</div>
+        <div class="ct">Lindsee briefing</div>
+      </div>
+      <div class="ccard">
+        <div class="cd">Aug 21</div>
+        <div class="ct">Print / Delta 676</div>
+      </div>
+      <div class="ccard">
+        <div class="cd">Aug 12</div>
+        <div class="ct">RA print date lapsed</div>
+      </div>
+    </div>
+    <a class="seeweek" href="#week">See the week →</a>
+    <div id="week" style="margin-top:28px">
+      <div class="label"><span>The week</span></div>
+      <div class="week">
+        <div class="wd"><b>M</b>17</div>
+        <div class="wd"><b>T</b>18</div>
+        <div class="wd"><b>W</b>19</div>
+        <div class="wd on"><b>T</b>20</div>
+        <div class="wd"><b>F</b>21</div>
+        <div class="wd"><b>S</b>22</div>
+        <div class="wd"><b>S</b>23</div>
+      </div>
+      <p class="meta" style="margin:10px 0 0">Thursday the 20th is on. Monday the 17th through Sunday the 23rd. Aug 12 is not in this strip — it is last week, which is why it sits as a card above and not as a day cell here.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Variation A</span><span>Three cards, denser</span></div>
+    <p class="meta" style="margin:0 0 12px">Only the 19 / 20 / 21. The lapsed date drops out of the strip so the week reads forward. Titles carry a little more of the fact.</p>
+    <div class="bleed">
+      <div class="ccard">
+        <div class="cd">Wed 19</div>
+        <div class="ct">Jaimey posted brochure_12</div>
+      </div>
+      <div class="ccard">
+        <div class="cd">Thu 20</div>
+        <div class="ct">Lindsee 1:00–3:00</div>
+      </div>
+      <div class="ccard">
+        <div class="cd">Fri 21</div>
+        <div class="ct">Print. Delta 676 10:45</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Variation B</span><span>Cards wear a badge</span></div>
+    <p class="meta" style="margin:0 0 12px">Same four dates. Each card carries the status or project that is true of that day. Do not badge every card the same way — Aug 19 is a file, Aug 20 is Lindsee, Aug 21 is print plus the hop, Aug 12 is lapsed.</p>
+    <div class="bleed">
+      <div class="ccard">
+        <div class="cd">Aug 19</div>
+        <div class="ct">brochure_12 posted</div>
+        <div class="badges" style="margin-top:10px">
+          <span class="badge project">Stone Island</span>
+          <span class="badge kind">dropbox</span>
+        </div>
+      </div>
+      <div class="ccard">
+        <div class="cd">Aug 20</div>
+        <div class="ct">Lindsee briefing</div>
+        <div class="badges" style="margin-top:10px">
+          <span class="badge project">Lindsee</span>
+          <span class="badge status">confirmed</span>
+        </div>
+      </div>
+      <div class="ccard">
+        <div class="cd">Aug 21</div>
+        <div class="ct">Print / Delta 676</div>
+        <div class="badges" style="margin-top:10px">
+          <span class="badge status">print Friday</span>
+          <span class="badge status">confirmed</span>
+        </div>
+      </div>
+      <div class="ccard">
+        <div class="cd">Aug 12</div>
+        <div class="ct">RA print date lapsed</div>
+        <div class="badges" style="margin-top:10px">
+          <span class="badge status">lapsed</span>
+          <span class="badge project">RA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Variation C</span><span>Vertical, no scroll</span></div>
+    <p class="meta" style="margin:0 0 12px">The same four cards stacked so he can compare without a swipe. No .bleed. Width is the page. Use this in the catalog and on desktop. The horizontal strip is still Proposed — this is the read-them-all alternative.</p>
+    <div class="stack">
+      <div class="ccard" style="flex:none;width:auto">
+        <div class="cd">Aug 19</div>
+        <div class="ct">brochure_12 posted</div>
+      </div>
+      <div class="ccard" style="flex:none;width:auto">
+        <div class="cd">Aug 20</div>
+        <div class="ct">Lindsee briefing</div>
+      </div>
+      <div class="ccard" style="flex:none;width:auto">
+        <div class="cd">Aug 21</div>
+        <div class="ct">Print / Delta 676</div>
+      </div>
+      <div class="ccard" style="flex:none;width:auto">
+        <div class="cd">Aug 12</div>
+        <div class="ct">RA print date lapsed</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site">
+    <a class="back" href="index.html">← System</a><br>
+    Thursday, August 20, 2026
+  </footer>
+</div>
+
+</body>
+</html>
