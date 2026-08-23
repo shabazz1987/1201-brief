@@ -62,14 +62,6 @@
     justify-content: space-between;
     gap: 12px;
   }
-  .label .count { letter-spacing: 0.04em; font-weight: 500; opacity: .8; }
-  .brief p { margin: 0 0 14px; font-size: 17px; line-height: 1.6; }
-  .brief p:last-child { margin-bottom: 0; }
-  .decisions { margin: 18px 0 0; padding: 14px 16px; background: var(--card); border-radius: 8px; }
-  .decisions .dl { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
-  .decisions ol { margin: 0; padding-left: 18px; }
-  .decisions li { margin-bottom: 7px; }
-  .decisions li:last-child { margin-bottom: 0; }
   .row, a.row {
     display: block;
     padding: 12px 0;
@@ -82,51 +74,16 @@
   .when { flex: 0 0 72px; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
   .what { flex: 1; min-width: 0; }
   .who { font-weight: 620; }
-  .meta { color: var(--muted); font-size: 13px; }
   .gist { margin-top: 2px; color: var(--fg); }
-  .sub, .gist.dim { color: var(--muted); font-size: 14px; margin-top: 3px; }
   .go { color: var(--muted); font-size: 12.5px; white-space: nowrap; margin-left: auto; }
   a.row:hover .go { color: var(--accent); }
-  .flag {
-    display: inline-block;
-    font-size: 10.5px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--accent);
-    border: 1px solid var(--accent);
-    border-radius: 3px;
-    padding: 0 5px;
-    line-height: 1.5;
-    white-space: nowrap;
-    margin-left: 6px;
-    vertical-align: middle;
-  }
-  .empty { color: var(--muted); font-style: italic; padding: 12px 0; }
-  a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule); }
-  a:hover { border-bottom-color: var(--muted); }
-  a.row { border-bottom: 1px dotted var(--rule); }
-  a.row:hover { border-bottom-color: var(--rule); }
   footer {
     margin-top: 48px;
     padding-top: 16px;
     border-top: 1px solid var(--rule);
     color: var(--muted);
     font-size: 12.5px;
-    line-height: 1.8;
   }
-  .archive { margin-top: 8px; }
-  .archive a { margin-right: 12px; }
-  .status { display: flex; flex-wrap: wrap; }
-  .status span { white-space: nowrap; }
-  .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; vertical-align: middle; margin-right: 5px; opacity: .55; }
-  .q { margin-top: 6px; color: var(--muted); font-size: 14px; }
-  .notify { margin: 0 0 20px; }
-  .notify button {
-    appearance: none; border: 1px solid var(--rule); background: var(--card);
-    color: var(--fg); font: inherit; font-size: 14px; padding: 8px 12px; border-radius: 6px;
-  }
-  .notify .ok { color: var(--muted); font-size: 13px; }
 </style>
 </head>
 <body>
@@ -137,7 +94,8 @@
   </header>
   <section>
     <div class="label"><span>Briefs</span></div>
-    <a class="row" href="./"><span class="when">Today</span><div class="what"><span class="who">Friday, Aug 21</span><div class="gist">Current brief.</div></div><span class="go">Open</span></a>
+    <a class="row" href="./"><span class="when">Today</span><div class="what"><span class="who">Sunday, Aug 23</span><div class="gist">Current brief.</div></div><span class="go">Open</span></a>
+    <a class="row" href="2026-08-23.html"><span class="when">Aug 23</span><div class="what"><span class="who">Sunday</span></div><span class="go">Open</span></a>
     <a class="row" href="2026-08-21.html"><span class="when">Aug 21</span><div class="what"><span class="who">Friday</span></div><span class="go">Open</span></a>
     <a class="row" href="2026-08-20.html"><span class="when">Aug 20</span><div class="what"><span class="who">Thursday</span></div><span class="go">Open</span></a>
     <a class="row" href="2026-08-19.html"><span class="when">Aug 19</span><div class="what"><span class="who">Wednesday</span></div><span class="go">Open</span></a>
