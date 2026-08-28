@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="12:01 Daily">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>12:01 Daily</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+<link rel="icon" href="favicon.png?v=2" type="image/png">
+<link rel="manifest" href="/1201-brief/manifest.json?v=4">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #16161a;
+    --muted: #6b6b76;
+    --rule: #e4e4e9;
+    --card: #fafafa;
+    --accent: #c4321f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101013;
+      --fg: #e8e8ec;
+      --muted: #8f8f9c;
+      --rule: #26262d;
+      --card: #17171c;
+      --accent: #ff6a4d;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
+  body {
+    margin: 0;
+    padding: 32px 16px 80px;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (min-width: 640px) {
+    body { padding: 48px 24px 96px; }
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  header { margin-bottom: 8px; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  .mark { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; flex: 0 0 36px; }
+  h1 { font-size: 25px; line-height: 1.25; margin: 0; letter-spacing: -0.02em; font-weight: 620; }
+  .datebar { color: var(--muted); font-size: 14px; margin-bottom: 36px; }
+  section { margin: 0 0 40px; }
+  .label {
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .label .count { letter-spacing: 0.04em; font-weight: 500; opacity: .8; }
+  .brief p { margin: 0 0 14px; font-size: 17px; line-height: 1.6; }
+  .brief p:last-child { margin-bottom: 0; }
+  .decisions { margin: 18px 0 0; padding: 14px 16px; background: var(--card); border-radius: 8px; }
+  .decisions .dl { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+  .decisions ol { margin: 0; padding-left: 18px; }
+  .decisions li { margin-bottom: 7px; }
+  .decisions li:last-child { margin-bottom: 0; }
+  .row, a.row {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px dotted var(--rule);
+    color: inherit;
+    text-decoration: none;
+  }
+  a.row { display: flex; gap: 10px; align-items: baseline; }
+  .row:last-child, a.row:last-child { border-bottom: none; }
+  .when { flex: 0 0 72px; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .what { flex: 1; min-width: 0; }
+  .who { font-weight: 620; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .gist { margin-top: 2px; color: var(--fg); }
+  .sub, .gist.dim { color: var(--muted); font-size: 14px; margin-top: 3px; }
+  .go { color: var(--muted); font-size: 12.5px; white-space: nowrap; margin-left: auto; }
+  a.row:hover .go { color: var(--accent); }
+  .flag {
+    display: inline-block;
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    padding: 0 5px;
+    line-height: 1.5;
+    white-space: nowrap;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .empty { color: var(--muted); font-style: italic; padding: 12px 0; }
+  a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--muted); }
+  a.row { border-bottom: 1px dotted var(--rule); }
+  a.row:hover { border-bottom-color: var(--rule); }
+  footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.8;
+  }
+  .archive { margin-top: 8px; }
+  .archive a { margin-right: 12px; }
+  .status { display: flex; flex-wrap: wrap; }
+  .status span { white-space: nowrap; }
+  .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; vertical-align: middle; margin-right: 5px; opacity: .55; }
+  .q { margin-top: 6px; color: var(--muted); font-size: 14px; }
+  .notify { margin: 0 0 20px; }
+  .notify button {
+    appearance: none; border: 1px solid var(--rule); background: var(--card);
+    color: var(--fg); font: inherit; font-size: 14px; padding: 8px 12px; border-radius: 6px;
+  }
+  .notify .ok { color: var(--muted); font-size: 13px; }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><img class="mark" src="apple-touch-icon.png" alt=""><h1>12:01 Daily</h1></div>
+    <div class="notify" id="notify"></div>
+    <div class="datebar" id="datebar">Friday, August 28, 2026 · 12:01</div>
+  </header>
+    <div id="content">
+  <section class="brief">
+    <div class="label"><span>The Brief</span></div>
+    <p>Fly night. No meetings today. Delta 915 is 11:55pm PT from LAX, seat 32G Comfort Classic, lands JFK 8:16am ET Saturday (conf GAISGJ). Saturday and Sunday are empty. Next live hold is Tuesday: RA × 12:01 final presentation at 8:00am PT, then the weekly at 10:00am PT.</p>
+    <p>Katie’s RA Version 2 chase from Tuesday is still unanswered — “please urgently update us on this V2.” The feedback window was meant to end today. Last word is hers.</p>
+    <p>Darcy’s Outside follow-up from Monday is still open. She wants to keep talking, and 12:01 still has not sent an estimate. First-stage draft is ready.</p>
+    <p>Ben Peterson asked for a One+One showroom visit Monday or Tuesday. Those days are New York. Yesterday’s Serato merch kickoff locked Oct 9 for final files; Kat sent invoices last night (last word yours) and offered brand assets. Gustavo told Sean at 6:12am PT he will start sending the remaining Stone Island artworks today.</p>
+    <div class="decisions">
+      <div class="dl">Only you can decide</div>
+      <ol>
+        <li><strong>RA:</strong> when does Version 2 actually go to Katie and Nyshka?</li>
+        <li><strong>Ben:</strong> send him a few Mon/Tue times in New York?</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Schedule</span><span class="count">PT</span></div>
+    <div class="row"><span class="when">Fri</span><div class="what"><span class="who">Clear day</span> <span class="meta">· no meetings on live calendars</span>
+      <div class="sub">Confirmed empty on hr@, Project Schedules, Dweller, Personal/Social, Rideshare, Chopper through the flight.</div>
+    </div></div>
+    <a class="row" href="https://www.google.com/calendar/event?eid=cThlZnM2c21mMnZlOHExOWRuYTdkcmR1ZGsgY19uYjVqamUzMWlzaGtuNHJuaWVibTMzZTk4b0Bn&ctz=America/Los_Angeles"><span class="when">Fri 11:55</span><div class="what"><span class="who">Delta 915 LAX → JFK</span> <span class="meta">· 11:55pm PT Fri → 8:16am ET Sat · Travel</span>
+      <div class="sub">Conf GAISGJ · seat 32G Comfort Classic · ticket 0062459241878. Check-in already opened on h@.</div>
+    </div><span class="go">Open</span></a>
+    <a class="row" href="https://meet.google.com/hyi-ekng-rgj"><span class="when">Tue 8:00</span><div class="what"><span class="who">RA × 12:01 — Final presentation</span> <span class="meta">· 8:00–9:00am PT / 11:00am–12:00pm ET · Meet</span>
+      <div class="sub">Katie organizing. Gustavo accepted. You still needAction. Patrick is leftover on the invite.</div>
+    </div><span class="go">Join</span></a>
+    <div class="row"><span class="when">Tue 10:00</span><div class="what"><span class="who">12:01 Weekly Team Meeting</span> <span class="meta">· 10:00–11:00am PT / 1:00–2:00pm ET · Zoom</span>
+      <div class="sub">You still needAction. Gustavo and office@ accepted.</div>
+    </div></div>
+  </section>
+
+  <section>
+    <div class="label"><span>Needs response</span><span class="count">5</span></div>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/1a01a7e1372537fe"><span class="when">Tue 8:58</span><div class="what"><span class="who">Katie — RA V2</span><span class="flag">cannot slide</span><div class="gist">Urgent chase on Version 2 of Front Left. Feedback window was meant to end Friday. Last word is hers.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/1a035b9ffb6fce1a"><span class="when">Mon 2:42</span><div class="what"><span class="who">Darcy — Outside</span><span class="flag">cannot slide</span><div class="gist">Follow-up after Friday’s call. Lashun leftover SOW attached, wants to keep talking. Estimate still owed.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/1a04518e14a17f80"><span class="when">Thu 5:13</span><div class="what"><span class="who">Ben — One+One</span><div class="gist">Friday showroom will not work. Asked for a few times Monday or Tuesday. You land Saturday morning, so those days are New York.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/19ea85ad6b77c812"><span class="when">Sat 1:10</span><div class="what"><span class="who">Bas — Mantra</span><div class="gist">Offered Wed Aug 26 and Thu Aug 27 CET. Those windows are gone. Needs fresh times. Last word is his.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#inbox/19fb8c6239570a75"><span class="when">Thu 10:07</span><div class="what"><span class="who">Patrick — remittance</span><div class="gist">Asked for proof on the $1,934.78. Zelle already went out yesterday. Remittance note is still unsent.</div></div><span class="go">Open</span></a>
+  </section>
+
+  <section>
+    <div class="label"><span>Meetings</span></div>
+    <div class="empty">None today. Yesterday’s Serato merch kickoff is on Fathom: tech-forward capsule, bomber + Maxell graphic, One+One for standards, files due Oct 9.</div>
+  </section>
+
+  <section>
+    <div class="label"><span>Discord</span><span class="count">Midnight Oil</span></div>
+    <div class="row"><span class="when">Wed</span><div class="what"><span class="who">Stone Island Current</span>
+      <div class="gist">Morell Bianca Pina and Studio One London refs posted to the project channels. Gustavo reacted. Nobody waiting in Direct Chats. Selfridges print wrap sits with Gustavo and Jaimey.</div>
+    </div></div>
+  </section>
+
+  <section>
+    <div class="label"><span>ClickUp</span></div>
+    <a class="row" href="https://app.clickup.com/t/86b8ar133"><span class="when">Lapsed</span><div class="what"><span class="who">RA — Estimated Print Date</span><div class="gist">Still Open. Due Aug 12.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://app.clickup.com/t/86bacp0uy"><span class="when">Today</span><div class="what"><span class="who">Stone Island — Team Off</span><div class="gist">Open on the Selfridges / Catalogue list. Due Aug 28.</div></div><span class="go">Open</span></a>
+  </section>
+
+  </div>
+  <footer>
+    <div class="archive" id="archive-links">Earlier: <a href="2026-08-27.html">Aug 27</a> <a href="2026-08-26.html">Aug 26</a> <a href="2026-08-25.html">Aug 25</a> <a href="archive.html">All briefs</a></div>
+    <div>Friday, August 28, 2026 · generated 7:20 AM PT from live Calendar, Superhuman, Discord, Fathom, and ClickUp.</div>
+    <div class="status">
+      <span><span class="dot"></span>Calendar ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Superhuman ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Discord ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Fathom ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Granola ok</span>
+    </div>
+  </footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
