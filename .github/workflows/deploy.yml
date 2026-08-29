@@ -1,0 +1,13 @@
+name: deploy-daily
+# Triggers a Vercel production deploy on every push — guaranteed path,
+# independent of the native GitHub integration.
+on:
+  push:
+    branches: [main]
+jobs:
+  hook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Fire Vercel deploy hook
+        run: curl -s -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}" > /dev/null && echo "deploy triggered"
