@@ -1,1 +1,77 @@
-PLACEHOLDER
+{
+  "today": "2026-08-29",
+  "today_label": "Saturday, August 29, 2026 · 12:01",
+  "briefs": [
+    {
+      "date": "2026-08-29",
+      "label": "Aug 29",
+      "href": "2026-08-29.html",
+      "current": true
+    },
+    {
+      "date": "2026-08-28",
+      "label": "Aug 28",
+      "href": "2026-08-28.html"
+    },
+    {
+      "date": "2026-08-27",
+      "label": "Aug 27",
+      "href": "2026-08-27.html"
+    },
+    {
+      "date": "2026-08-26",
+      "label": "Aug 26",
+      "href": "2026-08-26.html"
+    },
+    {
+      "date": "2026-08-25",
+      "label": "Aug 25",
+      "href": "2026-08-25.html"
+    },
+    {
+      "date": "2026-08-23",
+      "label": "Aug 23",
+      "href": "2026-08-23.html"
+    },
+    {
+      "date": "2026-08-21",
+      "label": "Aug 21",
+      "href": "2026-08-21.html"
+    },
+    {
+      "date": "2026-08-20",
+      "label": "Aug 20",
+      "href": "2026-08-20.html"
+    },
+    {
+      "date": "2026-08-19",
+      "label": "Aug 19",
+      "href": "2026-08-19.html"
+    },
+    {
+      "date": "2026-08-18",
+      "label": "Aug 18",
+      "href": "2026-08-18.html"
+    },
+    {
+      "date": "2026-08-17",
+      "label": "Aug 17",
+      "href": "2026-08-17.html"
+    },
+    {
+      "date": "2026-08-16",
+      "label": "Aug 16",
+      "href": "2026-08-16.html"
+    },
+    {
+      "date": "2026-08-15",
+      "label": "Aug 15",
+      "href": "2026-08-15.html"
+    },
+    {
+      "date": "2026-08-10",
+      "label": "Aug 10",
+      "href": "2026-08-10.html"
+    }
+  ]
+}
