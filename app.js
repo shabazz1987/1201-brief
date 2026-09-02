@@ -6,18 +6,27 @@
   const datebar = document.getElementById('datebar');
   const notify = document.getElementById('notify');
   const stamp = Date.now();
+  // Only the live pages refresh themselves from today.html; dated archive
+  // pages keep their own baked-in content.
+  const isLivePage = /^\/(index\.html|today\.html)?$/.test(location.pathname);
 
   function loadToday() {
     return fetch('today.html?t=' + stamp, { cache: 'no-store' })
       .then(function (r) { if (!r.ok) throw new Error('today'); return r.text(); })
-      .then(function (html) { if (content) content.innerHTML = html; });
+      .then(function (html) {
+        if (!content) return;
+        // today.html is a complete page — inject only what's inside its #content
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var inner = doc.getElementById('content');
+        content.innerHTML = inner ? inner.innerHTML : html;
+      });
   }
 
   function loadArchive() {
     return fetch('archive.json?t=' + stamp, { cache: 'no-store' })
       .then(function (r) { if (!r.ok) throw new Error('archive'); return r.json(); })
       .then(function (data) {
-        if (datebar && data.today_label) datebar.textContent = data.today_label;
+        if (isLivePage && datebar && data.today_label) datebar.textContent = data.today_label;
         if (!archiveEl) return;
         var prev = (data.briefs || []).filter(function (b) { return !b.current; });
         archiveEl.innerHTML = 'Earlier: ' + prev.map(function (b) {
@@ -100,7 +109,7 @@
     }
   }
 
-  loadToday().catch(function () {});
+  if (isLivePage) loadToday().catch(function () {});
   loadArchive().catch(function () {});
 
   if ('serviceWorker' in navigator) {
