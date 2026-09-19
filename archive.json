@@ -1,12 +1,18 @@
 {
-  "today": "2026-09-18",
-  "today_label": "Friday, September 18, 2026 \u00b7 12:01",
+  "today": "2026-09-19",
+  "today_label": "Saturday, September 19, 2026 \u00b7 12:01",
   "briefs": [
+    {
+      "date": "2026-09-19",
+      "label": "Sep 19",
+      "href": "2026-09-19.html",
+      "current": true
+    },
     {
       "date": "2026-09-18",
       "label": "Sep 18",
       "href": "2026-09-18.html",
-      "current": true
+      "current": false
     },
     {
       "date": "2026-09-17",
