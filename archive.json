@@ -1,1 +1,222 @@
-PLACEHOLDER
+{
+  "today": "2026-09-22",
+  "today_label": "Tuesday, September 22, 2026 \u00b7 12:01",
+  "briefs": [
+    {
+      "date": "2026-09-22",
+      "label": "Sep 22",
+      "href": "2026-09-22.html",
+      "current": true
+    },
+    {
+      "date": "2026-09-21",
+      "label": "Sep 21",
+      "href": "2026-09-21.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-20",
+      "label": "Sep 20",
+      "href": "2026-09-20.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-19",
+      "label": "Sep 19",
+      "href": "2026-09-19.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-18",
+      "label": "Sep 18",
+      "href": "2026-09-18.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-17",
+      "label": "Sep 17",
+      "href": "2026-09-17.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-16",
+      "label": "Sep 16",
+      "href": "2026-09-16.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-15",
+      "label": "Sep 15",
+      "href": "2026-09-15.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-13",
+      "label": "Sep 13",
+      "href": "2026-09-13.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-12",
+      "label": "Sep 12",
+      "href": "2026-09-12.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-11",
+      "label": "Sep 11",
+      "href": "2026-09-11.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-10",
+      "label": "Sep 10",
+      "href": "2026-09-10.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-09",
+      "label": "Sep 9",
+      "href": "2026-09-09.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-07",
+      "label": "Sep 7",
+      "href": "2026-09-07.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-06",
+      "label": "Sep 6",
+      "href": "2026-09-06.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-05",
+      "label": "Sep 5",
+      "href": "2026-09-05.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-04",
+      "label": "Sep 4",
+      "href": "2026-09-04.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-03",
+      "label": "Sep 3",
+      "href": "2026-09-03.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-02",
+      "label": "Sep 2",
+      "href": "2026-09-02.html",
+      "current": false
+    },
+    {
+      "date": "2026-09-01",
+      "label": "Sep 1",
+      "href": "2026-09-01.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-31",
+      "label": "Aug 31",
+      "href": "2026-08-31.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-30",
+      "label": "Aug 30",
+      "href": "2026-08-30.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-29",
+      "label": "Aug 29",
+      "href": "2026-08-29.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-28",
+      "label": "Aug 28",
+      "href": "2026-08-28.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-27",
+      "label": "Aug 27",
+      "href": "2026-08-27.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-26",
+      "label": "Aug 26",
+      "href": "2026-08-26.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-25",
+      "label": "Aug 25",
+      "href": "2026-08-25.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-23",
+      "label": "Aug 23",
+      "href": "2026-08-23.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-21",
+      "label": "Aug 21",
+      "href": "2026-08-21.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-20",
+      "label": "Aug 20",
+      "href": "2026-08-20.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-19",
+      "label": "Aug 19",
+      "href": "2026-08-19.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-18",
+      "label": "Aug 18",
+      "href": "2026-08-18.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-17",
+      "label": "Aug 17",
+      "href": "2026-08-17.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-16",
+      "label": "Aug 16",
+      "href": "2026-08-16.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-15",
+      "label": "Aug 15",
+      "href": "2026-08-15.html",
+      "current": false
+    },
+    {
+      "date": "2026-08-10",
+      "label": "Aug 10",
+      "href": "2026-08-10.html",
+      "current": false
+    }
+  ]
+}
