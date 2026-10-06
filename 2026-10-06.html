@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="12:01 Daily">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>12:01 Daily</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+<link rel="icon" href="favicon.png?v=2" type="image/png">
+<link rel="manifest" href="/1201-brief/manifest.json?v=4">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #16161a;
+    --muted: #6b6b76;
+    --rule: #e4e4e9;
+    --card: #fafafa;
+    --accent: #c4321f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101013;
+      --fg: #e8e8ec;
+      --muted: #8f8f9c;
+      --rule: #26262d;
+      --card: #17171c;
+      --accent: #ff6a4d;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
+  body {
+    margin: 0;
+    padding: 32px 16px 80px;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (min-width: 640px) {
+    body { padding: 48px 24px 96px; }
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  header { margin-bottom: 8px; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  .mark { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; flex: 0 0 36px; }
+  h1 { font-size: 25px; line-height: 1.25; margin: 0; letter-spacing: -0.02em; font-weight: 620; }
+  .datebar { color: var(--muted); font-size: 14px; margin-bottom: 36px; }
+  section { margin: 0 0 40px; }
+  .label {
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .label .count { letter-spacing: 0.04em; font-weight: 500; opacity: .8; }
+  .brief p { margin: 0 0 14px; font-size: 17px; line-height: 1.6; }
+  .brief p:last-child { margin-bottom: 0; }
+  .decisions { margin: 18px 0 0; padding: 14px 16px; background: var(--card); border-radius: 8px; }
+  .decisions .dl { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+  .decisions ol { margin: 0; padding-left: 18px; }
+  .decisions li { margin-bottom: 7px; }
+  .decisions li:last-child { margin-bottom: 0; }
+  .row, a.row {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px dotted var(--rule);
+    color: inherit;
+    text-decoration: none;
+  }
+  a.row { display: flex; gap: 10px; align-items: baseline; }
+  .row:last-child, a.row:last-child { border-bottom: none; }
+  .when { flex: 0 0 72px; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .what { flex: 1; min-width: 0; }
+  .who { font-weight: 620; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .gist { margin-top: 2px; color: var(--fg); }
+  .sub, .gist.dim { color: var(--muted); font-size: 14px; margin-top: 3px; }
+  .go { color: var(--muted); font-size: 12.5px; white-space: nowrap; margin-left: auto; }
+  a.row:hover .go { color: var(--accent); }
+  .flag {
+    display: inline-block;
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    padding: 0 5px;
+    line-height: 1.5;
+    white-space: nowrap;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .empty { color: var(--muted); font-style: italic; padding: 12px 0; }
+  a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--muted); }
+  a.row { border-bottom: 1px dotted var(--rule); }
+  a.row:hover { border-bottom-color: var(--rule); }
+  footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.8;
+  }
+  .archive { margin-top: 8px; }
+  .archive a { margin-right: 12px; }
+  .status { display: flex; flex-wrap: wrap; }
+  .status span { white-space: nowrap; }
+  .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; vertical-align: middle; margin-right: 5px; opacity: .55; }
+  .q { margin-top: 6px; color: var(--muted); font-size: 14px; }
+  .notify { margin: 0 0 20px; }
+  .notify button {
+    appearance: none; border: 1px solid var(--rule); background: var(--card);
+    color: var(--fg); font: inherit; font-size: 14px; padding: 8px 12px; border-radius: 6px;
+  }
+  .notify .ok { color: var(--muted); font-size: 13px; }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><img class="mark" src="apple-touch-icon.png" alt=""><h1>12:01 Daily</h1></div>
+    <div class="notify" id="notify"></div>
+    <div class="datebar" id="datebar">Tuesday, October 6, 2026 · 12:01</div>
+  </header>
+        <div id="content">
+
+
+  <section class="brief">
+    <div class="label"><span>The Brief</span></div>
+    <p>Tuesday in LA, two real meetings back to back: <strong>PSNY check-in</strong> with Bryant and Lindsee at <strong>9:00–10:00am PT / noon–1:00pm ET</strong>, then <strong>Weekly Team</strong> with Lindsee and Gus at <strong>10:00–11:00am PT / 1:00–2:00pm ET</strong>. Mantra could land at 11:00am PT if you take Fanneke’s slot.</p>
+    <p><strong>RA V3 is the cannot-slide.</strong> Gus told Nyshka ~2:14am PT he’s working toward V3 by Wednesday and will add the Index and Credits page numbers in-house. Nyshka then told Nick at Akcent that 12:01 sends the draft file <strong>Oct 7</strong> and the final PDF <strong>EOD Oct 12</strong>. At ~3:36am PT Gus posted in #resident-advisor-book that it’s “progressing very well” but he needs to chat with you, and that he messaged you directly. Weekly Team is the natural place.</p>
+    <p><strong>Serato can’t slide either.</strong> Kat wrote Lindsee Monday ~1:41pm PT: Friday Oct 9 is a hard production deadline, Serato hasn’t seen anything yet, and she asked for a V1 PDF yesterday plus a date for V2. Lindsee told her a plan is coming “straight from Hassan and the design team.” ClickUp still shows the R2 Refined Presentation due today, and #serato-capsule has been quiet since before Oct 1.</p>
+    <p><strong>Mantra needs a pick today.</strong> Fanneke offered 8pm CET today (11:00am PT / 2:00pm ET) or Thursday 9pm CET (noon PT / 3:00pm ET). Lindsee said she’d confirm later today. Contract status is still the open question from Monday’s 1:1.</p>
+    <p><strong>Owed from Monday’s 1:1.</strong> Lindsee still needs Dropbox access, and her payment is open since Chase canceled the first $1k Zelle on Monday. Julius Tarng is now the one waiting: you replied Monday ~10:55am PT.</p>
+    <div class="decisions">
+      <div class="dl">Only you can decide</div>
+      <ol>
+        <li><strong>Serato:</strong> Who makes V1 this week, and what date does Kat get?</li>
+        <li><strong>Mantra:</strong> Today 11:00am PT or Thursday noon PT?</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><span>Schedule</span><span class="count">PT</span></div>
+    <div class="row"><span class="when">9:00am</span><div class="what"><span class="who">12:01 Check-In re PSNY</span> <span class="meta">· noon–1:00pm ET · Zoom</span>
+      <div class="sub">Bryant Wells, Lindsee · office@ sent two copies of the invite · RSVP pending · prep below.</div>
+    </div></div>
+    <div class="row"><span class="when">10:00am</span><div class="what"><span class="who">12:01 Weekly Team Meeting</span> <span class="meta">· 1:00–2:00pm ET · Zoom</span>
+      <div class="sub">Lindsee, Gus · prep below.</div>
+    </div></div>
+    <div class="row"><span class="when">11:00am?</span><div class="what"><span class="who">Mantra — not booked</span> <span class="meta">· 2:00pm ET · Fanneke’s offer</span>
+      <div class="sub">Only if you take it; otherwise Thursday noon PT.</div>
+    </div></div>
+    <div class="row"><span class="when">All day</span><div class="what"><span class="who">pubes birthday</span> <span class="meta">· personal</span></div></div>
+  </section>
+
+  <section>
+    <div class="label"><span>Meetings</span></div>
+    <div class="row"><span class="when">9:00am</span><div class="what"><span class="who">PSNY check-in — Bryant + Lindsee</span>
+      <div class="gist">Bryant read the revised SOW timeline last week and wants to talk through “a couple questions.” Per Monday’s 1:1, the new timeline runs almost a year longer and goes to PSNY Thursday as a firm proposal, not an opener. Today: hear his questions, settle his dates, lock the version for Thursday.</div>
+      <div class="sub">Thursday client call 10:00–11:00am PT · Ana accepted; Alex, Christofer, Pati, Taja invited. <a href="https://docs.google.com/document/d/1pHt0Qd3r8eeoA5XlGixSBcsK7MZSFhGOSZ-6zdVzhlI/edit">SOW timeline doc</a></div>
+    </div></div>
+    <div class="row"><span class="when">10:00am</span><div class="what"><span class="who">Weekly Team — Lindsee + Gus</span>
+      <div class="gist">RA: confirm V3 lands Wednesday and the Oct 7 draft file to Nick holds, and give Gus the chat he asked for. Serato: decide who carries V1 and what date Kat gets. Mantra: pick the slot so Lindsee can confirm today.</div>
+      <div class="sub">Monday ~1:58pm PT Lindsee told the RA channel it was “asap/tomorrow,” or you’d bring someone on. Gus and veco7782 answered overnight.</div>
+    </div></div>
+  </section>
+
+  <section>
+    <div class="label"><span>Needs response</span><span class="count">5</span></div>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/19f3ac3ae06e22f1"><span class="when">Mon</span><div class="what"><span class="who">Kat Egarr — Serato capsule</span><span class="flag">cannot slide</span><div class="gist">Fri Oct 9 hard deadline. Wants a V1 PDF and a V2 date. Lindsee promised a plan from you.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://discord.com/channels/999843458711818241/1300423848872906762"><span class="when">Today</span><div class="what"><span class="who">Gus — RA V3</span><span class="flag">cannot slide</span><div class="gist">“Progressing very well, need to chat w him.” V3 to Nyshka Wed; draft file to Nick Oct 7.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a0b51fee04b9fbc"><span class="when">Today</span><div class="what"><span class="who">Fanneke — Mantra slot</span><div class="gist">Today 11:00am PT or Thu noon PT. Lindsee is holding the reply for your pick.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a10df1f2e2002bb"><span class="when">9am</span><div class="what"><span class="who">Bryant Wells — PSNY SOW questions</span><div class="gist">Covered in the 9:00am PT check-in.</div></div><span class="go">Open</span></a>
+    <div class="row"><span class="when">Mon</span><div class="what"><span class="who">Lindsee — Dropbox + payment</span><div class="gist">From Monday’s Fathom recap: Dropbox access today, 2× $1k Zelle plus ACH for the rest. Chase canceled the first Zelle.</div></div></div>
+  </section>
+
+  <section>
+    <div class="label"><span>Discord</span><span class="count">Midnight Oil</span></div>
+    <div class="row"><span class="when">Today</span><div class="what"><span class="who">#resident-advisor-book</span>
+      <div class="gist">Lindsee Mon ~1:58pm PT: urgent, PDF asap/tomorrow. veco7782 ~7:28pm PT: “we’re working on the PDF.” Gus ~3:36am PT: progressing, needs to chat with you.</div>
+    </div></div>
+    <div class="row"><span class="when">Mon</span><div class="what"><span class="who">#lindsee-hassan</span>
+      <div class="gist">Lindsee posted two attachments ~1:20pm PT, no text.</div>
+    </div></div>
+    <div class="row"><span class="when">Quiet</span><div class="what"><span class="who">Studio channels</span>
+      <div class="gist">Nothing new in #serato-capsule, #mantra-publication, #performance-space-identity, or #gustavo-1201.</div>
+    </div></div>
+  </section>
+
+  <section>
+    <div class="label"><span>ClickUp</span></div>
+    <a class="row" href="https://app.clickup.com/t/86bbxeqje"><span class="when">Tue 10/6</span><div class="what"><span class="who">Serato | R2 Refined Presentation</span><div class="gist">Open · due today on the Sep 18 workback; R1 (86bbxdhnm, Sep 29) also still open.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://app.clickup.com/t/86bbwxpdd"><span class="when">Fri 10/9</span><div class="what"><span class="who">Serato | Final Delivery — Designs &amp; Tech Packs</span><div class="gist">Open · matches Kat’s hard Friday.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://app.clickup.com/t/86badbrtm"><span class="when">Wed 10/14</span><div class="what"><span class="who">PSNY | Phase 2.3 Refinement Presentation</span><div class="gist">Open · still on the old timeline; the revised SOW will move it.</div></div><span class="go">Open</span></a>
+    <div class="row"><span class="when">Note</span><div class="what"><span class="who">Older overdue backlog</span>
+      <div class="gist dim">About 20 other workback milestones in the ±14-day window, untouched since June. Older open tasks are not listed.</div>
+    </div></div>
+  </section>
+
+  <section>
+    <div class="label"><span>Looking ahead</span></div>
+    <div class="row"><span class="when">Wed 10/7</span><div class="what"><span class="who">RA V3 + Hoka hold</span>
+      <div class="gist">V3 to Nyshka and draft file to Nick. HOLD: Hoka Call 12:00–12:30pm PT / 3:00–3:30pm ET; Chloe is sending the real invite.</div>
+    </div></div>
+    <div class="row"><span class="when">Thu 10/8</span><div class="what"><span class="who">PSNY client call + mid-week</span>
+      <div class="gist">12:01 + PSNY 10:00–11:00am PT / 1:00–2:00pm ET. Mantra fallback noon PT. Hassan + Lindsee Mid-Week 2:00–2:30pm PT / 5:00–5:30pm ET.</div>
+    </div></div>
+    <div class="row"><span class="when">Fri 10/9</span><div class="what"><span class="who">Serato final + Dweller</span>
+      <div class="gist">Serato tech pack and files due. Dweller Festival Brainstorm 8:30–9:30am PT / 11:30am–12:30pm ET (optional).</div>
+    </div></div>
+    <div class="row"><span class="when">Mon 10/12</span><div class="what"><span class="who">RA final PDF</span>
+      <div class="gist">Final PDF to Akcent EOD. Julius Tarng is out Oct 12–23.</div>
+    </div></div>
+  </section>
+
+  <footer>
+    <div class="archive" id="archive-links">Earlier: <a href="2026-10-05.html">Oct 5</a> <a href="2026-10-04.html">Oct 4</a> <a href="2026-10-03.html">Oct 3</a> <a href="2026-10-02.html">Oct 2</a> <a href="archive.html">All briefs</a></div>
+    <div>Tuesday, October 6, 2026 · generated ~7:40 AM PT from live Calendar, Superhuman, Discord, Fathom, Granola, and ClickUp.</div>
+    <div class="status">
+      <span><span class="dot"></span>Calendar ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Superhuman ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Discord ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Fathom ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Granola ok (no notes this week)</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>ClickUp ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Dropbox skipped</span>
+    </div>
+  </footer>
+
+
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
