@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="12:01 Daily">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>12:01 Daily</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+<link rel="icon" href="favicon.png?v=2" type="image/png">
+<link rel="manifest" href="/1201-brief/manifest.json?v=4">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #16161a;
+    --muted: #6b6b76;
+    --rule: #e4e4e9;
+    --card: #fafafa;
+    --accent: #c4321f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101013;
+      --fg: #e8e8ec;
+      --muted: #8f8f9c;
+      --rule: #26262d;
+      --card: #17171c;
+      --accent: #ff6a4d;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
+  body {
+    margin: 0;
+    padding: 32px 16px 80px;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (min-width: 640px) {
+    body { padding: 48px 24px 96px; }
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  header { margin-bottom: 8px; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  .mark { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; flex: 0 0 36px; }
+  h1 { font-size: 25px; line-height: 1.25; margin: 0; letter-spacing: -0.02em; font-weight: 620; }
+  .datebar { color: var(--muted); font-size: 14px; margin-bottom: 36px; }
+  section { margin: 0 0 40px; }
+  .label {
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .label .count { letter-spacing: 0.04em; font-weight: 500; opacity: .8; }
+  .brief p { margin: 0 0 14px; font-size: 17px; line-height: 1.6; }
+  .brief p:last-child { margin-bottom: 0; }
+  .decisions { margin: 18px 0 0; padding: 14px 16px; background: var(--card); border-radius: 8px; }
+  .decisions .dl { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+  .decisions ol { margin: 0; padding-left: 18px; }
+  .decisions li { margin-bottom: 7px; }
+  .decisions li:last-child { margin-bottom: 0; }
+  .row, a.row {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px dotted var(--rule);
+    color: inherit;
+    text-decoration: none;
+  }
+  a.row { display: flex; gap: 10px; align-items: baseline; }
+  .row:last-child, a.row:last-child { border-bottom: none; }
+  .when { flex: 0 0 72px; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .what { flex: 1; min-width: 0; }
+  .who { font-weight: 620; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .gist { margin-top: 2px; color: var(--fg); }
+  .sub, .gist.dim { color: var(--muted); font-size: 14px; margin-top: 3px; }
+  .go { color: var(--muted); font-size: 12.5px; white-space: nowrap; margin-left: auto; }
+  a.row:hover .go { color: var(--accent); }
+  .flag {
+    display: inline-block;
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    padding: 0 5px;
+    line-height: 1.5;
+    white-space: nowrap;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .empty { color: var(--muted); font-style: italic; padding: 12px 0; }
+  a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--muted); }
+  a.row { border-bottom: 1px dotted var(--rule); }
+  a.row:hover { border-bottom-color: var(--rule); }
+  footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.8;
+  }
+  .archive { margin-top: 8px; }
+  .archive a { margin-right: 12px; }
+  .status { display: flex; flex-wrap: wrap; }
+  .status span { white-space: nowrap; }
+  .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; vertical-align: middle; margin-right: 5px; opacity: .55; }
+  .q { margin-top: 6px; color: var(--muted); font-size: 14px; }
+  .notify { margin: 0 0 20px; }
+  .notify button {
+    appearance: none; border: 1px solid var(--rule); background: var(--card);
+    color: var(--fg); font: inherit; font-size: 14px; padding: 8px 12px; border-radius: 6px;
+  }
+  .notify .ok { color: var(--muted); font-size: 13px; }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><img class="mark" src="apple-touch-icon.png" alt=""><h1>12:01 Daily</h1></div>
+    <div class="notify" id="notify"></div>
+    <div class="datebar" id="datebar">Tuesday, October 20, 2026 · 12:01</div>
+  </header>
+        <div id="content">
+
+  <section class="brief">
+    <div class="label"><span>The Brief</span></div>
+    <p>Still in LA today, and it’s a light calendar. <strong>The one real meeting is Mantra at 11am PT</strong> with Fanneke and Bas. You declined the 12:01 Weekly Team at 7:06am PT, so the 10am slot is open. <strong>You fly tomorrow night</strong>: JetBlue 1224 leaves LAX Terminal 1 Wed 11:59pm PT and lands JFK Thu 8:29am ET.</p>
+    <p><strong>Mantra can’t slide.</strong> Lindsee’s agenda has two notes for this call: apologize for the earlier no-show, and the ContractWorks contract Bas sent was never signed on 12:01’s side. Fanneke offered Friday to re-send it this week, and Lindsee said yes, but nothing new has come in from Modem since.</p>
+    <p><strong>RA is moving on both sides.</strong> You sent Kazim image requests for six Section 4 stories at 6:10pm PT Monday. He says the team is digging, and Katie wrote at 5:02am PT that she’ll check with Nyshka today and come back ASAP. Gustavo cleaned up the fonts and exported a full-book PDF Monday, with no typesetting yet, while you worked on the colophon. Kazim is still owed the rest-of-book update.</p>
+    <div class="q">Paul Clement at RA asked for access to the Section 3 and Section 4 proofreading PDFs on Monday. Should he get it?</div>
+    <p><strong>Tyler Blint-Welsh’s first draft is a day past.</strong> Lindsee told him on Oct 2 he’d have it on or around the 19th. Nothing has gone out on the thread, and it’s still on Lindsee’s list this week.</p>
+    <div class="q">Is Tyler’s draft going out this week, so Lindsee can give him a firm date?</div>
+    <p><strong>Source Type has more time.</strong> Ben said end of week works for the No-AI symbol, so it’s due around Fri Oct 23.</p>
+  </section>
+
+  <section>
+    <div class="label"><span>Schedule</span><span class="count">PT</span></div>
+    <div class="row"><span class="when">10:00</span><div class="what"><span class="who">12:01 Weekly Team Meeting</span> <span class="flag">declined</span>
+      <div class="sub">10–11am PT / 1–2pm ET · Zoom. You declined at 7:06am PT. Lindsee and Gustavo haven’t responded.</div>
+    </div></div>
+    <div class="row"><span class="when">11:00</span><div class="what"><span class="who">Mantra · Check-in Hassan</span>
+      <div class="sub">11–11:30am PT / 2–2:30pm ET / 8pm CET · Google Meet. Fanneke and Bas accepted, and so did you. Lindsee hasn’t responded.</div>
+    </div></div>
+    <div class="row"><span class="when">Wed 23:59</span><div class="what"><span class="who">JetBlue B6 1224 LAX → JFK</span> <span class="flag">flight alert</span>
+      <div class="sub">Tomorrow night from LAX Terminal 1, arriving Thu Oct 22 8:29am ET. Conf QJLNUU · EvenMore · seat 10F · new ticket 2792123648432. Moved from Monday, and JetBlue issued a $50 travel credit. It’s on the h@ calendar. The stale hr@ copy was removed overnight.</div>
+    </div></div>
+  </section>
+
+  <section>
+    <div class="label"><span>Meetings</span></div>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a0b51fee04b9fbc"><span class="when">11:00</span><div class="what"><span class="who">Mantra · Fanneke Budding + Bas van de Poel (Modem)</span><div class="gist">This is the R&amp;D publication for the watch, planned to launch alongside the November product release, with Stolk in the printer conversation. Last contact was Fanneke on Fri Oct 16: the contract still isn’t signed, and she’d re-send it. From the June kickoff, 12:01 owes the direction, a workback and the SOW.</div><div class="sub">Open: is November still the launch, and when is the print window now? There are no Fathom or Granola notes from a Mantra call. The Oct 5 LD+HR check-in only flagged the contract.</div></div><span class="go">Open</span></a>
+  </section>
+
+  <section>
+    <div class="label"><span>Waiting on you</span><span class="count">8</span></div>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a0b51fee04b9fbc"><span class="when">Today</span><div class="what"><span class="who">Fanneke + Bas · Mantra contract</span><span class="flag">today</span><div class="gist">Unsigned in ContractWorks. Fanneke is re-sending it this week, and the call is at 11am PT.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a15501ebab552d1"><span class="when">Mon</span><div class="what"><span class="who">Paul Clement (RA) · Dropbox access</span><div class="gist">Asked to view Section-4-101226-Proofreading.pdf and RA_25_Section-3-100926.pdf.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1955e8a6e122952d"><span class="when">Oct 19</span><div class="what"><span class="who">Tyler Blint-Welsh · first draft</span><span class="flag">late</span><div class="gist">Promised on or around the 19th for the Black Techno DJs book. Nothing has been sent yet.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a0ced782a118856"><span class="when">Mon</span><div class="what"><span class="who">Kazim Rashid · rest of the RA book</span><div class="gist">Still owed the rest-of-book update. RA is pulling the Section 4 images you asked for.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a0ef13f000031af"><span class="when">Mon</span><div class="what"><span class="who">Taeer · Palestine fundraiser poster</span><div class="gist">Wants the price per copy and a photo of the limited-edition screen print so she can budget more copies. Meriem and Orian are cc’d.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a0a639458d110ca"><span class="when">Oct 12</span><div class="what"><span class="who">Elfi · Victionary NYC guide</span><span class="flag">overdue</span><div class="gist">The CITIX60 questionnaire and headshot were due Oct 12. Lindsee lists it as overdue.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a0906e442c51fcb"><span class="when">Oct 13</span><div class="what"><span class="who">Jez · Samuel Walker invoice</span><div class="gist">Seeking Mavis Beacon. Still wants a rough payment ETA.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a1120ac52b3b063"><span class="when">Oct 6</span><div class="what"><span class="who">Marwan · Silence Please identity</span><div class="gist">Still waiting on your approach, earliest availability and an exploration budget.</div></div><span class="go">Open</span></a>
+  </section>
+
+  <section>
+    <div class="label"><span>Also moving</span></div>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/19f3ac3ae06e22f1"><span class="when">Thu</span><div class="what"><span class="who">Kat Egarr · Serato check-in</span><div class="gist">Kat wants to keep the Thu Oct 22 creative check-in with Abbas and Diana. Lindsee asked her to send the invite, and it isn’t on the calendar yet. The Serato copy edits go in before it.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a0910c7ada17ee4"><span class="when">Fri</span><div class="what"><span class="who">Source Type · No-AI symbol</span><div class="gist">Ben extended the deadline to end of week. Lindsee and Laurenz are on the thread.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a1403eebdb91260"><span class="when">Wed</span><div class="what"><span class="who">Ja’Tovia Gary · catch-up</span><div class="gist">She asked for Wednesday or Friday. Lindsee offered Wed 2pm or 5pm ET (11am or 2pm PT), and Ja’Tovia hasn’t picked one yet.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1994f8ec4a3c116c"><span class="when">Mon</span><div class="what"><span class="who">Dweller merch · Arena Embroidery</span><div class="gist">Arena told Frankie they’d love to work together again and asked her to call. Nothing is needed from you yet.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a14814ede34cb0f"><span class="when">6:34am</span><div class="what"><span class="who">Dropbox · team cleanup</span><div class="gist">Tarin has been removed, Patrick’s workspace is deleted, and his files are transferred to you. Per support ticket #26755639, what’s left is reducing the license count. The failed renewal from Friday hasn’t shown a resolution in mail yet.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a1362347b709706"><span class="when">Tonight</span><div class="what"><span class="who">WePresent x Phaidon cocktail</span><div class="gist">6:30–9pm at Jean’s. You’re still in LA and never replied, and it isn’t on the calendar.</div></div><span class="go">Open</span></a>
+    <div class="row"><span class="when">Mon</span><div class="what"><span class="who">Fathom · RA book sync with Gustavo</span>
+      <div class="gist">The file had 155 errors, mostly from missing fonts and overset text. The fix was a shared Final Typefaces folder and a dated full PDF from Gustavo as the baseline, and the back matter moves to its own file.</div>
+    </div></div>
+  </section>
+
+  <section>
+    <div class="label"><span>Discord</span><span class="count">Midnight Oil</span></div>
+    <div class="row"><span class="when">Mon</span><div class="what"><span class="who">#gustavo-1201</span>
+      <div class="gist">Your RA working session with Gustavo, 12–1:10pm PT. He replaced the conflicting fonts in every section and posted the full RA_25_Book-101926 PDF. The Final Typefaces folder is in place, but Monument Grotesk Light is missing.</div>
+    </div></div>
+    <div class="row"><span class="when">Mon</span><div class="what"><span class="who">#lindsee-hassan</span>
+      <div class="gist">Lindsee’s list for the week: RA submission, Tyler’s deliverable, the Victionary doc, Serato copy edits, the Source Type logo and Dropbox access. Her 10.19.26 agenda doc is linked there. She’s on GMT this week.</div>
+    </div></div>
+    <div class="row"><span class="when">Quiet</span><div class="what"><span class="who">Everything else</span>
+      <div class="gist">Nothing new overnight in #resident-advisor-book, #serato-capsule, #hassan-to-do, #design-cru, #dweller-2026 or #mantra-publication.</div>
+    </div></div>
+  </section>
+
+  <section>
+    <div class="label"><span>Looking ahead</span></div>
+    <div class="row"><span class="when">Wed 10/21</span><div class="what"><span class="who">Darcy · Ja’Tovia? · red-eye</span>
+      <div class="gist">12:01 + Darcy Heusel is 12:30–1pm PT / 3:30–4pm ET on Zoom, and both of you have accepted. Ja’Tovia’s catch-up might land at 11am or 2pm PT. Leave for LAX Terminal 1 around 9–9:30pm PT for the 11:59pm JetBlue 1224.</div>
+    </div></div>
+    <div class="row"><span class="when">Thu 10/22</span><div class="what"><span class="who">Land · Serato · Jeromes Dream · Lindsee</span>
+      <div class="gist">You land at JFK at 8:29am ET. The Serato creative check-in still needs Kat’s invite. Jeromes Dream is 3:30–3:45pm ET on Zoom (you haven’t RSVP’d), and the Mid-Week Catch Up with Lindsee is 5–5:30pm ET / 2–2:30pm PT.</div>
+    </div></div>
+    <div class="row"><span class="when">Fri 10/23</span><div class="what"><span class="who">Dweller · Source Type</span>
+      <div class="gist">Dweller Festival Brainstorm is 11:30am–12:30pm ET on Zoom (optional). The Source Type symbol is due by end of day.</div>
+    </div></div>
+  </section>
+
+  <section>
+    <div class="label"><span>ClickUp</span></div>
+    <div class="row"><span class="when">Stale</span><div class="what"><span class="who">17 tasks due Oct 6 – Nov 3</span>
+      <div class="gist">They’re Serato R2 and merch workback plus PSNY Phase 2.3, and none has been updated since Sep 18. The live dates are in mail, not ClickUp.</div>
+    </div></div>
+  </section>
+
+  <footer>
+    <div class="archive" id="archive-links">Earlier: <a href="2026-10-19.html">Oct 19</a> <a href="2026-10-18.html">Oct 18</a> <a href="2026-10-17.html">Oct 17</a> <a href="2026-10-16.html">Oct 16</a> <a href="archive.html">All briefs</a></div>
+    <div>Tuesday, October 20, 2026 · generated ~7:45 AM PT from live Calendar, Superhuman, Discord, Fathom, Granola, and ClickUp.</div>
+    <div class="status">
+      <span><span class="dot"></span>Calendar ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Superhuman ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Discord ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Fathom ok (1 new call)</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Granola ok (no new notes)</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>ClickUp ok (stale)</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Dropbox skipped</span>
+    </div>
+  </footer>
+
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
