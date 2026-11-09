@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="12:01 Daily">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>12:01 Daily</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+<link rel="icon" href="favicon.png?v=2" type="image/png">
+<link rel="manifest" href="/1201-brief/manifest.json?v=4">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #16161a;
+    --muted: #6b6b76;
+    --rule: #e4e4e9;
+    --card: #fafafa;
+    --accent: #c4321f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101013;
+      --fg: #e8e8ec;
+      --muted: #8f8f9c;
+      --rule: #26262d;
+      --card: #17171c;
+      --accent: #ff6a4d;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
+  body {
+    margin: 0;
+    padding: 32px 16px 80px;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (min-width: 640px) {
+    body { padding: 48px 24px 96px; }
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  header { margin-bottom: 8px; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+  .mark { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; flex: 0 0 36px; }
+  h1 { font-size: 25px; line-height: 1.25; margin: 0; letter-spacing: -0.02em; font-weight: 620; }
+  .datebar { color: var(--muted); font-size: 14px; margin-bottom: 36px; }
+  section { margin: 0 0 40px; }
+  .label {
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .label .count { letter-spacing: 0.04em; font-weight: 500; opacity: .8; }
+  .brief p { margin: 0 0 14px; font-size: 17px; line-height: 1.6; }
+  .brief p:last-child { margin-bottom: 0; }
+  .decisions { margin: 18px 0 0; padding: 14px 16px; background: var(--card); border-radius: 8px; }
+  .decisions .dl { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+  .decisions ol { margin: 0; padding-left: 18px; }
+  .decisions li { margin-bottom: 7px; }
+  .decisions li:last-child { margin-bottom: 0; }
+  .row, a.row {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px dotted var(--rule);
+    color: inherit;
+    text-decoration: none;
+  }
+  a.row { display: flex; gap: 10px; align-items: baseline; }
+  .row:last-child, a.row:last-child { border-bottom: none; }
+  .when { flex: 0 0 72px; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .what { flex: 1; min-width: 0; }
+  .who { font-weight: 620; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .gist { margin-top: 2px; color: var(--fg); }
+  .sub, .gist.dim { color: var(--muted); font-size: 14px; margin-top: 3px; }
+  .go { color: var(--muted); font-size: 12.5px; white-space: nowrap; margin-left: auto; }
+  a.row:hover .go { color: var(--accent); }
+  .flag {
+    display: inline-block;
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    padding: 0 5px;
+    line-height: 1.5;
+    white-space: nowrap;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .empty { color: var(--muted); font-style: italic; padding: 12px 0; }
+  a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { border-bottom-color: var(--muted); }
+  a.row { border-bottom: 1px dotted var(--rule); }
+  a.row:hover { border-bottom-color: var(--rule); }
+  footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.8;
+  }
+  .archive { margin-top: 8px; }
+  .archive a { margin-right: 12px; }
+  .status { display: flex; flex-wrap: wrap; }
+  .status span { white-space: nowrap; }
+  .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; vertical-align: middle; margin-right: 5px; opacity: .55; }
+  .q { margin-top: 6px; color: var(--muted); font-size: 14px; }
+  .notify { margin: 0 0 20px; }
+  .notify button {
+    appearance: none; border: 1px solid var(--rule); background: var(--card);
+    color: var(--fg); font: inherit; font-size: 14px; padding: 8px 12px; border-radius: 6px;
+  }
+  .notify .ok { color: var(--muted); font-size: 13px; }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><img class="mark" src="apple-touch-icon.png" alt=""><h1>12:01 Daily</h1></div>
+    <div class="notify" id="notify"></div>
+    <div class="datebar" id="datebar">Monday, November 9, 2026 · 12:01</div>
+  </header>
+                <div id="content">
+
+  <section class="brief">
+    <div class="label"><span>The Brief</span></div>
+    <p><strong>One real meeting today: your Lindsee check-in at 1:30pm PT.</strong> Lindsee has accepted and your RSVP is still open. She’s bringing Bryan’s Kandis question, and it’s the natural place to settle Serato and James Blake if they’re still open by then.</p>
+    <p><strong>Stone Island is now pushing on James Blake.</strong> Gustavo asked you in #stone-island-sound at 4:08am PT whether he can send some of his options, because SI wants a round of ideas. Giulia also emailed him at 1:16am PT asking for news on the evite. A yes from you is the only thing holding it.</p>
+    <p><strong>Serato V2 is four days late and Kat still hasn’t heard back.</strong> Her Friday 11:55am PT ask is unanswered, nothing new landed in #serato-capsule, and Serato’s feedback was meant to land tomorrow, so the rest of the timeline slides unless someone names a date today.</p>
+    <p><strong>Katie at RA wants INV204 resent in dollars.</strong> She wrote at 1:39am PT asking for the invoice in USD to match the SOW, so she can upload it to RA finance. The Nov 5 version went out as €2,500, and the remaining 50% should be $2,500 with the same RA billing as INV202. A reply draft was shown to you overnight and hasn’t been sent.</p>
+    <div class="decisions"><div class="dl">Questions</div><ol>
+      <li>Can Gustavo send Stone Island some of the James Blake options this morning, as he asked?</li>
+      <li>Should Lindsee give Kat a firm V2 date today, before Serato’s Tuesday feedback slot passes?</li>
+    </ol></div>
+  </section>
+
+  <section>
+    <div class="label"><span>Schedule</span><span class="count">PT · ET</span></div>
+    <a class="row" href="https://us06web.zoom.us/j/89264639231"><span class="when">1:30pm</span><div class="what"><span class="who">12:01 Hassan + Lindsee Monday Check-In</span><div class="gist">1:30–2pm PT / 4:30–5pm ET on Zoom. Lindsee accepted, and your RSVP is open.</div></div><span class="go">Zoom</span></a>
+  </section>
+
+  <section>
+    <div class="label"><span>Waiting on you</span><span class="count">5</span></div>
+    <a class="row" href="https://discord.com/channels/999843458711818241/1257806348540842066/1569322794095878256"><span class="when">4:08am</span><div class="what"><span class="who">Gustavo · James Blake for Stone Island</span> <span class="flag">cannot slide</span><div class="gist">SI is pushing for a round of ideas. He wants your OK to send some of the Nov 6 options. Giulia chased him by email at 1:16am PT.</div></div><span class="go">Discord</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a19ae03c8767129"><span class="when">Overdue</span><div class="what"><span class="who">Kat (Serato) · V2 deck</span> <span class="flag">cannot slide</span><div class="gist">Due Thu Nov 5. Kat asked for an update Friday at 11:55am PT, and no one has replied. Feedback was due Tue Nov 10.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a1ab3c2f6aac338"><span class="when">1:39am</span><div class="what"><span class="who">Katie (RA) · INV204 in dollars</span><div class="gist">She needs the invoice in USD to match the SOW before she can upload it to RA finance.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://discord.com/channels/999843458711818241/1073145200454684682/1568064227879428117"><span class="when">Today</span><div class="what"><span class="who">Bryan · Kandis next steps</span><div class="gist">He wants your call on the off dummy before printing. Lindsee is raising it at today’s check-in.</div></div><span class="go">Discord</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a15baa7496063cc"><span class="when">Since Tue</span><div class="what"><span class="who">Raafae (Virgil Abloh Archive) · royalties and mockups</span><div class="gist">His 10% net-sales offer and the tee colourway mockups are still unanswered.</div></div><span class="go">Open</span></a>
+  </section>
+
+  <section>
+    <div class="label"><span>Also moving</span></div>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/19aff1356a4528e9"><span class="when">Fri</span><div class="what"><span class="who">James Shani (Rich Spirit) · BLKNWS credit</span><div class="gist">You asked Friday for the revised end crawl and which releases are fixed. No reply yet.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a1a1c5d3eaeec4b"><span class="when">Fri</span><div class="what"><span class="who">Gregg (Influence) · Dweller posters</span><div class="gist">Frankie approved the quote, and Gregg is asking when the print files will arrive.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a18cef9f3f4f76a"><span class="when">Fri</span><div class="what"><span class="who">Arena / Stacey · Dweller x VAA production</span><div class="gist">Garments head to Arena at the end of this week.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a1b2c984b139ac3"><span class="when">Fri</span><div class="what"><span class="who">Alex (PSNY) · “Seasons” shared drive</span><div class="gist">hr@ was added as a contributor, likely the hi-res content folder PSNY has asked about.</div></div><span class="go">Open</span></a>
+    <a class="row" href="https://mail.google.com/mail/u/0/#all/1a0ba35ab5687cd1"><span class="when">Nov 15</span><div class="what"><span class="who">Matteo (Moncler) · SI payments</span><div class="gist">INV197–200 pay around Nov 15, and INV201 on Dec 15.</div></div><span class="go">Open</span></a>
+  </section>
+
+  <section>
+    <div class="label"><span>Discord</span><span class="count">Midnight Oil</span></div>
+    <a class="row" href="https://discord.com/channels/999843458711818241/1257806348540842066/1569322794095878256"><span class="when">4:08am</span><div class="what"><span class="who">#stone-island-sound</span>
+      <div class="gist">Gustavo tagged you asking if he can send SI some of the James Blake options.</div>
+    </div><span class="go">Discord</span></a>
+    <div class="row"><span class="when">Since Sat</span><div class="what"><span class="who">Quiet elsewhere</span>
+      <div class="gist">Nothing new in #serato-capsule or the Kandis channel. Lindsee’s question to Gustavo about Serato is still unanswered.</div>
+    </div></div>
+  </section>
+
+  <section>
+    <div class="label"><span>Looking ahead</span><span class="count">PT · ET</span></div>
+    <div class="row"><span class="when">Tue 11/10</span><div class="what"><span class="who">Weekly Team, then Jaden</span>
+      <div class="gist">Team is 10–11am PT / 1–2pm ET with Lindsee and Gustavo. Jaden (Parsons) is 1–1:20pm PT / 4–4:20pm ET. Serato’s V2 feedback was meant to land that day.</div>
+    </div></div>
+    <div class="row"><span class="when">Wed 11/11</span><div class="what"><span class="who">Mantra x Hassan</span>
+      <div class="gist">11:30am–1pm PT / 8:30–10pm CET with Bas, who has accepted. Lindsee is invited.</div>
+    </div></div>
+    <div class="row"><span class="when">Thu–Fri</span><div class="what"><span class="who">Darcy, Mid-Week, Dweller, Leo</span>
+      <div class="gist">Thursday has Darcy at 12pm PT and Mid-Week at 2pm PT. Friday has the Dweller brainstorm at 8:30am, Leo Faria at 10am PT / 1pm ET, Dweller Design at 11:30am, and Erika’s two SI November artworks are due.</div>
+    </div></div>
+  </section>
+
+  <footer>
+    <div class="archive" id="archive-links">Earlier: <a href="2026-11-08.html">Nov 8</a> <a href="2026-11-07.html">Nov 7</a> <a href="2026-11-06.html">Nov 6</a> <a href="2026-11-05.html">Nov 5</a> <a href="archive.html">All briefs</a></div>
+    <div>Monday, November 9, 2026 · generated ~7:40 AM PST from live Calendar, Superhuman, Discord and Fathom.</div>
+    <div class="status">
+      <span><span class="dot"></span>Calendar ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Superhuman ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Discord ok</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>Fathom ok (last check-in Nov 2)</span>&nbsp;·&nbsp;
+      <span><span class="dot"></span>ClickUp and Granola not rechecked (stale all week)</span>
+    </div>
+  </footer>
+
+
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
