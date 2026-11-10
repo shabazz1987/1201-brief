@@ -1,12 +1,18 @@
 {
-  "today": "2026-11-09",
-  "today_label": "Monday, November 9, 2026 · 12:01",
+  "today": "2026-11-10",
+  "today_label": "Tuesday, November 10, 2026 · 12:01",
   "briefs": [
+    {
+      "date": "2026-11-10",
+      "label": "Nov 10",
+      "href": "2026-11-10.html",
+      "current": true
+    },
     {
       "date": "2026-11-09",
       "label": "Nov 9",
       "href": "2026-11-09.html",
-      "current": true
+      "current": false
     },
     {
       "date": "2026-11-08",
